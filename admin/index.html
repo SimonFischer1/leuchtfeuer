@@ -1,1741 +1,1533 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
+  name="viewport"
+  content="width=device-width,initial-scale=1"
 >
 
-<title>
-    Leuchtfeuer – Admin
-</title>
-
-    
+<title>Leuchtfeuer – Verwaltung</title>
 
 <style>
 
-:root {
-
-    --blue: #315b7f;
-    --deep-blue: #203f5d;
-
-    --red: #a9564f;
-
-    --yellow: #d9bd70;
-
-    --cream: #f2eadf;
-
-    --text: #19344c;
-
+:root{
+  --blue:#315d7d;
+  --blue-dark:#203f5a;
+  --red:#b85b55;
+  --yellow:#dfc56d;
+  --cream:#f3ece1;
+  --cream-dark:#e7dccd;
 }
 
-
-* {
-    box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-
-body {
-
-    margin: 0;
-
-    background: var(--cream);
-
-    color: var(--text);
-
-    font-family: Arial, sans-serif;
-
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--blue-dark);
+  font-family:Arial,Helvetica,sans-serif;
 }
-
 
 button,
 input,
 textarea,
-select {
-
-    font: inherit;
-
+select{
+  font:inherit;
 }
 
-
-button {
-
-    cursor: pointer;
-
+.hidden{
+  display:none!important;
 }
 
+/* LOGIN */
 
-.hidden {
-
-    display: none !important;
-
+.login-screen{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:25px;
+  background:var(--blue-dark);
 }
 
-
-/* ======================================================
-   HEADER
-   ====================================================== */
-
-.admin-header {
-
-    background: var(--deep-blue);
-
-    color: var(--cream);
-
-    padding: 18px 4%;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
+.login-box{
+  width:min(440px,100%);
+  background:var(--cream);
+  padding:45px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
 }
 
-
-.admin-title {
-
-    font-family: Georgia, serif;
-
-    font-size: 25px;
-
+.login-logo{
+  width:170px;
+  margin:0 auto 30px;
 }
 
-
-/* ======================================================
-   LAYOUT
-   ====================================================== */
-
-.container {
-
-    width: min(1150px, 94%);
-
-    margin: 35px auto;
-
+.login-box h1{
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:35px;
 }
 
-
-.panel {
-
-    padding: 28px;
-
-    margin-bottom: 25px;
-
-    background: var(--cream);
-
-    border: 1px solid rgba(32,63,93,.25);
-
-    box-shadow:
-        0 12px 35px rgba(23,52,76,.12);
-
+.form-group{
+  margin-bottom:18px;
 }
 
-
-.panel h2 {
-
-    margin-top: 0;
-
-    color: var(--deep-blue);
-
-    font-family: Georgia, serif;
-
+.form-group label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:7px;
 }
-
-
-.panel h3 {
-
-    color: var(--red);
-
-}
-
-
-.grid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 18px;
-
-}
-
-
-label {
-
-    display: block;
-
-    margin-bottom: 6px;
-
-    font-weight: bold;
-
-}
-
 
 input,
 textarea,
-select {
+select{
+  width:100%;
+  border:1px solid rgba(49,93,125,.4);
+  background:#fffaf3;
+  color:var(--blue-dark);
+  padding:12px;
+}
 
-    width: 100%;
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
 
-    padding: 11px;
+.admin-btn{
+  width:100%;
+  min-height:48px;
+  border:1px solid var(--yellow);
+  background:var(--red);
+  color:var(--cream);
+  cursor:pointer;
+  font-weight:bold;
+}
 
-    margin-bottom: 14px;
-
-    border: 1px solid var(--blue);
-
-    background: #f7efe5;
-
-    color: var(--text);
-
+.login-error{
+  margin-top:15px;
+  color:var(--red);
+  font-weight:bold;
+  text-align:center;
 }
 
 
-textarea {
+/* ADMIN */
 
-    min-height: 110px;
-
-    resize: vertical;
-
+.admin-app{
+  min-height:100vh;
 }
 
-
-.button {
-
-    border: 1px solid var(--yellow);
-
-    background: var(--red);
-
-    color: var(--cream);
-
-    padding: 11px 18px;
-
+.admin-header{
+  background:var(--blue-dark);
+  color:var(--cream);
+  padding:16px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
-
-.button.blue {
-
-    background: var(--blue);
-
+.admin-brand{
+  display:flex;
+  align-items:center;
+  gap:15px;
 }
 
-
-.button.dark {
-
-    background: var(--deep-blue);
-
+.admin-brand img{
+  width:125px;
 }
 
-
-/* ======================================================
-   LOGIN
-   ====================================================== */
-
-.login {
-
-    width: min(430px, 92%);
-
-    margin: 12vh auto;
-
-    text-align: center;
-
+.logout{
+  background:transparent;
+  color:var(--cream);
+  border:1px solid rgba(243,236,225,.5);
+  padding:10px 16px;
+  cursor:pointer;
 }
 
-
-.login img {
-
-    width: 190px;
-
-    margin-bottom: 20px;
-
+.admin-main{
+  max-width:1250px;
+  margin:auto;
+  padding:40px 20px 80px;
 }
 
-
-/* ======================================================
-   EVENTS
-   ====================================================== */
-
-.event-row {
-
-    padding: 18px 0;
-
-    border-top: 1px solid rgba(32,63,93,.22);
-
-    display: grid;
-
-    grid-template-columns: 1fr auto;
-
-    gap: 20px;
-
+.dashboard-title{
+  margin-bottom:35px;
 }
 
-
-.event-status {
-
-    display: inline-block;
-
-    padding: 5px 8px;
-
-    margin-bottom: 8px;
-
-    background: var(--yellow);
-
-    color: var(--deep-blue);
-
-    font-size: 11px;
-
-    font-weight: bold;
-
+.dashboard-title h1{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:45px;
+  margin:0;
 }
 
-
-.event-row h3 {
-
-    margin: 5px 0;
-
+.tabs{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
 }
 
-
-.actions {
-
-    display: flex;
-
-    gap: 8px;
-
-    flex-wrap: wrap;
-
-    align-items: start;
-
+.tab{
+  border:1px solid var(--blue);
+  background:transparent;
+  color:var(--blue-dark);
+  padding:12px 20px;
+  cursor:pointer;
 }
 
-
-/* ======================================================
-   MENU
-   ====================================================== */
-
-.category {
-
-    margin-bottom: 25px;
-
-    padding: 22px;
-
-    border: 1px solid rgba(32,63,93,.2);
-
+.tab.active{
+  background:var(--blue);
+  color:var(--cream);
 }
 
-
-.menu-row {
-
-    display: grid;
-
-    grid-template-columns: 1fr 160px auto;
-
-    gap: 10px;
-
-    align-items: center;
-
+.panel{
+  display:none;
 }
 
+.panel.active{
+  display:block;
+}
 
-/* ======================================================
-   RESPONSIVE
-   ====================================================== */
+.card{
+  background:#fffaf3;
+  border:1px solid rgba(49,93,125,.25);
+  padding:25px;
+  margin-bottom:20px;
+}
 
-@media(max-width: 750px) {
+.card h2{
+  font-family:Georgia,"Times New Roman",serif;
+  margin-top:0;
+}
 
-    .grid {
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
 
-        grid-template-columns: 1fr;
+.full{
+  grid-column:1/-1;
+}
 
-    }
+.primary{
+  border:1px solid var(--yellow);
+  background:var(--red);
+  color:var(--cream);
+  padding:12px 20px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-    .event-row {
+.secondary{
+  border:1px solid var(--blue);
+  background:transparent;
+  color:var(--blue-dark);
+  padding:10px 15px;
+  cursor:pointer;
+}
 
-        grid-template-columns: 1fr;
+.danger{
+  background:var(--red);
+  color:var(--cream);
+  border:0;
+  padding:10px 15px;
+  cursor:pointer;
+}
 
-    }
+.item-list{
+  display:grid;
+  gap:15px;
+}
 
-    .menu-row {
+.item{
+  border:1px solid rgba(49,93,125,.2);
+  padding:20px;
+  background:var(--cream);
+}
 
-        grid-template-columns: 1fr;
+.item-header{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  align-items:flex-start;
+}
 
-    }
+.item h3{
+  font-family:Georgia,"Times New Roman",serif;
+  margin-top:0;
+}
 
-    .admin-header {
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
 
-        align-items: flex-start;
+.status{
+  display:inline-block;
+  padding:5px 9px;
+  font-size:12px;
+  font-weight:bold;
+  background:var(--yellow);
+}
 
-        flex-direction: column;
+.status.off{
+  background:var(--cream-dark);
+}
 
-    }
+.menu-category{
+  border:1px solid rgba(49,93,125,.2);
+  padding:20px;
+  margin-bottom:15px;
+}
+
+.menu-row{
+  display:grid;
+  grid-template-columns:1fr 160px 45px;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.small{
+  font-size:13px;
+  opacity:.8;
+}
+
+.notice{
+  padding:15px;
+  background:var(--yellow);
+  margin-bottom:20px;
+  border-left:4px solid var(--red);
+}
+
+@media(max-width:700px){
+
+  .admin-header{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .admin-brand{
+    justify-content:center;
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .menu-row{
+    grid-template-columns:1fr;
+  }
+
+  .item-header{
+    flex-direction:column;
+  }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 
-<!-- ======================================================
-     LOGIN
-     ====================================================== -->
+<!-- LOGIN -->
 
-<div
-    id="loginScreen"
-    class="login panel"
+<section
+  class="login-screen"
+  id="loginScreen"
 >
+
+  <div class="login-box">
 
     <img
-        src="/pic/logo.png"
-        alt="Leuchtfeuer"
+      src="/pic/logo.png"
+      class="login-logo"
+      alt="Leuchtfeuer"
     >
 
+    <h1>
+      Verwaltung
+    </h1>
 
-    <h2>
-        Leuchtfeuer Admin
-    </h2>
+    <form id="loginForm">
+
+      <div class="form-group">
+
+        <label>
+          Benutzername
+        </label>
+
+        <input
+          id="username"
+          autocomplete="username"
+          required
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>
+          Passwort
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+
+      </div>
+
+      <button
+        class="admin-btn"
+        type="submit"
+      >
+        ANMELDEN
+      </button>
+
+    </form>
+
+    <div
+      class="login-error"
+      id="loginError"
+    ></div>
+
+  </div>
+
+</section>
 
 
-    <p>
-        Verwaltung der Website
-    </p>
-
-
-    <label>
-        Benutzer
-    </label>
-
-    <input
-        id="username"
-        autocomplete="username"
-    >
-
-
-    <label>
-        Passwort
-    </label>
-
-    <input
-        id="password"
-        type="password"
-        autocomplete="current-password"
-    >
-
-
-    <button
-        class="button"
-        onclick="login()"
-    >
-        Anmelden
-    </button>
-
-
-    <p
-        id="loginError"
-        style="color:var(--red)"
-    ></p>
-
-</div>
-
-
-
-<!-- ======================================================
-     ADMIN APP
-     ====================================================== -->
+<!-- ADMIN APP -->
 
 <div
-    id="adminApp"
-    class="hidden"
+  class="admin-app hidden"
+  id="adminApp"
 >
-
 
 <header class="admin-header">
 
-    <div class="admin-title">
-        ⚓ Leuchtfeuer · Admin
-    </div>
+  <div class="admin-brand">
 
+    <img
+      src="/pic/logo.png"
+      alt="Leuchtfeuer"
+    >
 
-    <div>
+    <strong>
+      Website-Verwaltung
+    </strong>
 
-        <button
-            class="button blue"
-            onclick="window.open('/', '_blank')"
-        >
-            Website öffnen
-        </button>
+  </div>
 
-
-        <button
-            class="button"
-            onclick="logout()"
-        >
-            Abmelden
-        </button>
-
-    </div>
+  <button
+    class="logout"
+    id="logout"
+  >
+    Abmelden
+  </button>
 
 </header>
 
 
+<main class="admin-main">
 
-<main class="container">
+  <div class="dashboard-title">
 
-
-<!-- ======================================================
-     INFO
-     ====================================================== -->
-
-<section class="panel">
-
-    <h2>
-        Website-Verwaltung
-    </h2>
+    <h1>
+      Leuchtfeuer Verwaltung
+    </h1>
 
     <p>
-        Hier kannst du Veranstaltungen,
-        Sonderangebote sowie Getränke- und
-        Speisekarte bearbeiten.
+      Veranstaltungen, Angebote und Karte verwalten.
     </p>
 
-    <p>
-        <strong>
-            Technischer Hinweis:
-        </strong>
-        Diese GitHub-Pages-Version speichert die
-        Änderungen im Browser über localStorage.
-        Sie werden damit nicht automatisch auf
-        andere Geräte übertragen.
-    </p>
-
-</section>
+  </div>
 
 
+  <div class="notice">
 
-<!-- ======================================================
-     EVENTS
-     ====================================================== -->
+    Änderungen werden in diesem Browser gespeichert.
+    Für eine zentrale Verwaltung auf allen Geräten wird
+    später ein echtes Backend benötigt.
 
-<section class="panel">
-
-    <h2>
-        Veranstaltungen
-    </h2>
+  </div>
 
 
-    <div id="eventsAdmin"></div>
+  <div class="tabs">
+
+    <button
+      class="tab active"
+      data-tab="events"
+    >
+      Veranstaltungen
+    </button>
+
+    <button
+      class="tab"
+      data-tab="offers"
+    >
+      Angebote
+    </button>
+
+    <button
+      class="tab"
+      data-tab="menu"
+    >
+      Karte & Preise
+    </button>
+
+  </div>
 
 
-    <hr>
+  <!-- EVENTS -->
 
+  <section
+    class="panel active"
+    id="panel-events"
+  >
 
-    <h3>
+    <div class="card">
+
+      <h2>
         Neue Veranstaltung
-    </h3>
+      </h2>
 
+      <form id="eventForm">
 
-    <div class="grid">
+        <div class="form-grid">
 
-        <div>
+          <div class="form-group">
 
             <label>
-                Beginn – Datum
+              Datum
             </label>
 
             <input
-                id="eventDate"
-                type="date"
+              type="date"
+              id="eventDate"
+              required
             >
 
-        </div>
+          </div>
 
-
-        <div>
+          <div class="form-group">
 
             <label>
-                Beginn – Uhrzeit
+              Uhrzeit
             </label>
 
             <input
-                id="eventStartTime"
-                type="time"
+              type="time"
+              id="eventTime"
+              required
             >
 
-        </div>
+          </div>
 
-
-        <div>
+          <div class="form-group full">
 
             <label>
-                Ende – Datum
+              Überschrift
             </label>
 
             <input
-                id="eventEndDate"
-                type="date"
+              id="eventTitle"
+              placeholder="z.B. Live-Musik"
+              required
             >
 
-        </div>
+          </div>
 
-
-        <div>
+          <div class="form-group full">
 
             <label>
-                Ende – Uhrzeit
+              Beschreibung
+            </label>
+
+            <textarea
+              id="eventDescription"
+              placeholder="Beschreibung der Veranstaltung"
+              required
+            ></textarea>
+
+          </div>
+
+          <div class="form-group">
+
+            <label>
+              Sichtbar ab
             </label>
 
             <input
-                id="eventEndTime"
-                type="time"
+              type="datetime-local"
+              id="eventVisibleFrom"
             >
 
+          </div>
+
+          <div class="form-group">
+
+            <label>
+              Sichtbar bis
+            </label>
+
+            <input
+              type="datetime-local"
+              id="eventVisibleUntil"
+            >
+
+          </div>
+
+          <div class="full">
+
+            <button
+              class="primary"
+              type="submit"
+            >
+              VERANSTALTUNG VERÖFFENTLICHEN
+            </button>
+
+          </div>
+
         </div>
+
+      </form>
 
     </div>
 
 
-    <label>
-        Überschrift
-    </label>
+    <div class="card">
 
-    <input
-        id="eventTitle"
-        placeholder="z.B. Live-Musik"
-    >
+      <h2>
+        Veranstaltungen
+      </h2>
 
+      <div
+        class="item-list"
+        id="eventAdminList"
+      ></div>
 
-    <label>
-        Beschreibung
-    </label>
+    </div>
 
-    <textarea
-        id="eventDescription"
-        placeholder="Beschreibung der Veranstaltung..."
-    ></textarea>
+  </section>
 
 
-    <label>
+  <!-- OFFERS -->
 
-        <input
-            id="eventPublished"
-            type="checkbox"
-            style="width:auto"
-            checked
-        >
+  <section
+    class="panel"
+    id="panel-offers"
+  >
 
-        Veranstaltung sofort veröffentlichen
+    <div class="card">
 
-    </label>
+      <h2>
+        Neues Angebot
+      </h2>
 
+      <form id="offerForm">
 
-    <button
-        class="button"
-        onclick="addEvent()"
-    >
-        Veranstaltung hinzufügen
-    </button>
+        <div class="form-grid">
 
-</section>
+          <div class="form-group full">
 
+            <label>
+              Überschrift
+            </label>
 
+            <input
+              id="offerTitle"
+              required
+            >
 
-<!-- ======================================================
-     SPECIAL OFFER
-     ====================================================== -->
+          </div>
 
-<section class="panel">
+          <div class="form-group full">
 
-    <h2>
-        Spezielles Angebot
-    </h2>
+            <label>
+              Beschreibung
+            </label>
 
+            <textarea
+              id="offerDescription"
+              required
+            ></textarea>
 
-    <label>
+          </div>
 
-        <input
-            id="offerActive"
-            type="checkbox"
-            style="width:auto"
-        >
+          <div class="full">
 
-        Angebot auf der Startseite anzeigen
+            <button
+              class="primary"
+              type="submit"
+            >
+              ANGEBOT AKTIVIEREN
+            </button>
 
-    </label>
+          </div>
 
+        </div>
 
-    <label>
-        Überschrift
-    </label>
+      </form>
 
-    <input
-        id="offerTitle"
-    >
-
-
-    <label>
-        Beschreibung
-    </label>
-
-    <textarea
-        id="offerDescription"
-    ></textarea>
+    </div>
 
 
-    <button
-        class="button"
-        onclick="saveOffer()"
-    >
-        Angebot speichern
-    </button>
+    <div class="card">
 
-</section>
+      <h2>
+        Angebote
+      </h2>
 
+      <div
+        class="item-list"
+        id="offerAdminList"
+      ></div>
 
+    </div>
 
-<!-- ======================================================
-     MENU
-     ====================================================== -->
-
-<section class="panel">
-
-    <h2>
-        Getränke- & Speisekarte
-    </h2>
+  </section>
 
 
-    <p>
-        Die Änderungen erscheinen anschließend
-        in der interaktiven Buchkarte.
-    </p>
+  <!-- MENU -->
 
+  <section
+    class="panel"
+    id="panel-menu"
+  >
 
-    <div id="menuAdmin"></div>
+    <div class="card">
 
+      <h2>
+        Karte bearbeiten
+      </h2>
 
-    <button
-        class="button blue"
-        onclick="addCategory()"
-    >
-        + Kategorie hinzufügen
-    </button>
+      <p class="small">
+        Hier können Kategorien, Getränke, Speisen
+        und Preise verändert werden.
+      </p>
 
+      <div id="menuEditor"></div>
 
-    <button
-        class="button"
-        onclick="saveMenu()"
-    >
-        Karte speichern
-    </button>
+      <button
+        class="primary"
+        id="saveMenu"
+      >
+        KARTE SPEICHERN
+      </button>
 
-</section>
+    </div>
 
-
-
-<!-- ======================================================
-     DATA
-     ====================================================== -->
-
-<section class="panel">
-
-    <h2>
-        Daten
-    </h2>
-
-
-    <button
-        class="button blue"
-        onclick="downloadData()"
-    >
-        Daten als JSON sichern
-    </button>
-
-
-    <button
-        class="button dark"
-        onclick="resetData()"
-    >
-        Beispieldaten zurücksetzen
-    </button>
-
-</section>
-
+  </section>
 
 </main>
 
 </div>
 
 
-
 <script>
 
-/* =========================================================
-   DEFAULT DATA
-   ========================================================= */
-
-const DEFAULT_DATA = {
-
-    events: [
-
-        {
-            date: "2026-09-26",
-            startTime: "20:00",
-            endDate: "2026-09-26",
-            endTime: "23:59",
-            title: "Live-Musik",
-            description:
-                "Maritimer Abend mit guter Stimmung und kühlen Getränken.",
-            published: true
-        },
-
-        {
-            date: "2026-10-02",
-            startTime: "18:00",
-            endDate: "2026-10-02",
-            endTime: "23:59",
-            title: "Themenabend",
-            description:
-                "Herzhafte Klassiker und gemütlicher Abend im Leuchtfeuer.",
-            published: true
-        }
-
-    ],
-
-
-    offer: {
-
-        active: true,
-
-        title: "Sonderangebot",
-
-        text:
-            "Hier kann jederzeit ein aktuelles Angebot veröffentlicht werden."
-
-    },
-
-
-    menu: [
-
-        {
-            category: "Bier",
-
-            items: [
-
-                ["Pils 0,3 l", "3,20 €"],
-                ["Helles 0,3 l", "3,20 €"],
-                ["Weizen 0,5 l", "4,90 €"],
-                ["Alster 0,3 l", "3,20 €"]
-
-            ]
-
-        },
-
-
-        {
-            category: "Alkoholfrei",
-
-            items: [
-
-                ["Wasser 0,25 l", "2,80 €"],
-                ["Cola / Fanta 0,3 l", "3,00 €"],
-                ["Alkoholfreies Bier 0,33 l", "3,20 €"]
-
-            ]
-
-        },
-
-
-        {
-            category: "Longdrinks",
-
-            items: [
-
-                ["Gin Tonic", "7,50 €"],
-                ["Rum Cola", "7,50 €"],
-                ["Vodka Lemon", "7,50 €"]
-
-            ]
-
-        }
-
-    ]
-
-};
-
-
-/* =========================================================
+/* =============================================
    LOGIN
-   ========================================================= */
+============================================= */
 
-const ADMIN_USER = "admin";
+const USERNAME = "admin";
+const PASSWORD = "leuchtfeuer-passwort1";
 
-const ADMIN_PASSWORD =
-    "leuchtfeuer-passwort1";
+const loginScreen =
+  document.getElementById("loginScreen");
 
+const adminApp =
+  document.getElementById("adminApp");
 
-function login() {
+function checkLogin(){
+
+  if(sessionStorage.getItem("leuchtfeuer_admin") === "true"){
+
+    loginScreen.classList.add("hidden");
+
+    adminApp.classList.remove("hidden");
+
+    renderEverything();
+
+  }
+
+}
+
+document
+  .getElementById("loginForm")
+  .addEventListener("submit",e=>{
+
+    e.preventDefault();
 
     const user =
-        document.getElementById("username")
-            .value;
+      document.getElementById("username").value;
 
-    const password =
-        document.getElementById("password")
-            .value;
+    const pass =
+      document.getElementById("password").value;
 
+    if(user===USERNAME && pass===PASSWORD){
 
-    if (
-        user === ADMIN_USER &&
-        password === ADMIN_PASSWORD
-    ) {
+      sessionStorage.setItem(
+        "leuchtfeuer_admin",
+        "true"
+      );
 
-        sessionStorage.setItem(
-            "leuchtfeuerAdmin",
-            "true"
-        );
+      loginScreen.classList.add("hidden");
 
-        showAdmin();
+      adminApp.classList.remove("hidden");
 
-        return;
+      renderEverything();
+
+    }else{
+
+      document.getElementById("loginError")
+        .textContent =
+        "Benutzername oder Passwort falsch.";
 
     }
 
-
-    document
-        .getElementById("loginError")
-        .textContent =
-        "Benutzer oder Passwort ist falsch.";
-
-}
+  });
 
 
-function showAdmin() {
-
-    document
-        .getElementById("loginScreen")
-        .classList.add("hidden");
-
-
-    document
-        .getElementById("adminApp")
-        .classList.remove("hidden");
-
-
-    renderAll();
-
-}
-
-
-function logout() {
+document
+  .getElementById("logout")
+  .addEventListener("click",()=>{
 
     sessionStorage.removeItem(
-        "leuchtfeuerAdmin"
+      "leuchtfeuer_admin"
     );
 
     location.reload();
 
-}
+  });
 
 
-if (
-    sessionStorage.getItem(
-        "leuchtfeuerAdmin"
-    ) === "true"
-) {
+/* =============================================
+   TABS
+============================================= */
 
-    showAdmin();
+document
+  .querySelectorAll(".tab")
+  .forEach(button=>{
 
-}
+    button.addEventListener("click",()=>{
 
+      document
+        .querySelectorAll(".tab")
+        .forEach(b=>b.classList.remove("active"));
 
-/* =========================================================
-   DATA
-   ========================================================= */
+      document
+        .querySelectorAll(".panel")
+        .forEach(p=>p.classList.remove("active"));
 
-function getData() {
+      button.classList.add("active");
 
-    const saved =
-        localStorage.getItem(
-            "leuchtfeuerData"
-        );
-
-
-    if (!saved) {
-
-        return structuredClone(
-            DEFAULT_DATA
-        );
-
-    }
-
-
-    try {
-
-        return JSON.parse(saved);
-
-    } catch {
-
-        return structuredClone(
-            DEFAULT_DATA
-        );
-
-    }
-
-}
-
-
-function saveData(data) {
-
-    localStorage.setItem(
-        "leuchtfeuerData",
-        JSON.stringify(data)
-    );
-
-    renderAll();
-
-}
-
-
-/* =========================================================
-   ESCAPE
-   ========================================================= */
-
-function escapeHTML(value) {
-
-    return String(value ?? "")
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
-
-}
-
-
-/* =========================================================
-   EVENTS
-   ========================================================= */
-
-function renderEvents() {
-
-    const data = getData();
-
-    const container =
-        document.getElementById(
-            "eventsAdmin"
-        );
-
-
-    if (!data.events.length) {
-
-        container.innerHTML =
-            "<p>Keine Veranstaltungen vorhanden.</p>";
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-
-        data.events.map((event,index) => `
-
-            <div class="event-row">
-
-                <div>
-
-                    <div class="event-status">
-
-                        ${
-                            event.published
-                            ? "VERÖFFENTLICHT"
-                            : "ENTWURF"
-                        }
-
-                    </div>
-
-
-                    <h3>
-                        ${escapeHTML(event.title)}
-                    </h3>
-
-
-                    <strong>
-
-                        ${escapeHTML(event.date)}
-
-                        ${event.startTime
-                            ? " · " + escapeHTML(event.startTime)
-                            : ""
-                        }
-
-                        ${
-                            event.endDate
-                            ? " → " +
-                              escapeHTML(event.endDate)
-                            : ""
-                        }
-
-                        ${
-                            event.endTime
-                            ? " · " +
-                              escapeHTML(event.endTime)
-                            : ""
-                        }
-
-                    </strong>
-
-
-                    <p>
-                        ${escapeHTML(event.description)}
-                    </p>
-
-                </div>
-
-
-                <div class="actions">
-
-                    <button
-                        class="button blue"
-                        onclick="toggleEvent(${index})"
-                    >
-
-                        ${
-                            event.published
-                            ? "Deaktivieren"
-                            : "Veröffentlichen"
-                        }
-
-                    </button>
-
-
-                    <button
-                        class="button"
-                        onclick="editEvent(${index})"
-                    >
-                        Bearbeiten
-                    </button>
-
-
-                    <button
-                        class="button dark"
-                        onclick="deleteEvent(${index})"
-                    >
-                        Löschen
-                    </button>
-
-                </div>
-
-            </div>
-
-        `).join("");
-
-}
-
-
-function addEvent() {
-
-    const data = getData();
-
-
-    const event = {
-
-        date:
-            document.getElementById(
-                "eventDate"
-            ).value,
-
-        startTime:
-            document.getElementById(
-                "eventStartTime"
-            ).value,
-
-        endDate:
-            document.getElementById(
-                "eventEndDate"
-            ).value,
-
-        endTime:
-            document.getElementById(
-                "eventEndTime"
-            ).value,
-
-        title:
-            document.getElementById(
-                "eventTitle"
-            ).value,
-
-        description:
-            document.getElementById(
-                "eventDescription"
-            ).value,
-
-        published:
-            document.getElementById(
-                "eventPublished"
-            ).checked
-
-    };
-
-
-    if (!event.date) {
-
-        alert(
-            "Bitte ein Startdatum auswählen."
-        );
-
-        return;
-
-    }
-
-
-    if (!event.title.trim()) {
-
-        alert(
-            "Bitte eine Überschrift eingeben."
-        );
-
-        return;
-
-    }
-
-
-    data.events.push(event);
-
-
-    saveData(data);
-
-
-    document.getElementById(
-        "eventTitle"
-    ).value = "";
-
-
-    document.getElementById(
-        "eventDescription"
-    ).value = "";
-
-}
-
-
-function toggleEvent(index) {
-
-    const data = getData();
-
-    data.events[index].published =
-        !data.events[index].published;
-
-    saveData(data);
-
-}
-
-
-function deleteEvent(index) {
-
-    if (
-        !confirm(
-            "Diese Veranstaltung wirklich löschen?"
+      document
+        .getElementById(
+          "panel-"+button.dataset.tab
         )
-    ) {
-
-        return;
-
-    }
-
-
-    const data = getData();
-
-    data.events.splice(index,1);
-
-    saveData(data);
-
-}
-
-
-function editEvent(index) {
-
-    const data = getData();
-
-    const event =
-        data.events[index];
-
-
-    const title =
-        prompt(
-            "Überschrift:",
-            event.title
-        );
-
-    if (title === null) return;
-
-
-    const description =
-        prompt(
-            "Beschreibung:",
-            event.description
-        );
-
-    if (description === null) return;
-
-
-    const startTime =
-        prompt(
-            "Startzeit:",
-            event.startTime || ""
-        );
-
-    if (startTime === null) return;
-
-
-    const endTime =
-        prompt(
-            "Endzeit:",
-            event.endTime || ""
-        );
-
-    if (endTime === null) return;
-
-
-    event.title =
-        title;
-
-    event.description =
-        description;
-
-    event.startTime =
-        startTime;
-
-    event.endTime =
-        endTime;
-
-
-    saveData(data);
-
-}
-
-
-/* =========================================================
-   OFFER
-   ========================================================= */
-
-function renderOffer() {
-
-    const data = getData();
-
-
-    document.getElementById(
-        "offerActive"
-    ).checked =
-        data.offer.active;
-
-
-    document.getElementById(
-        "offerTitle"
-    ).value =
-        data.offer.title;
-
-
-    document.getElementById(
-        "offerDescription"
-    ).value =
-        data.offer.text;
-
-}
-
-
-function saveOffer() {
-
-    const data = getData();
-
-
-    data.offer = {
-
-        active:
-            document.getElementById(
-                "offerActive"
-            ).checked,
-
-        title:
-            document.getElementById(
-                "offerTitle"
-            ).value,
-
-        text:
-            document.getElementById(
-                "offerDescription"
-            ).value
-
-    };
-
-
-    saveData(data);
-
-
-    alert(
-        "Sonderangebot gespeichert."
-    );
-
-}
-
-
-/* =========================================================
-   MENU
-   ========================================================= */
-
-function renderMenu() {
-
-    const data = getData();
-
-    const container =
-        document.getElementById(
-            "menuAdmin"
-        );
-
-
-    container.innerHTML =
-
-        data.menu.map(
-            (category, categoryIndex) => `
-
-                <div class="category">
-
-                    <h3>
-                        Kategorie ${categoryIndex + 1}
-                    </h3>
-
-
-                    <label>
-                        Kategoriename
-                    </label>
-
-                    <input
-                        value="${escapeHTML(category.category)}"
-                        onchange="
-                            updateCategory(
-                                ${categoryIndex},
-                                this.value
-                            )
-                        "
-                    >
-
-
-                    ${
-                        category.items.map(
-                            (item,itemIndex) => `
-
-                                <div class="menu-row">
-
-                                    <input
-                                        value="${escapeHTML(item[0])}"
-                                        onchange="
-                                            updateMenuItem(
-                                                ${categoryIndex},
-                                                ${itemIndex},
-                                                0,
-                                                this.value
-                                            )
-                                        "
-                                    >
-
-
-                                    <input
-                                        value="${escapeHTML(item[1])}"
-                                        onchange="
-                                            updateMenuItem(
-                                                ${categoryIndex},
-                                                ${itemIndex},
-                                                1,
-                                                this.value
-                                            )
-                                        "
-                                    >
-
-
-                                    <button
-                                        class="button dark"
-                                        onclick="
-                                            deleteMenuItem(
-                                                ${categoryIndex},
-                                                ${itemIndex}
-                                            )
-                                        "
-                                    >
-                                        ×
-                                    </button>
-
-                                </div>
-
-                            `
-                        ).join("")
-                    }
-
-
-                    <br>
-
-
-                    <button
-                        class="button blue"
-                        onclick="
-                            addMenuItem(
-                                ${categoryIndex}
-                            )
-                        "
-                    >
-                        + Artikel hinzufügen
-                    </button>
-
-
-                    <button
-                        class="button dark"
-                        onclick="
-                            deleteCategory(
-                                ${categoryIndex}
-                            )
-                        "
-                    >
-                        Kategorie löschen
-                    </button>
-
-                </div>
-
-            `
-        ).join("");
-
-}
-
-
-function updateCategory(index,value) {
-
-    const data = getData();
-
-    data.menu[index].category =
-        value;
-
-    saveData(data);
-
-}
-
-
-function updateMenuItem(
-    categoryIndex,
-    itemIndex,
-    field,
-    value
-) {
-
-    const data = getData();
-
-    data.menu[
-        categoryIndex
-    ].items[
-        itemIndex
-    ][field] = value;
-
-
-    localStorage.setItem(
-        "leuchtfeuerData",
-        JSON.stringify(data)
-    );
-
-}
-
-
-function addMenuItem(categoryIndex) {
-
-    const data = getData();
-
-
-    data.menu[
-        categoryIndex
-    ].items.push(
-        [
-            "Neuer Artikel",
-            "0,00 €"
-        ]
-    );
-
-
-    saveData(data);
-
-}
-
-
-function deleteMenuItem(
-    categoryIndex,
-    itemIndex
-) {
-
-    const data = getData();
-
-
-    data.menu[
-        categoryIndex
-    ].items.splice(
-        itemIndex,
-        1
-    );
-
-
-    saveData(data);
-
-}
-
-
-function addCategory() {
-
-    const data = getData();
-
-
-    data.menu.push({
-
-        category:
-            "Neue Kategorie",
-
-        items: [
-
-            [
-                "Neuer Artikel",
-                "0,00 €"
-            ]
-
-        ]
+        .classList.add("active");
 
     });
 
+  });
 
-    saveData(data);
+
+/* =============================================
+   HELPERS
+============================================= */
+
+function load(key,fallback){
+
+  const value =
+    localStorage.getItem(key);
+
+  return value
+    ? JSON.parse(value)
+    : fallback;
+
+}
+
+function save(key,value){
+
+  localStorage.setItem(
+    key,
+    JSON.stringify(value)
+  );
+
+}
+
+function uid(){
+
+  if(window.crypto && crypto.randomUUID){
+    return crypto.randomUUID();
+  }
+
+  return Date.now()+"-"+Math.random();
+
+}
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
-function deleteCategory(index) {
+/* =============================================
+   EVENTS
+============================================= */
 
-    if (
-        !confirm(
-            "Kategorie wirklich löschen?"
-        )
-    ) {
+const DEFAULT_EVENTS = [
+  {
+    id:"default1",
+    date:"2026-09-26",
+    time:"20:00",
+    title:"Live-Musik",
+    description:"Maritimer Abend mit guter Stimmung und kühlen Getränken.",
+    visibleFrom:"",
+    visibleUntil:"",
+    active:true
+  },
+  {
+    id:"default2",
+    date:"2026-10-02",
+    time:"18:00",
+    title:"Themenabend",
+    description:"Herzhafte Klassiker und gemütlicher Abend im Leuchtfeuer.",
+    visibleFrom:"",
+    visibleUntil:"",
+    active:true
+  }
+];
 
-        return;
 
-    }
+function getEvents(){
 
-
-    const data = getData();
-
-    data.menu.splice(index,1);
-
-    saveData(data);
+  return load(
+    "leuchtfeuer_events",
+    DEFAULT_EVENTS
+  );
 
 }
 
 
-function saveMenu() {
+function renderEvents(){
 
-    const data = getData();
+  const list =
+    document.getElementById("eventAdminList");
 
-    saveData(data);
+  const events =
+    getEvents();
 
-    alert(
-        "Karte gespeichert."
+  if(!events.length){
+
+    list.innerHTML =
+      "<p>Noch keine Veranstaltungen.</p>";
+
+    return;
+
+  }
+
+  list.innerHTML = events
+    .map(event=>`
+
+      <div class="item">
+
+        <div class="item-header">
+
+          <div>
+
+            <h3>
+              ${escapeHTML(event.title)}
+            </h3>
+
+            <span class="status ${
+              event.active===false ? "off":""
+            }">
+
+              ${
+                event.active===false
+                  ? "DEAKTIVIERT"
+                  : "AKTIV"
+              }
+
+            </span>
+
+          </div>
+
+          <div class="actions">
+
+            <button
+              class="secondary"
+              onclick="toggleEvent('${event.id}')"
+            >
+              ${
+                event.active===false
+                ? "Aktivieren"
+                : "Deaktivieren"
+              }
+            </button>
+
+            <button
+              class="danger"
+              onclick="deleteEvent('${event.id}')"
+            >
+              Löschen
+            </button>
+
+          </div>
+
+        </div>
+
+        <p>
+          <strong>
+            ${event.date}
+          </strong>
+          ·
+          ${event.time} Uhr
+        </p>
+
+        <p>
+          ${escapeHTML(event.description)}
+        </p>
+
+        <p class="small">
+          Sichtbar ab:
+          ${event.visibleFrom || "sofort"}
+          <br>
+          Sichtbar bis:
+          ${event.visibleUntil || "unbegrenzt"}
+        </p>
+
+      </div>
+
+    `)
+    .join("");
+
+}
+
+
+document
+  .getElementById("eventForm")
+  .addEventListener("submit",e=>{
+
+    e.preventDefault();
+
+    const events =
+      getEvents();
+
+    events.push({
+
+      id:uid(),
+
+      date:
+        document.getElementById("eventDate").value,
+
+      time:
+        document.getElementById("eventTime").value,
+
+      title:
+        document.getElementById("eventTitle").value,
+
+      description:
+        document.getElementById("eventDescription").value,
+
+      visibleFrom:
+        document.getElementById("eventVisibleFrom").value,
+
+      visibleUntil:
+        document.getElementById("eventVisibleUntil").value,
+
+      active:true
+
+    });
+
+    save(
+      "leuchtfeuer_events",
+      events
     );
 
-}
-
-
-/* =========================================================
-   DATA DOWNLOAD
-   ========================================================= */
-
-function downloadData() {
-
-    const data = getData();
-
-
-    const blob = new Blob(
-        [
-            JSON.stringify(
-                data,
-                null,
-                2
-            )
-        ],
-        {
-            type:
-                "application/json"
-        }
-    );
-
-
-    const url =
-        URL.createObjectURL(blob);
-
-
-    const link =
-        document.createElement("a");
-
-
-    link.href = url;
-
-    link.download =
-        "leuchtfeuer-data.json";
-
-
-    link.click();
-
-
-    URL.revokeObjectURL(url);
-
-}
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
-
-function resetData() {
-
-    if (
-        !confirm(
-            "Alle lokalen Änderungen durch die Beispieldaten ersetzen?"
-        )
-    ) {
-
-        return;
-
-    }
-
-
-    localStorage.removeItem(
-        "leuchtfeuerData"
-    );
-
-
-    renderAll();
-
-}
-
-
-/* =========================================================
-   RENDER
-   ========================================================= */
-
-function renderAll() {
+    e.target.reset();
 
     renderEvents();
 
-    renderOffer();
+    alert("Veranstaltung veröffentlicht.");
 
-    renderMenu();
+  });
+
+
+function toggleEvent(id){
+
+  const events =
+    getEvents();
+
+  const event =
+    events.find(e=>e.id===id);
+
+  if(!event){
+    return;
+  }
+
+  event.active =
+    event.active===false;
+
+  save(
+    "leuchtfeuer_events",
+    events
+  );
+
+  renderEvents();
 
 }
+
+
+function deleteEvent(id){
+
+  if(!confirm("Veranstaltung wirklich löschen?")){
+    return;
+  }
+
+  const events =
+    getEvents()
+      .filter(e=>e.id!==id);
+
+  save(
+    "leuchtfeuer_events",
+    events
+  );
+
+  renderEvents();
+
+}
+
+
+/* =============================================
+   OFFERS
+============================================= */
+
+const DEFAULT_OFFERS = [
+  {
+    id:"offer1",
+    title:"Feierabend im Leuchtfeuer",
+    description:"Gemütlich den Tag ausklingen lassen.",
+    active:true
+  }
+];
+
+
+function getOffers(){
+
+  return load(
+    "leuchtfeuer_offers",
+    DEFAULT_OFFERS
+  );
+
+}
+
+
+function renderOffers(){
+
+  const list =
+    document.getElementById("offerAdminList");
+
+  const offers =
+    getOffers();
+
+  list.innerHTML = offers.map(offer=>`
+
+    <div class="item">
+
+      <div class="item-header">
+
+        <div>
+
+          <h3>
+            ${escapeHTML(offer.title)}
+          </h3>
+
+          <span class="status ${
+            offer.active===false ? "off":""
+          }">
+
+            ${
+              offer.active===false
+              ? "DEAKTIVIERT"
+              : "AKTIV"
+            }
+
+          </span>
+
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="secondary"
+            onclick="toggleOffer('${offer.id}')"
+          >
+            ${
+              offer.active===false
+              ? "Aktivieren"
+              : "Deaktivieren"
+            }
+          </button>
+
+          <button
+            class="danger"
+            onclick="deleteOffer('${offer.id}')"
+          >
+            Löschen
+          </button>
+
+        </div>
+
+      </div>
+
+      <p>
+        ${escapeHTML(offer.description)}
+      </p>
+
+    </div>
+
+  `).join("");
+
+}
+
+
+document
+  .getElementById("offerForm")
+  .addEventListener("submit",e=>{
+
+    e.preventDefault();
+
+    const offers =
+      getOffers();
+
+    offers.push({
+
+      id:uid(),
+
+      title:
+        document.getElementById("offerTitle").value,
+
+      description:
+        document.getElementById("offerDescription").value,
+
+      active:true
+
+    });
+
+    save(
+      "leuchtfeuer_offers",
+      offers
+    );
+
+    e.target.reset();
+
+    renderOffers();
+
+    alert("Angebot aktiviert.");
+
+  });
+
+
+function toggleOffer(id){
+
+  const offers =
+    getOffers();
+
+  const offer =
+    offers.find(o=>o.id===id);
+
+  if(!offer){
+    return;
+  }
+
+  offer.active =
+    offer.active===false;
+
+  save(
+    "leuchtfeuer_offers",
+    offers
+  );
+
+  renderOffers();
+
+}
+
+
+function deleteOffer(id){
+
+  if(!confirm("Angebot wirklich löschen?")){
+    return;
+  }
+
+  const offers =
+    getOffers()
+      .filter(o=>o.id!==id);
+
+  save(
+    "leuchtfeuer_offers",
+    offers
+  );
+
+  renderOffers();
+
+}
+
+
+/* =============================================
+   MENU
+============================================= */
+
+const DEFAULT_MENU = [
+  {
+    title:"Bier",
+    items:[
+      {name:"Pils 0,3 l",price:"3,20 €"},
+      {name:"Helles 0,3 l",price:"3,20 €"},
+      {name:"Weizen 0,5 l",price:"4,90 €"}
+    ]
+  },
+  {
+    title:"Alkoholfrei",
+    items:[
+      {name:"Cola 0,3 l",price:"3,00 €"},
+      {name:"Wasser 0,25 l",price:"2,80 €"}
+    ]
+  },
+  {
+    title:"Longdrinks",
+    items:[
+      {name:"Gin Tonic",price:"7,50 €"},
+      {name:"Rum Cola",price:"7,50 €"}
+    ]
+  }
+];
+
+
+function getMenu(){
+
+  return load(
+    "leuchtfeuer_menu",
+    DEFAULT_MENU
+  );
+
+}
+
+
+function renderMenuEditor(){
+
+  const menu =
+    getMenu();
+
+  const editor =
+    document.getElementById("menuEditor");
+
+  editor.innerHTML =
+    menu.map((category,ci)=>`
+
+      <div
+        class="menu-category"
+        data-category="${ci}"
+      >
+
+        <div class="form-group">
+
+          <label>
+            Kategorie
+          </label>
+
+          <input
+            class="category-title"
+            value="${escapeHTML(category.title)}"
+          >
+
+        </div>
+
+        <div class="menu-items">
+
+          ${category.items.map((item,ii)=>`
+
+            <div class="menu-row">
+
+              <input
+                class="item-name"
+                value="${escapeHTML(item.name)}"
+                placeholder="Getränk / Speise"
+              >
+
+              <input
+                class="item-price"
+                value="${escapeHTML(item.price)}"
+                placeholder="Preis"
+              >
+
+              <button
+                class="danger"
+                type="button"
+                onclick="removeMenuItem(${ci},${ii})"
+              >
+                ×
+              </button>
+
+            </div>
+
+          `).join("")}
+
+        </div>
+
+        <button
+          class="secondary"
+          type="button"
+          onclick="addMenuItem(${ci})"
+        >
+          + Eintrag hinzufügen
+        </button>
+
+      </div>
+
+    `)
+    .join("");
+
+}
+
+
+function addMenuItem(categoryIndex){
+
+  const menu =
+    getMenu();
+
+  menu[categoryIndex].items.push({
+    name:"Neuer Eintrag",
+    price:"0,00 €"
+  });
+
+  save(
+    "leuchtfeuer_menu",
+    menu
+  );
+
+  renderMenuEditor();
+
+}
+
+
+function removeMenuItem(categoryIndex,itemIndex){
+
+  const menu =
+    getMenu();
+
+  menu[categoryIndex].items
+    .splice(itemIndex,1);
+
+  save(
+    "leuchtfeuer_menu",
+    menu
+  );
+
+  renderMenuEditor();
+
+}
+
+
+document
+  .getElementById("saveMenu")
+  .addEventListener("click",()=>{
+
+    const categories =
+      document.querySelectorAll(
+        ".menu-category"
+      );
+
+    const menu = [];
+
+    categories.forEach(category=>{
+
+      const title =
+        category.querySelector(
+          ".category-title"
+        ).value;
+
+      const rows =
+        category.querySelectorAll(
+          ".menu-row"
+        );
+
+      const items = [];
+
+      rows.forEach(row=>{
+
+        items.push({
+
+          name:
+            row.querySelector(
+              ".item-name"
+            ).value,
+
+          price:
+            row.querySelector(
+              ".item-price"
+            ).value
+
+        });
+
+      });
+
+      menu.push({
+        title,
+        items
+      });
+
+    });
+
+    save(
+      "leuchtfeuer_menu",
+      menu
+    );
+
+    alert("Karte gespeichert.");
+
+  });
+
+
+/* =============================================
+   INIT
+============================================= */
+
+function renderEverything(){
+
+  renderEvents();
+
+  renderOffers();
+
+  renderMenuEditor();
+
+}
+
+checkLogin();
 
 </script>
 
