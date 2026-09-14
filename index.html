@@ -19,7 +19,7 @@
 
 /* =========================================================
    LEUCHTFEUER – DESIGN
-   Nur Farben aus dem Logo, etwas ruhiger abgestimmt
+   Nur Farben aus dem Logo
 ========================================================= */
 
 :root {
@@ -422,6 +422,15 @@ img {
     margin-top: 28px;
 }
 
+.hero-menu-btn {
+    margin-left: 8px;
+    background: transparent;
+}
+
+.hero-menu-btn:hover {
+    background: var(--red);
+}
+
 
 /* =========================================================
    SECTIONS
@@ -501,20 +510,31 @@ img {
     font-style: italic;
 }
 
+
+/* =========================================================
+   NEUES BILD NEBEN HERZLICH WILLKOMMEN
+========================================================= */
+
 .welcome-image {
     min-height: 360px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--blue-light),
-            var(--blue-dark)
-        );
 
     border: 5px solid var(--cream-dark);
 
     box-shadow:
         0 18px 40px var(--shadow);
+
+    overflow: hidden;
+
+    background: var(--cream-dark);
+}
+
+.welcome-image img {
+    display: block;
+
+    width: 100%;
+    height: 360px;
+
+    object-fit: cover;
 }
 
 
@@ -577,11 +597,6 @@ img {
     text-anchor: middle;
     dominant-baseline: middle;
 }
-
-/*
-   Die Himmelsrichtungen liegen bewusst außerhalb
-   des inneren Kreises.
-*/
 
 .compass-direction {
     fill: var(--blue-dark);
@@ -753,6 +768,15 @@ img {
 
 
 /* =========================================================
+   SPEISEKARTE
+========================================================= */
+
+.menu-section-actions {
+    margin-top: 30px;
+}
+
+
+/* =========================================================
    ADDRESS
 ========================================================= */
 
@@ -805,57 +829,6 @@ img {
 
 .address-actions .btn:hover {
     background: var(--red);
-}
-
-
-/* =========================================================
-   QUICK CARDS
-========================================================= */
-
-.quick-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 2px;
-
-    background: var(--blue-dark);
-}
-
-.quick-card {
-    min-height: 230px;
-
-    padding: 35px;
-
-    background: var(--blue);
-
-    color: var(--cream);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.quick-card h3 {
-    margin: 0 0 10px;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 27px;
-}
-
-.quick-card p {
-    line-height: 1.6;
-}
-
-.quick-card .btn {
-    align-self: flex-start;
-    margin-top: 15px;
-    background: transparent;
 }
 
 
@@ -967,6 +940,11 @@ footer {
     gap: 8px;
 }
 
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
 .footer-bottom {
     width: min(1180px, calc(100% - 32px));
 
@@ -975,75 +953,39 @@ footer {
 
     border-top: 1px solid rgba(243,234,223,.2);
 
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr;
+
+    align-items: center;
+
     gap: 15px;
 
     font-size: 12px;
 }
 
-
-/* =========================================================
-   ANGEBOTE – BUCH
-========================================================= */
-
-.offer-book-teaser{
-    display:flex;
-    justify-content:center;
-    margin-top:45px;
-    perspective:1400px;
+.footer-bottom > span:last-child {
+    text-align: right;
 }
 
-.offer-book{
-    position:relative;
-    width:min(560px,92vw);
-    min-height:320px;
-    padding:0;
-    border:0;
-    background:transparent;
-    cursor:pointer;
-    display:flex;
-    align-items:stretch;
-    transition:transform .35s ease;
+.footer-credit {
+    text-align: center;
+    white-space: nowrap;
 }
 
-.offer-book:hover{
-    transform:translateY(-7px) rotateX(2deg);
+.footer-credit a {
+    color: var(--cream);
 }
 
-.offer-book-cover{
-    position:relative;
-    z-index:2;
-    width:92%;
-    min-height:320px;
-    padding:45px 40px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    background:var(--blue-dark);
-    color:var(--cream);
-    border:2px solid var(--yellow);
-    box-shadow:0 20px 45px var(--shadow),inset 0 0 0 8px rgba(243,234,223,.05);
+.footer-credit a:hover {
+    color: var(--yellow);
 }
 
-.offer-book-line{color:var(--yellow);font-size:12px;font-weight:bold;letter-spacing:5px;}
-.offer-book-anchor{margin:20px 0 5px;color:var(--yellow);font-size:38px;}
-.offer-book h3{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:48px;line-height:.95;}
-.offer-book p{margin:20px 0;color:var(--cream);font-size:11px;letter-spacing:3px;font-weight:bold;}
-.offer-book span{margin-top:8px;padding:12px 20px;border:1px solid var(--yellow);color:var(--cream);font-size:12px;font-weight:bold;letter-spacing:1px;}
-.offer-book-pages{position:absolute;right:0;top:9px;bottom:9px;width:12%;overflow:hidden;background:var(--cream);border-top:1px solid var(--yellow);border-right:1px solid var(--yellow);border-bottom:1px solid var(--yellow);box-shadow:10px 15px 25px var(--shadow);}
-.offer-book-pages div{height:33.333%;border-bottom:1px solid var(--cream-dark);}
-.offer-book-pages div:last-child{border-bottom:0;}
-.hero-menu-btn{margin-left:8px;}
-
-@media(max-width:600px){
- .hero-menu-btn{margin-left:0;margin-top:10px;}
- .offer-book{width:94vw;}
- .offer-book-cover{min-height:280px;padding:35px 25px;}
- .offer-book h3{font-size:40px;}
+.footer-heart {
+    color: var(--red);
+    font-size: 15px;
 }
+
 
 /* =========================================================
    MENU BOOK
@@ -1086,7 +1028,14 @@ footer {
     font-size: 25px;
 
     cursor: pointer;
+
+    z-index: 20;
 }
+
+
+/* =========================================================
+   BUCH
+========================================================= */
 
 .book {
     position: relative;
@@ -1097,29 +1046,169 @@ footer {
     perspective: 1800px;
 }
 
-.book-page {
-    position: absolute;
-    inset: 0;
+.book-pages {
+    position: relative;
 
-    padding: clamp(30px, 5vw, 65px);
+    width: 100%;
+    height: 100%;
 
-    overflow-y: auto;
-
-    background: var(--cream);
+    overflow: hidden;
 
     border: 1px solid var(--yellow);
 
     box-shadow:
         0 30px 80px rgba(0,0,0,.28);
+}
+
+.book-page {
+    position: absolute;
+
+    inset: 0;
+
+    padding:
+        clamp(30px, 5vw, 65px)
+        clamp(25px, 5vw, 65px)
+        95px;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(32,63,91,.05),
+            transparent 8%,
+            transparent 92%,
+            rgba(32,63,91,.04)
+        ),
+        var(--cream);
+
+    display: none;
+
+    transform-origin: left center;
 
     backface-visibility: hidden;
+}
 
-    transition:
-        transform .6s ease;
+.book-page.active {
+    display: block;
+
+    animation:
+        bookPageIn .55s ease both;
+}
+
+.book-page.turn-next {
+    animation:
+        bookTurnNext .55s ease both;
+}
+
+.book-page.turn-prev {
+    animation:
+        bookTurnPrev .55s ease both;
+}
+
+@keyframes bookPageIn {
+
+    from {
+        opacity: 0;
+        transform:
+            rotateY(-12deg)
+            translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            rotateY(0)
+            translateX(0);
+    }
+
+}
+
+@keyframes bookTurnNext {
+
+    from {
+        opacity: 0;
+        transform:
+            rotateY(18deg)
+            translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            rotateY(0)
+            translateX(0);
+    }
+
+}
+
+@keyframes bookTurnPrev {
+
+    from {
+        opacity: 0;
+        transform:
+            rotateY(-18deg)
+            translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            rotateY(0)
+            translateX(0);
+    }
+
+}
+
+
+.book-page::before {
+    content: "";
+
+    position: absolute;
+
+    left: 25px;
+    top: 25px;
+    bottom: 25px;
+
+    width: 1px;
+
+    background:
+        rgba(185,99,95,.22);
+}
+
+.book-page::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid rgba(221,196,119,.55);
+
+    pointer-events: none;
+}
+
+.book-page-inner {
+    position: relative;
+    z-index: 2;
+
+    min-height: 100%;
+}
+
+.book-page-kicker {
+    color: var(--red);
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 15px;
 }
 
 .book-page h2 {
-    margin-top: 0;
+    margin:
+        0 0 35px;
 
     color: var(--blue-dark);
 
@@ -1128,14 +1217,45 @@ footer {
         "Times New Roman",
         serif;
 
-    font-size: 42px;
+    font-size: clamp(36px, 6vw, 52px);
+
+    line-height: 1;
 }
 
+.book-page-intro {
+    margin:
+        -15px 0 30px;
+
+    color: var(--blue-light);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   KATEGORIE
+========================================================= */
+
 .menu-category {
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
 .menu-category h3 {
+    margin:
+        0 0 12px;
+
+    padding-bottom: 9px;
+
+    border-bottom:
+        2px solid var(--yellow);
+
     color: var(--red);
 
     font-family:
@@ -1143,40 +1263,104 @@ footer {
         "Times New Roman",
         serif;
 
-    font-size: 24px;
+    font-size: 25px;
 }
 
+
+/* =========================================================
+   PRODUKTE
+========================================================= */
+
 .menu-item {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
     gap: 20px;
 
-    padding: 12px 0;
+    align-items: baseline;
 
-    border-bottom: 1px solid rgba(45,85,120,.2);
+    padding: 14px 0;
+
+    border-bottom:
+        1px solid rgba(45,85,120,.20);
 }
 
 .menu-item-name {
+    color: var(--blue-dark);
+
     font-weight: bold;
+
+    line-height: 1.4;
+}
+
+.menu-item-description {
+    margin-top: 3px;
+
+    color: var(--blue-light);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+
+    line-height: 1.4;
 }
 
 .menu-price {
     white-space: nowrap;
+
     color: var(--red);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
     font-weight: bold;
 }
+
+.book-empty {
+    min-height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    text-align: center;
+
+    color: var(--blue-dark);
+}
+
+.book-empty h2 {
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   BUCH CONTROLS
+========================================================= */
 
 .book-controls {
     position: absolute;
 
     left: 50%;
-    bottom: 15px;
+    bottom: 14px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     z-index: 10;
 
     display: flex;
+
+    align-items: center;
+
     gap: 10px;
 }
 
@@ -1190,18 +1374,31 @@ footer {
     color: var(--blue);
 
     cursor: pointer;
+
+    transition:
+        background .2s ease,
+        color .2s ease;
 }
 
+.book-controls button:hover {
+    background: var(--blue);
+    color: var(--cream);
+}
 
-.book-pages{position:relative;width:100%;height:100%;}
-.book-page{display:none;}
-.book-page.active{display:block;animation:bookPageIn .35s ease both;}
-.book-page.turn-away{transform:rotateY(-12deg);opacity:0;}
-.book-page-inner{min-height:100%;}
-.book-page-kicker{color:var(--red);font-size:11px;font-weight:bold;letter-spacing:3px;margin-bottom:15px;}
-.book-empty{text-align:center;}
-.book-controls span{min-width:75px;height:40px;display:grid;place-items:center;background:var(--cream);color:var(--blue);font-size:12px;font-weight:bold;}
-@keyframes bookPageIn{from{opacity:0;transform:translateX(15px) rotateY(-4deg);}to{opacity:1;transform:none;}}
+.book-controls span {
+    min-width: 75px;
+    height: 40px;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--cream);
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
 
 /* =========================================================
    LEGAL
@@ -1299,10 +1496,6 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .quick-grid {
-        grid-template-columns: 1fr;
-    }
-
     .footer-inner {
         grid-template-columns: 1fr;
     }
@@ -1312,8 +1505,18 @@ footer {
     }
 
     .footer-bottom {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+        text-align: center;
     }
+
+    .footer-bottom > span:last-child {
+        text-align: center;
+    }
+
+    .footer-credit {
+        order: 2;
+    }
+
 }
 
 
@@ -1339,6 +1542,7 @@ footer {
         right: 0;
 
         display: none;
+
         flex-direction: column;
         align-items: stretch;
 
@@ -1346,7 +1550,8 @@ footer {
 
         background: var(--blue-dark);
 
-        border-bottom: 1px solid rgba(234,216,155,.4);
+        border-bottom:
+            1px solid rgba(234,216,155,.4);
     }
 
     .main-nav.open {
@@ -1366,7 +1571,8 @@ footer {
         margin-top: 5px;
         padding-top: 10px;
 
-        border-top: 1px solid rgba(243,234,223,.15);
+        border-top:
+            1px solid rgba(243,234,223,.15);
     }
 
     .hero {
@@ -1389,6 +1595,15 @@ footer {
         font-size: 17px;
     }
 
+    .hero .btn {
+        margin-left: 0;
+        width: min(300px, 100%);
+    }
+
+    .hero-menu-btn {
+        margin-top: 10px;
+    }
+
     .section {
         width: calc(100% - 28px);
         padding: 65px 0;
@@ -1402,12 +1617,18 @@ footer {
         min-height: 250px;
     }
 
+    .welcome-image img {
+        height: 250px;
+    }
+
     .compass-wrap {
         width: min(430px, 96vw);
     }
 
     .event {
-        grid-template-columns: 70px minmax(0,1fr);
+        grid-template-columns:
+            70px minmax(0,1fr);
+
         gap: 14px;
     }
 
@@ -1425,15 +1646,36 @@ footer {
     }
 
     .book {
-        height: 78vh;
+        height: 82vh;
     }
 
     .book-page {
-        padding: 35px 25px 80px;
+        padding:
+            35px
+            25px
+            85px;
+    }
+
+    .book-page::before {
+        left: 15px;
     }
 
     .book-page h2 {
         font-size: 34px;
+    }
+
+    .book-item {
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto;
+    }
+
+    .menu-item {
+        gap: 10px;
+    }
+
+    .menu-price {
+        font-size: 16px;
     }
 
     .legal-page {
@@ -1451,6 +1693,7 @@ footer {
         top: 10px;
         right: 10px;
     }
+
 }
 
 
@@ -1488,6 +1731,16 @@ footer {
     .calendar-btn {
         width: 100%;
     }
+
+    .menu-item {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .menu-price {
+        text-align: left;
+    }
+
 }
 
 
@@ -1523,11 +1776,13 @@ footer {
     <div class="header-inner">
 
         <a href="#start" class="logo-link">
+
             <img
                 src="pic/logo.png"
                 class="header-logo"
                 alt="Leuchtfeuer Elsfleth"
             >
+
         </a>
 
 
@@ -1537,20 +1792,35 @@ footer {
             aria-label="Navigation öffnen"
             aria-expanded="false"
         >
+
             <span></span>
             <span></span>
             <span></span>
+
         </button>
 
 
         <nav class="main-nav" id="mainNav">
 
-            <a href="#start">Startseite</a>
-            <a href="#ueber-uns">Über uns</a>
-            <a href="#speisekarte">Speisekarte</a>
-            <a href="#veranstaltungen">Veranstaltungen</a>
-            <a href="#angebote">Angebote</a>
-            <a href="#kontakt">Kontakt</a>
+            <a href="#start">
+                Startseite
+            </a>
+
+            <a href="#ueber-uns">
+                Über uns
+            </a>
+
+            <a href="#speisekarte">
+                Speisekarte
+            </a>
+
+            <a href="#veranstaltungen">
+                Veranstaltungen
+            </a>
+
+            <a href="#kontakt">
+                Kontakt
+            </a>
 
 
             <div class="socials">
@@ -1565,14 +1835,21 @@ footer {
                     aria-label="Facebook"
                 >
 
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v8h4v-8h3.3l.7-4H13V9c0-.7.3-1 1-1z"/>
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                    >
+
+                        <path
+                            d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v8h4v-8h3.3l.7-4H13V9c0-.7.3-1 1-1z"
+                        />
+
                     </svg>
 
                 </a>
 
 
-                <!-- INSTAGRAM – echtes Instagram-Symbol -->
+                <!-- INSTAGRAM -->
 
                 <a
                     class="social-icon"
@@ -1588,6 +1865,7 @@ footer {
                         stroke="currentColor"
                         stroke-width="1.8"
                     >
+
                         <rect
                             x="3"
                             y="3"
@@ -1596,7 +1874,11 @@ footer {
                             rx="5"
                         />
 
-                        <circle cx="12" cy="12" r="4.2"/>
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="4.2"
+                        />
 
                         <circle
                             cx="17.4"
@@ -1605,6 +1887,7 @@ footer {
                             fill="currentColor"
                             stroke="none"
                         />
+
                     </svg>
 
                 </a>
@@ -1640,13 +1923,26 @@ footer {
 
             <!-- Lichtstrahlen -->
 
-            <g class="lighthouse-beam"
-               stroke="var(--yellow)"
-               stroke-width="5"
-               stroke-linecap="round">
+            <g
+                class="lighthouse-beam"
+                stroke="var(--yellow)"
+                stroke-width="5"
+                stroke-linecap="round"
+            >
 
-                <line x1="110" y1="67" x2="30" y2="35"/>
-                <line x1="110" y1="67" x2="190" y2="35"/>
+                <line
+                    x1="110"
+                    y1="67"
+                    x2="30"
+                    y2="35"
+                />
+
+                <line
+                    x1="110"
+                    y1="67"
+                    x2="190"
+                    y2="35"
+                />
 
             </g>
 
@@ -1670,6 +1966,7 @@ footer {
                 fill="var(--cream)"
             />
 
+
             <!-- Laternenfenster -->
 
             <rect
@@ -1682,7 +1979,7 @@ footer {
             />
 
 
-            <!-- Licht MITTIG im Kopf -->
+            <!-- Licht mittig -->
 
             <circle
                 class="lighthouse-light"
@@ -1707,11 +2004,13 @@ footer {
             <!-- Turm -->
 
             <path
-                d="M91 88
-                   L129 88
-                   L145 235
-                   L75 235
-                   Z"
+                d="
+                    M91 88
+                    L129 88
+                    L145 235
+                    L75 235
+                    Z
+                "
                 fill="var(--cream)"
             />
 
@@ -1719,12 +2018,24 @@ footer {
             <!-- Rote Streifen -->
 
             <path
-                d="M87 110 L133 110 L136 135 L84 135 Z"
+                d="
+                    M87 110
+                    L133 110
+                    L136 135
+                    L84 135
+                    Z
+                "
                 fill="var(--red)"
             />
 
             <path
-                d="M82 165 L138 165 L141 190 L79 190 Z"
+                d="
+                    M82 165
+                    L138 165
+                    L141 190
+                    L79 190
+                    Z
+                "
                 fill="var(--red)"
             />
 
@@ -1753,10 +2064,13 @@ footer {
             <!-- Eingang -->
 
             <path
-                d="M99 235
-                   L99 207
-                   Q110 195 121 207
-                   L121 235 Z"
+                d="
+                    M99 235
+                    L99 207
+                    Q110 195 121 207
+                    L121 235
+                    Z
+                "
                 fill="var(--blue)"
             />
 
@@ -1764,10 +2078,13 @@ footer {
             <!-- Sockel -->
 
             <path
-                d="M60 244
-                   Q110 220 160 244
-                   Q145 263 110 267
-                   Q75 263 60 244 Z"
+                d="
+                    M60 244
+                    Q110 220 160 244
+                    Q145 263 110 267
+                    Q75 263 60 244
+                    Z
+                "
                 fill="var(--cream)"
             />
 
@@ -1790,11 +2107,24 @@ footer {
             Tradition · Gemütlichkeit · Nordsee im Herzen
         </p>
 
+
+        <!-- ERSTER BUTTON -->
+
         <a
             href="#ueber-uns"
             class="btn"
         >
             JETZT ENTDECKEN
+        </a>
+
+
+        <!-- NEUER DIREKT-ZUR-KARTE BUTTON -->
+
+        <a
+            href="#speisekarte"
+            class="btn hero-menu-btn"
+        >
+            DIREKT ZUR KARTE
         </a>
 
     </div>
@@ -1845,10 +2175,24 @@ footer {
         </div>
 
 
+        <!-- =================================================
+             BILD-1
+             Unterstützt JPG / JPEG / PNG / WEBP
+        ================================================== -->
+
         <div
             class="welcome-image"
-            aria-label="Maritime Atmosphäre"
-        ></div>
+            id="welcomeImage"
+            aria-label="Bild aus dem Leuchtfeuer"
+        >
+
+            <img
+                id="welcomeImageFile"
+                src="pic/bild-1.jpg"
+                alt="Leuchtfeuer Elsfleth"
+            >
+
+        </div>
 
     </div>
 
@@ -1902,7 +2246,7 @@ footer {
             />
 
 
-            <!-- kleine Markierungen -->
+            <!-- Markierungen -->
 
             <g class="compass-tick">
 
@@ -1914,50 +2258,90 @@ footer {
             </g>
 
 
-            <!-- Gradangaben AUSSEN -->
+            <!-- Gradangaben -->
 
-            <text class="compass-degree" x="192" y="73">
+            <text
+                class="compass-degree"
+                x="192"
+                y="73"
+            >
                 330°
             </text>
 
-            <text class="compass-degree" x="328" y="73">
+            <text
+                class="compass-degree"
+                x="328"
+                y="73"
+            >
                 30°
             </text>
 
-            <text class="compass-degree" x="408" y="130">
+            <text
+                class="compass-degree"
+                x="408"
+                y="130"
+            >
                 60°
             </text>
 
-            <text class="compass-degree" x="445" y="260">
+            <text
+                class="compass-degree"
+                x="445"
+                y="260"
+            >
                 90°
             </text>
 
-            <text class="compass-degree" x="408" y="390">
+            <text
+                class="compass-degree"
+                x="408"
+                y="390"
+            >
                 120°
             </text>
 
-            <text class="compass-degree" x="328" y="447">
+            <text
+                class="compass-degree"
+                x="328"
+                y="447"
+            >
                 150°
             </text>
 
-            <text class="compass-degree" x="192" y="447">
+            <text
+                class="compass-degree"
+                x="192"
+                y="447"
+            >
                 210°
             </text>
 
-            <text class="compass-degree" x="112" y="390">
+            <text
+                class="compass-degree"
+                x="112"
+                y="390"
+            >
                 240°
             </text>
 
-            <text class="compass-degree" x="75" y="260">
+            <text
+                class="compass-degree"
+                x="75"
+                y="260"
+            >
                 270°
             </text>
 
-            <text class="compass-degree" x="112" y="130">
+            <text
+                class="compass-degree"
+                x="112"
+                y="130"
+            >
                 300°
             </text>
 
 
-            <!-- Himmelsrichtungen deutlich außerhalb -->
+            <!-- Himmelsrichtungen -->
 
             <text
                 class="compass-direction n"
@@ -1996,12 +2380,22 @@ footer {
 
             <path
                 class="compass-needle-red"
-                d="M260 260 L278 115 L260 242 Z"
+                d="
+                    M260 260
+                    L278 115
+                    L260 242
+                    Z
+                "
             />
 
             <path
                 class="compass-needle-blue"
-                d="M260 260 L242 405 L260 278 Z"
+                d="
+                    M260 260
+                    L242 405
+                    L260 278
+                    Z
+                "
             />
 
             <circle
@@ -2031,7 +2425,6 @@ footer {
     <div class="section">
 
         <div class="events-grid">
-
 
             <div>
 
@@ -2087,78 +2480,28 @@ footer {
         Unsere Karte
     </h2>
 
+    <p
+        style="
+        max-width:650px;
+        margin:25px 0 0;
+        font-family:Georgia,serif;
+        font-size:18px;
+        line-height:1.7;
+        "
+    >
+        Blättere durch unsere Karte und entdecke,
+        was wir heute für dich an Bord haben.
+    </p>
 
-    <div style="margin-top:30px">
+
+    <div class="menu-section-actions">
 
         <button
             class="btn"
             id="openMenu"
-        >
-            GETRÄNKEKARTE ÖFFNEN
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- ======================================================
-     ANGEBOTE
-====================================================== -->
-
-<section
-    class="section"
-    id="angebote"
->
-
-    <p class="section-label">
-        AKTUELLE ANGEBOTE
-    </p>
-
-    <h2 class="section-title">
-        Besonders bei uns
-    </h2>
-
-
-    <div class="offer-book-teaser">
-
-        <button
-            class="offer-book"
             type="button"
-            onclick="openMenuBook()"
-            aria-label="Unsere Produkte und Angebote öffnen"
         >
-
-            <div class="offer-book-cover">
-
-                <div class="offer-book-line">
-                    LEUCHTFEUER
-                </div>
-
-                <div class="offer-book-anchor">⚓</div>
-
-                <h3>
-                    Unsere<br>
-                    Karte
-                </h3>
-
-                <p>
-                    GETRÄNKE · SPEISEN · ANGEBOTE
-                </p>
-
-                <span>
-                    KARTE ÖFFNEN →
-                </span>
-
-            </div>
-
-            <div class="offer-book-pages">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
+            KARTE ÖFFNEN
         </button>
 
     </div>
@@ -2294,7 +2637,6 @@ footer {
 
     <div class="footer-inner">
 
-
         <div>
 
             <img
@@ -2324,19 +2666,21 @@ footer {
                 Veranstaltungen
             </a>
 
-            <a href="#angebote">
-                Angebote
-            </a>
-
             <a href="#kontakt">
                 Kontakt
             </a>
 
-            <a href="#" onclick="openLegal('impressum');return false;">
+            <a
+                href="#"
+                onclick="openLegal('impressum');return false;"
+            >
                 Impressum
             </a>
 
-            <a href="#" onclick="openLegal('datenschutz');return false;">
+            <a
+                href="#"
+                onclick="openLegal('datenschutz');return false;"
+            >
                 Datenschutz
             </a>
 
@@ -2353,8 +2697,15 @@ footer {
                 aria-label="Facebook"
             >
 
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v8h4v-8h3.3l.7-4H13V9c0-.7.3-1 1-1z"/>
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                >
+
+                    <path
+                        d="M14 8h3V4h-3c-3.3 0-5 1.9-5 5v3H6v4h3v8h4v-8h3.3l.7-4H13V9c0-.7.3-1 1-1z"
+                    />
+
                 </svg>
 
             </a>
@@ -2406,11 +2757,32 @@ footer {
     </div>
 
 
+    <!-- ==================================================
+         COPYRIGHT + "MIR HERZ GEMACHT"
+    ================================================== -->
+
     <div class="footer-bottom">
 
         <span>
             © <span id="year"></span> Leuchtfeuer Seemannskneipe
         </span>
+
+
+        <span class="footer-credit">
+
+            Mir
+            <a
+                href="https://www.instagram.com/thesimonfischer/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram von Simon Fischer"
+            >
+                <span class="footer-heart">❤️</span>
+            </a>
+            gemacht - aus Elsfleth!
+
+        </span>
+
 
         <span>
             Elsfleth · Mühlenstraße 75
@@ -2451,20 +2823,25 @@ footer {
             class="book-pages"
         ></div>
 
+
         <div class="book-controls">
 
             <button
                 onclick="previousPage()"
                 aria-label="Vorherige Seite"
+                type="button"
             >
                 ←
             </button>
 
-            <span id="bookPageNumber">1 / 1</span>
+            <span id="bookPageNumber">
+                1 / 1
+            </span>
 
             <button
                 onclick="nextPage()"
                 aria-label="Nächste Seite"
+                type="button"
             >
                 →
             </button>
@@ -2510,35 +2887,48 @@ footer {
    MOBILE NAVIGATION
 ========================================================= */
 
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
+const menuToggle =
+    document.getElementById("menuToggle");
 
-menuToggle.addEventListener("click", () => {
-
-    const open = mainNav.classList.toggle("open");
-
-    menuToggle.setAttribute(
-        "aria-expanded",
-        String(open)
-    );
-
-});
+const mainNav =
+    document.getElementById("mainNav");
 
 
-document.querySelectorAll(".main-nav a").forEach(link => {
+menuToggle.addEventListener(
+    "click",
+    () => {
 
-    link.addEventListener("click", () => {
-
-        mainNav.classList.remove("open");
+        const open =
+            mainNav.classList.toggle("open");
 
         menuToggle.setAttribute(
             "aria-expanded",
-            "false"
+            String(open)
+        );
+
+    }
+);
+
+
+document
+    .querySelectorAll(".main-nav a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                mainNav.classList.remove("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
         );
 
     });
-
-});
 
 
 /* =========================================================
@@ -2550,8 +2940,52 @@ document.getElementById("year").textContent =
 
 
 /* =========================================================
+   BILD-1 LADEN
+   Funktioniert mit:
+   bild-1.jpg
+   bild-1.jpeg
+   bild-1.png
+   bild-1.webp
+========================================================= */
+
+const welcomeImageFile =
+    document.getElementById("welcomeImageFile");
+
+const imageVersions = [
+    "pic/bild-1.jpg",
+    "pic/bild-1.jpeg",
+    "pic/bild-1.png",
+    "pic/bild-1.webp"
+];
+
+let imageIndex = 0;
+
+
+function tryNextWelcomeImage() {
+
+    imageIndex++;
+
+    if (
+        imageIndex <
+        imageVersions.length
+    ) {
+
+        welcomeImageFile.src =
+            imageVersions[imageIndex];
+
+    }
+
+}
+
+
+welcomeImageFile.addEventListener(
+    "error",
+    tryNextWelcomeImage
+);
+
+
+/* =========================================================
    EVENTS
-   Diese Daten werden später vom Admin-Bereich ersetzt.
 ========================================================= */
 
 const events = [
@@ -2596,15 +3030,25 @@ const eventsList =
 function formatDate(dateString) {
 
     const date =
-        new Date(dateString + "T12:00:00");
+        new Date(
+            dateString + "T12:00:00"
+        );
 
     return {
-        day: date.getDate(),
+
+        day:
+            date.getDate(),
+
         month:
-            date.toLocaleDateString(
-                "de-DE",
-                { month: "short" }
-            ).replace(".", "")
+            date
+                .toLocaleDateString(
+                    "de-DE",
+                    {
+                        month: "short"
+                    }
+                )
+                .replace(".", "")
+
     };
 
 }
@@ -2622,7 +3066,8 @@ function renderEvents() {
         const article =
             document.createElement("article");
 
-        article.className = "event";
+        article.className =
+            "event";
 
         article.innerHTML = `
 
@@ -2720,24 +3165,29 @@ function icsDate(date) {
         date.getFullYear();
 
     const month =
-        String(date.getMonth() + 1)
-        .padStart(2, "0");
+        String(
+            date.getMonth() + 1
+        ).padStart(2, "0");
 
     const day =
-        String(date.getDate())
-        .padStart(2, "0");
+        String(
+            date.getDate()
+        ).padStart(2, "0");
 
     const hours =
-        String(date.getHours())
-        .padStart(2, "0");
+        String(
+            date.getHours()
+        ).padStart(2, "0");
 
     const minutes =
-        String(date.getMinutes())
-        .padStart(2, "0");
+        String(
+            date.getMinutes()
+        ).padStart(2, "0");
 
     const seconds =
-        String(date.getSeconds())
-        .padStart(2, "0");
+        String(
+            date.getSeconds()
+        ).padStart(2, "0");
 
     return `${year}${month}${day}T${hours}${minutes}${seconds}`;
 }
@@ -2757,7 +3207,9 @@ function escapeICS(text) {
 function downloadICS(id) {
 
     const event =
-        events.find(item => item.id === id);
+        events.find(
+            item => item.id === id
+        );
 
     if (!event) return;
 
@@ -2776,6 +3228,7 @@ function downloadICS(id) {
 
 
     const ics = [
+
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
         "PRODID:-//Leuchtfeuer Elsfleth//Events//DE",
@@ -2806,7 +3259,10 @@ function downloadICS(id) {
     const blob =
         new Blob(
             [ics],
-            { type: "text/calendar;charset=utf-8" }
+            {
+                type:
+                    "text/calendar;charset=utf-8"
+            }
         );
 
 
@@ -2820,7 +3276,10 @@ function downloadICS(id) {
     link.href = url;
 
     link.download =
-        `${event.title.replace(/[^a-z0-9]/gi, "-")}.ics`;
+        `${event.title.replace(
+            /[^a-z0-9]/gi,
+            "-"
+        )}.ics`;
 
     document.body.appendChild(link);
 
@@ -2836,7 +3295,9 @@ function downloadICS(id) {
 function openGoogleCalendar(id) {
 
     const event =
-        events.find(item => item.id === id);
+        events.find(
+            item => item.id === id
+        );
 
     if (!event) return;
 
@@ -2893,82 +3354,552 @@ function openGoogleCalendar(id) {
 
 
 /* =========================================================
-   GETRÄNKEBUCH
+   KARTE / GETRÄNKEBUCH
 ========================================================= */
 
 const menuModal =
     document.getElementById("menuModal");
 
-const pages =
-    document.querySelectorAll(".book-page");
+const bookPagesContainer =
+    document.getElementById("bookPages");
+
+const bookPageNumber =
+    document.getElementById("bookPageNumber");
 
 let currentPage = 0;
+let pages = [];
 
 
-function showPage(index) {
+/* =========================================================
+   STANDARD-KARTE
+   Diese Daten erscheinen beim ersten Aufruf.
+   Später können sie vom Admin-Bereich ersetzt werden.
+========================================================= */
 
-    if (index < 0)
+const DEFAULT_MENU = [
+
+    {
+        category: "Bier",
+        items: [
+
+            {
+                name: "Pils vom Fass",
+                description: "Frisch gezapft",
+                price: "3,50 €"
+            },
+
+            {
+                name: "Weizenbier",
+                description: "Klassisches Weizen",
+                price: "4,00 €"
+            },
+
+            {
+                name: "Alkoholfreies Bier",
+                description: "Alkoholfrei",
+                price: "3,50 €"
+            }
+
+        ]
+    },
+
+
+    {
+        category: "Softdrinks",
+        items: [
+
+            {
+                name: "Coca-Cola",
+                description: "0,33 l",
+                price: "3,00 €"
+            },
+
+            {
+                name: "Fanta",
+                description: "0,33 l",
+                price: "3,00 €"
+            },
+
+            {
+                name: "Sprite",
+                description: "0,33 l",
+                price: "3,00 €"
+            },
+
+            {
+                name: "Wasser",
+                description: "0,25 l",
+                price: "2,50 €"
+            }
+
+        ]
+    },
+
+
+    {
+        category: "Longdrinks",
+        items: [
+
+            {
+                name: "Gin Tonic",
+                description: "Gin & Tonic Water",
+                price: "7,50 €"
+            },
+
+            {
+                name: "Wodka Lemon",
+                description: "Wodka & Lemon",
+                price: "7,50 €"
+            },
+
+            {
+                name: "Rum Cola",
+                description: "Rum & Cola",
+                price: "7,50 €"
+            }
+
+        ]
+    },
+
+
+    {
+        category: "Heißgetränke",
+        items: [
+
+            {
+                name: "Kaffee",
+                description: "Tasse Kaffee",
+                price: "2,50 €"
+            },
+
+            {
+                name: "Tee",
+                description: "Verschiedene Sorten",
+                price: "2,50 €"
+            }
+
+        ]
+    }
+
+];
+
+
+function getMenuData() {
+
+    try {
+
+        const stored =
+            localStorage.getItem(
+                "leuchtfeuer_menu"
+            );
+
+        if (!stored) {
+
+            return DEFAULT_MENU;
+
+        }
+
+        const parsed =
+            JSON.parse(stored);
+
+        if (
+            !Array.isArray(parsed) ||
+            parsed.length === 0
+        ) {
+
+            return DEFAULT_MENU;
+
+        }
+
+        return parsed;
+
+    } catch(error) {
+
+        console.warn(
+            "Karte konnte nicht geladen werden.",
+            error
+        );
+
+        return DEFAULT_MENU;
+
+    }
+
+}
+
+
+/* =========================================================
+   PREIS FORMATIEREN
+========================================================= */
+
+function formatMenuPrice(price) {
+
+    if (
+        price === null ||
+        price === undefined ||
+        price === ""
+    ) {
+
+        return "";
+
+    }
+
+    let value =
+        String(price)
+            .replace(/€/g, "")
+            .trim();
+
+    return value + " €";
+
+}
+
+
+/* =========================================================
+   KARTE ALS BUCH AUFBAUEN
+========================================================= */
+
+function renderMenuBook() {
+
+    const menu =
+        getMenuData();
+
+    bookPagesContainer.innerHTML = "";
+
+    pages = [];
+
+    /*
+       Jede Kategorie bekommt eine eigene Buchseite.
+    */
+
+    menu.forEach(
+        (category, categoryIndex) => {
+
+            if (
+                !category ||
+                !Array.isArray(category.items)
+            ) {
+                return;
+            }
+
+
+            const page =
+                document.createElement("section");
+
+            page.className =
+                "book-page";
+
+
+            let itemsHTML = "";
+
+
+            category.items.forEach(
+                item => {
+
+                    if (!item) return;
+
+                    const name =
+                        item.name ||
+                        "Produkt";
+
+                    const description =
+                        item.description ||
+                        "";
+
+                    const price =
+                        formatMenuPrice(
+                            item.price
+                        );
+
+
+                    itemsHTML += `
+
+                        <div class="menu-item">
+
+                            <div>
+
+                                <div class="menu-item-name">
+                                    ${escapeHtml(name)}
+                                </div>
+
+                                ${
+                                    description
+                                    ?
+                                    `
+                                    <div class="menu-item-description">
+                                        ${escapeHtml(description)}
+                                    </div>
+                                    `
+                                    :
+                                    ""
+                                }
+
+                            </div>
+
+                            <div class="menu-price">
+                                ${escapeHtml(price)}
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            );
+
+
+            page.innerHTML = `
+
+                <div class="book-page-inner">
+
+                    <div class="book-page-kicker">
+                        LEUCHTFEUER · KARTE
+                    </div>
+
+                    <h2>
+                        ${escapeHtml(
+                            category.category ||
+                            "Kategorie"
+                        )}
+                    </h2>
+
+                    ${
+                        itemsHTML
+                        ?
+                        `
+                        <div class="menu-category">
+                            ${itemsHTML}
+                        </div>
+                        `
+                        :
+                        `
+                        <div class="book-empty">
+                            <div>
+                                <h2>
+                                    Noch keine Produkte
+                                </h2>
+
+                                <p>
+                                    Diese Kategorie enthält
+                                    derzeit keine Produkte.
+                                </p>
+                            </div>
+                        </div>
+                        `
+                    }
+
+                </div>
+
+            `;
+
+
+            bookPagesContainer.appendChild(
+                page
+            );
+
+            pages.push(page);
+
+        }
+    );
+
+
+    /*
+       Falls keine Kategorie vorhanden ist,
+       zeigen wir trotzdem eine echte Buchseite.
+    */
+
+    if (pages.length === 0) {
+
+        const emptyPage =
+            document.createElement("section");
+
+        emptyPage.className =
+            "book-page";
+
+        emptyPage.innerHTML = `
+
+            <div class="book-page-inner book-empty">
+
+                <div>
+
+                    <div class="book-page-kicker">
+                        LEUCHTFEUER · KARTE
+                    </div>
+
+                    <h2>
+                        Unsere Karte
+                    </h2>
+
+                    <p>
+                        Die Karte wird gerade vorbereitet.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+        bookPagesContainer.appendChild(
+            emptyPage
+        );
+
+        pages.push(emptyPage);
+
+    }
+
+}
+
+
+/* =========================================================
+   BUCHSEITE ZEIGEN
+========================================================= */
+
+function showPage(
+    index,
+    direction = "next"
+) {
+
+    if (!pages.length) {
+
+        renderMenuBook();
+
+    }
+
+
+    if (index < 0) {
+
         index = 0;
 
-    if (index >= pages.length)
-        index = pages.length - 1;
+    }
+
+
+    if (index >= pages.length) {
+
+        index =
+            pages.length - 1;
+
+    }
+
 
     currentPage = index;
 
 
-    pages.forEach((page, i) => {
+    pages.forEach(
+        (page, i) => {
+
+            page.classList.remove(
+                "active",
+                "turn-next",
+                "turn-prev"
+            );
+
+            page.style.display =
+                "none";
+
+        }
+    );
+
+
+    const page =
+        pages[currentPage];
+
+
+    if (page) {
 
         page.style.display =
-            i === currentPage
-                ? "block"
-                : "none";
+            "block";
 
-    });
+        page.classList.add(
+            "active"
+        );
+
+        page.classList.add(
+            direction === "prev"
+                ? "turn-prev"
+                : "turn-next"
+        );
+
+    }
+
+
+    bookPageNumber.textContent =
+        `${currentPage + 1} / ${pages.length}`;
 
 }
 
+
+/* =========================================================
+   NÄCHSTE SEITE
+========================================================= */
 
 function nextPage() {
 
-    showPage(
-        Math.min(
+    if (
+        currentPage <
+        pages.length - 1
+    ) {
+
+        showPage(
             currentPage + 1,
-            pages.length - 1
-        )
-    );
+            "next"
+        );
+
+    }
 
 }
 
+
+/* =========================================================
+   VORHERIGE SEITE
+========================================================= */
 
 function previousPage() {
 
-    showPage(
-        Math.max(
+    if (currentPage > 0) {
+
+        showPage(
             currentPage - 1,
-            0
-        )
-    );
+            "prev"
+        );
+
+    }
 
 }
 
 
+/* =========================================================
+   KARTE ÖFFNEN
+========================================================= */
+
 function openMenuBook() {
 
-    menuModal.classList.add("open");
+    renderMenuBook();
+
+    menuModal.classList.add(
+        "open"
+    );
 
     menuModal.setAttribute(
         "aria-hidden",
         "false"
     );
 
-    showPage(0);
+    showPage(
+        0,
+        "next"
+    );
 
 }
 
 
+/* =========================================================
+   KARTE SCHLIESSEN
+========================================================= */
+
 function closeMenuBook() {
 
-    menuModal.classList.remove("open");
+    menuModal.classList.remove(
+        "open"
+    );
 
     menuModal.setAttribute(
         "aria-hidden",
@@ -2977,6 +3908,10 @@ function closeMenuBook() {
 
 }
 
+
+/* =========================================================
+   BUTTON KARTE
+========================================================= */
 
 document
     .getElementById("openMenu")
@@ -2987,10 +3922,11 @@ document
 
 
 /* =========================================================
-   SWIPE FÜR HANDY
+   SWIPE AUF HANDY
 ========================================================= */
 
 let touchStartX = 0;
+let touchStartY = 0;
 
 
 document
@@ -3000,10 +3936,17 @@ document
         event => {
 
             touchStartX =
-                event.changedTouches[0].screenX;
+                event.changedTouches[0]
+                    .screenX;
+
+            touchStartY =
+                event.changedTouches[0]
+                    .screenY;
 
         },
-        { passive: true }
+        {
+            passive: true
+        }
     );
 
 
@@ -3014,23 +3957,51 @@ document
         event => {
 
             const endX =
-                event.changedTouches[0].screenX;
+                event.changedTouches[0]
+                    .screenX;
 
-            const distance =
+            const endY =
+                event.changedTouches[0]
+                    .screenY;
+
+
+            const distanceX =
                 endX - touchStartX;
 
+            const distanceY =
+                endY - touchStartY;
 
-            if (Math.abs(distance) < 45)
+
+            /*
+               Nur horizontale Bewegungen
+               gelten als Blättern.
+            */
+
+            if (
+                Math.abs(distanceX) < 45 ||
+                Math.abs(distanceX) <
+                Math.abs(distanceY)
+            ) {
+
                 return;
 
+            }
 
-            if (distance < 0)
+
+            if (distanceX < 0) {
+
                 nextPage();
-            else
+
+            } else {
+
                 previousPage();
 
+            }
+
         },
-        { passive: true }
+        {
+            passive: true
+        }
     );
 
 
@@ -3045,10 +4016,14 @@ document
         () => {
 
             const iframe =
-                document.getElementById("googleMap");
+                document.getElementById(
+                    "googleMap"
+                );
 
             const placeholder =
-                document.getElementById("mapPlaceholder");
+                document.getElementById(
+                    "mapPlaceholder"
+                );
 
 
             iframe.src =
@@ -3059,9 +4034,11 @@ document
                 "&output=embed";
 
 
-            placeholder.style.display = "none";
+            placeholder.style.display =
+                "none";
 
-            iframe.style.display = "block";
+            iframe.style.display =
+                "block";
 
         }
     );
@@ -3072,10 +4049,14 @@ document
 ========================================================= */
 
 const legalModal =
-    document.getElementById("legalModal");
+    document.getElementById(
+        "legalModal"
+    );
 
 const legalContent =
-    document.getElementById("legalContent");
+    document.getElementById(
+        "legalContent"
+    );
 
 
 function openLegal(type) {
@@ -3084,35 +4065,58 @@ function openLegal(type) {
 
         legalContent.innerHTML = `
 
-            <h1>Impressum</h1>
+            <h1>
+                Impressum
+            </h1>
 
             <p>
                 Angaben gemäß den gesetzlichen
                 Informationspflichten.
             </p>
 
-            <h2>Betreiber</h2>
+            <h2>
+                Betreiber
+            </h2>
 
             <div class="placeholder">
+
                 <strong>
                     BITTE VOR VERÖFFENTLICHUNG AUSFÜLLEN
-                </strong><br><br>
+                </strong>
 
-                [Vor- und Nachname / Firmenname des Betreibers]<br>
-                Mühlenstraße 75<br>
-                26931 Elsfleth<br><br>
+                <br><br>
 
-                [E-Mail-Adresse]<br>
+                [Vor- und Nachname / Firmenname des Betreibers]
+                <br>
+
+                Mühlenstraße 75
+                <br>
+
+                26931 Elsfleth
+                <br><br>
+
+                [E-Mail-Adresse]
+                <br>
+
                 [Telefonnummer]
+
             </div>
 
-            <h2>Verantwortlich für den Inhalt</h2>
+
+            <h2>
+                Verantwortlich für den Inhalt
+            </h2>
 
             <div class="placeholder">
+
                 [Vor- und Nachname des Verantwortlichen]
+
             </div>
 
-            <h2>Haftung für Inhalte</h2>
+
+            <h2>
+                Haftung für Inhalte
+            </h2>
 
             <p>
                 Die Inhalte dieser Website wurden mit
@@ -3129,7 +4133,10 @@ function openLegal(type) {
                 verantwortlich.
             </p>
 
-            <h2>Haftung für Links</h2>
+
+            <h2>
+                Haftung für Links
+            </h2>
 
             <p>
                 Diese Website enthält Links zu externen
@@ -3139,7 +4146,10 @@ function openLegal(type) {
                 jeweilige Betreiber verantwortlich.
             </p>
 
-            <h2>Urheberrecht</h2>
+
+            <h2>
+                Urheberrecht
+            </h2>
 
             <p>
                 Die auf dieser Website erstellten Inhalte
@@ -3151,7 +4161,10 @@ function openLegal(type) {
                 Rechteinhabers.
             </p>
 
-            <h2>Hinweis</h2>
+
+            <h2>
+                Hinweis
+            </h2>
 
             <p>
                 Dieses Impressum ist als technische
@@ -3171,7 +4184,9 @@ function openLegal(type) {
 
         legalContent.innerHTML = `
 
-            <h1>Datenschutz</h1>
+            <h1>
+                Datenschutz
+            </h1>
 
             <p>
                 Der Schutz deiner persönlichen Daten
@@ -3180,21 +4195,36 @@ function openLegal(type) {
                 Daten bei Nutzung dieser Website.
             </p>
 
-            <h2>1. Verantwortlicher</h2>
+
+            <h2>
+                1. Verantwortlicher
+            </h2>
 
             <div class="placeholder">
+
                 <strong>
                     BITTE VOR VERÖFFENTLICHUNG AUSFÜLLEN
-                </strong><br><br>
+                </strong>
 
-                [Name / Firma des Betreibers]<br>
-                Mühlenstraße 75<br>
-                26931 Elsfleth<br><br>
+                <br><br>
+
+                [Name / Firma des Betreibers]
+                <br>
+
+                Mühlenstraße 75
+                <br>
+
+                26931 Elsfleth
+                <br><br>
 
                 [E-Mail-Adresse]
+
             </div>
 
-            <h2>2. Besuch der Website</h2>
+
+            <h2>
+                2. Besuch der Website
+            </h2>
 
             <p>
                 Beim Aufruf einer Website können durch
@@ -3211,7 +4241,10 @@ function openLegal(type) {
                 der Website.
             </p>
 
-            <h2>3. Keine Analyse-Tracker</h2>
+
+            <h2>
+                3. Keine Analyse-Tracker
+            </h2>
 
             <p>
                 Diese Website verwendet in dieser Version
@@ -3219,7 +4252,10 @@ function openLegal(type) {
                 Werbetracker.
             </p>
 
-            <h2>4. Google Maps</h2>
+
+            <h2>
+                4. Google Maps
+            </h2>
 
             <p>
                 Google Maps wird auf dieser Website nicht
@@ -3236,7 +4272,10 @@ function openLegal(type) {
                 die Datenschutzbestimmungen von Google.
             </p>
 
-            <h2>5. Social Media</h2>
+
+            <h2>
+                5. Social Media
+            </h2>
 
             <p>
                 Auf dieser Website befinden sich Links
@@ -3247,7 +4286,10 @@ function openLegal(type) {
                 Betreiber der Plattform verantwortlich.
             </p>
 
-            <h2>6. Kalenderfunktionen</h2>
+
+            <h2>
+                6. Kalenderfunktionen
+            </h2>
 
             <p>
                 Beim Anklicken der Kalenderfunktion wird
@@ -3257,7 +4299,10 @@ function openLegal(type) {
                 Daten an einen eigenen Kalenderdienst.
             </p>
 
-            <h2>7. Cookies</h2>
+
+            <h2>
+                7. Cookies
+            </h2>
 
             <p>
                 Diese Website setzt in der vorliegenden
@@ -3265,7 +4310,10 @@ function openLegal(type) {
                 Tracking-Cookies ein.
             </p>
 
-            <h2>8. Deine Rechte</h2>
+
+            <h2>
+                8. Deine Rechte
+            </h2>
 
             <p>
                 Betroffene Personen haben im Rahmen der
@@ -3282,7 +4330,10 @@ function openLegal(type) {
                 wenden.
             </p>
 
-            <h2>9. Aktualität</h2>
+
+            <h2>
+                9. Aktualität
+            </h2>
 
             <p>
                 Diese Datenschutzerklärung kann angepasst
@@ -3295,6 +4346,7 @@ function openLegal(type) {
                 <strong>
                     Hinweis:
                 </strong>
+
                 Die konkreten Angaben zum Betreiber müssen
                 vor Veröffentlichung ergänzt und die
                 Datenschutzerklärung rechtlich geprüft
@@ -3306,7 +4358,9 @@ function openLegal(type) {
     }
 
 
-    legalModal.classList.add("open");
+    legalModal.classList.add(
+        "open"
+    );
 
     legalModal.scrollTop = 0;
 
@@ -3315,7 +4369,9 @@ function openLegal(type) {
 
 function closeLegal() {
 
-    legalModal.classList.remove("open");
+    legalModal.classList.remove(
+        "open"
+    );
 
 }
 
@@ -3337,6 +4393,13 @@ document.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   KARTE BEIM START VORBEREITEN
+========================================================= */
+
+renderMenuBook();
 
 </script>
 
