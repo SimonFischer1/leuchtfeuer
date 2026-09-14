@@ -1,3922 +1,2067 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<title>Leuchtfeuer Elsfleth – Seemannskneipe</title>
 
-<meta name="theme-color"
-      content="#111a20">
-
-<meta name="description"
-      content="Leuchtfeuer Elsfleth – die Seefahrtskneipe direkt gegenüber der Jade Hochschule.">
-
-<title>Leuchtfeuer · Elsfleth</title>
-
-
-<!-- =========================================================
-     SCHRIFTEN
-========================================================= -->
-
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
-
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap"
-      rel="stylesheet">
-
+<meta
+    name="description"
+    content="Leuchtfeuer Seemannskneipe in Elsfleth – maritime Atmosphäre, gute Drinks, gutes Essen und besondere Abende."
+>
 
 <style>
 
 /* =========================================================
-   VARIABLES
-========================================================= */
+   LEUCHTFEUER ELSFLETH
+   Ruhige Farben aus dem Logo
+   ========================================================= */
 
 :root {
+    --blue: #315b7f;
+    --deep-blue: #203f5d;
+    --soft-blue: #527493;
 
-    --night: #10181d;
-    --night-2: #18242b;
-    --navy: #123d5c;
+    --red: #a9564f;
+    --soft-red: #b86c64;
 
-    --blue: #075b91;
-    --blue-light: #1873a7;
+    --yellow: #d9bd70;
+    --soft-yellow: #e3cb8b;
 
-    --red: #bd2630;
-    --red-dark: #8e1821;
+    --cream: #f2eadf;
+    --cream-dark: #e7dccd;
 
-    --yellow: #f3c51b;
-    --yellow-dark: #d4a900;
+    --text: #19344c;
 
-    --cream: #f3ead5;
-    --paper: #e8ddc2;
-    --paper-dark: #d5c8a7;
-
-    --wood: #3a2519;
-    --wood-light: #5a3825;
-
-    --brass: #b68a3a;
-    --brass-light: #d4ad61;
-
-    --ink: #29251e;
-    --muted: #817667;
-
-    --shadow:
-        0 25px 70px rgba(0,0,0,.35);
-
-    --ease:
-        cubic-bezier(.22,.61,.36,1);
-
+    --shadow: 0 18px 50px rgba(23, 52, 76, 0.18);
+    --radius: 2px;
 }
 
 
 /* =========================================================
    RESET
-========================================================= */
+   ========================================================= */
 
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
-
 
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-
-    background:
-        var(--cream);
-
-    color:
-        var(--ink);
-
-    font-family:
-        "DM Sans",
-        Arial,
-        sans-serif;
-
-    overflow-x:
-        hidden;
-
+    margin: 0;
+    background: var(--cream);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
 }
 
-
-body.no-scroll {
-    overflow:
-        hidden;
+body.locked {
+    overflow: hidden;
 }
 
-
-a {
-    color:
-        inherit;
-
-    text-decoration:
-        none;
+img {
+    max-width: 100%;
 }
 
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
 
 button {
-    font:
-        inherit;
-
-    cursor:
-        pointer;
+    cursor: pointer;
 }
 
-
-/* =========================================================
-   GRAIN / FILM EFFECT
-========================================================= */
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9999;
-
-    pointer-events: none;
-
-    opacity: .035;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 
 /* =========================================================
    HEADER
-========================================================= */
+   ========================================================= */
 
-.header {
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 
-    position:
-        fixed;
+    background: rgba(32, 63, 93, 0.97);
+    color: var(--cream);
 
-    top:
-        0;
-
-    left:
-        0;
-
-    right:
-        0;
-
-    height:
-        82px;
-
-    z-index:
-        100;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        space-between;
-
-    padding:
-        0 clamp(18px,5vw,75px);
-
-    color:
-        var(--cream);
-
-    background:
-        rgba(13,20,25,.80);
-
-    backdrop-filter:
-        blur(15px);
-
-    border-bottom:
-        1px solid
-        rgba(243,234,213,.12);
-
-    transition:
-        .45s var(--ease);
-
+    border-bottom: 1px solid rgba(217, 189, 112, 0.4);
+    backdrop-filter: blur(8px);
 }
 
+.header-inner {
+    width: min(1200px, 92%);
+    min-height: 72px;
+    margin: auto;
 
-.header.scrolled {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    height:
-        68px;
-
-    background:
-        rgba(10,16,20,.96);
-
+    gap: 30px;
 }
 
-
-/* =========================================================
-   BRAND
-========================================================= */
-
-.brand {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        12px;
-
+.logo {
+    display: flex;
+    align-items: center;
 }
 
-
-.brand img {
-
-    width:
-        52px;
-
-    height:
-        52px;
-
-    object-fit:
-        contain;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--cream);
-
-    padding:
-        2px;
-
-    transition:
-        .35s var(--ease);
-
+.logo img {
+    width: 190px;
+    height: auto;
+    display: block;
 }
-
-
-.header.scrolled .brand img {
-
-    width:
-        43px;
-
-    height:
-        43px;
-
-}
-
-
-.brand-text {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-}
-
-
-.brand-text strong {
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    font-size:
-        17px;
-
-    letter-spacing:
-        .12em;
-
-}
-
-
-.brand-text span {
-
-    font-size:
-        8px;
-
-    letter-spacing:
-        .18em;
-
-    color:
-        var(--yellow);
-
-    margin-top:
-        3px;
-
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
 
 .navigation {
+    display: flex;
+    align-items: center;
+    gap: 27px;
 
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        27px;
-
-    font-size:
-        12px;
-
-    font-weight:
-        700;
-
+    font-family: Arial, sans-serif;
+    font-size: 13px;
 }
-
 
 .navigation a {
-
-    position:
-        relative;
-
-    color:
-        var(--cream);
-
-    opacity:
-        .72;
-
-    transition:
-        .25s;
-
+    position: relative;
+    padding: 27px 0 9px;
+    color: var(--cream);
 }
-
-
-.navigation a:hover {
-
-    opacity:
-        1;
-
-}
-
 
 .navigation a::after {
+    content: "";
+    position: absolute;
 
-    content:
-        "";
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    position:
-        absolute;
+    height: 2px;
 
-    left:
-        0;
+    background: var(--yellow);
 
-    bottom:
-        -8px;
+    transform: scaleX(0);
+    transform-origin: center;
 
-    width:
-        0;
-
-    height:
-        2px;
-
-    background:
-        var(--yellow);
-
-    transition:
-        .3s var(--ease);
-
+    transition: transform .25s ease;
 }
 
-
-.navigation a:hover::after {
-
-    width:
-        100%;
-
-}
-
-
-/* MENU BUTTON */
-
-.menu-button {
-
-    border:
-        1px solid
-        rgba(243,234,213,.3);
-
-    background:
-        transparent;
-
-    color:
-        var(--cream);
-
-    padding:
-        10px 15px;
-
-    font-size:
-        11px;
-
-    letter-spacing:
-        .1em;
-
-    text-transform:
-        uppercase;
-
-    transition:
-        .25s;
-
-}
-
-
-.menu-button:hover {
-
-    background:
-        var(--red);
-
-    border-color:
-        var(--red);
-
-}
-
-
-/* MOBILE MENU */
-
-.mobile-toggle {
-
-    display:
-        none;
-
-    background:
-        none;
-
-    border:
-        0;
-
-    color:
-        var(--cream);
-
-    font-size:
-        27px;
-
+.navigation a:hover::after,
+.navigation a.active::after {
+    transform: scaleX(1);
 }
 
 
 /* =========================================================
    HERO
-========================================================= */
+   ========================================================= */
 
 .hero {
+    min-height: 680px;
 
-    position:
-        relative;
+    position: relative;
+    overflow: hidden;
 
-    min-height:
-        100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    overflow:
-        hidden;
+    text-align: center;
 
-    color:
-        var(--cream);
+    color: var(--cream);
 
     background:
-
-        radial-gradient(
-            circle at 70% 30%,
-            rgba(24,115,167,.25),
-            transparent 30%
-        ),
-
         linear-gradient(
-            145deg,
-            #17262e,
-            #0a1319 70%
+            rgba(20, 45, 65, .55),
+            rgba(20, 45, 65, .78)
+        ),
+        linear-gradient(
+            135deg,
+            var(--blue),
+            var(--deep-blue)
+        );
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 80% 35%,
+            rgba(227, 203, 139, .24),
+            transparent 19%
         );
 
+    pointer-events: none;
 }
 
+.hero::after {
+    content: "";
 
-/* stars */
+    position: absolute;
 
-.stars {
+    left: -10%;
+    right: -10%;
+    bottom: -80px;
 
-    position:
-        absolute;
+    height: 180px;
 
-    inset:
-        0;
+    border-radius: 50% 50% 0 0;
 
+    background: rgba(242, 234, 223, .07);
+
+    transform: rotate(-2deg);
 }
-
-
-.star {
-
-    position:
-        absolute;
-
-    width:
-        2px;
-
-    height:
-        2px;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--cream);
-
-    animation:
-        starBlink
-        var(--duration)
-        infinite
-        ease-in-out;
-
-}
-
-
-@keyframes starBlink {
-
-    0%,100% {
-        opacity:
-            .1;
-    }
-
-    50% {
-        opacity:
-            .9;
-    }
-
-}
-
-
-/* =========================================================
-   HERO CONTENT
-========================================================= */
 
 .hero-content {
+    position: relative;
+    z-index: 2;
 
-    position:
-        relative;
+    width: min(850px, 92%);
 
-    z-index:
-        5;
-
-    min-height:
-        100vh;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    padding:
-        130px clamp(25px,9vw,140px)
-        150px;
-
+    padding: 80px 0;
 }
-
-
-.hero-copy {
-
-    max-width:
-        720px;
-
-    animation:
-        heroAppear
-        1.2s
-        var(--ease)
-        forwards;
-
-    opacity:
-        0;
-
-    transform:
-        translateY(30px);
-
-}
-
-
-@keyframes heroAppear {
-
-    to {
-
-        opacity:
-            1;
-
-        transform:
-            translateY(0);
-
-    }
-
-}
-
-
-.kicker {
-
-    color:
-        var(--yellow);
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    letter-spacing:
-        .14em;
-
-    font-size:
-        11px;
-
-    margin-bottom:
-        25px;
-
-}
-
-
-.hero h1 {
-
-    font-family:
-        "Libre Baskerville",
-        Georgia,
-        serif;
-
-    font-size:
-        clamp(55px,8vw,105px);
-
-    font-weight:
-        400;
-
-    line-height:
-        .98;
-
-    letter-spacing:
-        -.055em;
-
-}
-
-
-.hero h1 span {
-
-    display:
-        block;
-
-    color:
-        var(--yellow);
-
-    font-style:
-        italic;
-
-}
-
-
-.hero-description {
-
-    max-width:
-        590px;
-
-    margin-top:
-        30px;
-
-    color:
-        rgba(243,234,213,.68);
-
-    font-size:
-        18px;
-
-    line-height:
-        1.7;
-
-}
-
-
-.hero-actions {
-
-    display:
-        flex;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        12px;
-
-    margin-top:
-        35px;
-
-}
-
-
-.button {
-
-    padding:
-        14px 21px;
-
-    border:
-        1px solid
-        transparent;
-
-    font-size:
-        12px;
-
-    font-weight:
-        700;
-
-    transition:
-        .3s var(--ease);
-
-}
-
-
-.button-red {
-
-    background:
-        var(--red);
-
-    color:
-        white;
-
-}
-
-
-.button-red:hover {
-
-    background:
-        var(--red-dark);
-
-    transform:
-        translateY(-4px);
-
-    box-shadow:
-        0 15px 30px
-        rgba(0,0,0,.3);
-
-}
-
-
-.button-yellow {
-
-    background:
-        var(--yellow);
-
-    color:
-        var(--night);
-
-}
-
-
-.button-outline {
-
-    border-color:
-        rgba(243,234,213,.35);
-
-    color:
-        var(--cream);
-
-}
-
-
-.button-outline:hover {
-
-    background:
-        rgba(243,234,213,.08);
-
-}
-
-
-/* =========================================================
-   BIG LOGO
-========================================================= */
 
 .hero-logo {
+    width: min(420px, 78vw);
+    margin: 0 auto 25px;
 
-    position:
-        absolute;
-
-    z-index:
-        4;
-
-    right:
-        8vw;
-
-    top:
-        50%;
-
-    width:
-        min(38vw,500px);
-
-    transform:
-        translateY(-50%);
-
-    animation:
-        logoFloat
-        7s
-        ease-in-out
-        infinite;
-
+    filter: drop-shadow(
+        0 15px 25px rgba(0,0,0,.22)
+    );
 }
 
+.hero-kicker {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
 
-.hero-logo::after {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        -30px;
-
-    border-radius:
-        50%;
-
-    border:
-        1px solid
-        rgba(243,197,27,.25);
-
-    animation:
-        logoRing
-        8s
-        linear
-        infinite;
-
+    color: var(--soft-yellow);
 }
 
+.hero h1 {
+    margin: 12px 0 15px;
 
-.hero-logo img {
+    font-size: clamp(45px, 7vw, 82px);
+    line-height: .95;
 
-    width:
-        100%;
-
-    display:
-        block;
-
-    border-radius:
-        50%;
-
-    box-shadow:
-        0 25px 80px
-        rgba(0,0,0,.45);
-
+    font-style: italic;
+    font-weight: normal;
 }
 
+.hero p {
+    max-width: 720px;
+    margin: 0 auto 30px;
 
-@keyframes logoFloat {
-
-    0%,100% {
-        transform:
-            translateY(-50%)
-            rotate(-1deg);
-    }
-
-    50% {
-        transform:
-            translateY(calc(-50% - 12px))
-            rotate(1deg);
-    }
-
+    font-size: clamp(18px, 2vw, 24px);
+    line-height: 1.6;
 }
 
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-@keyframes logoRing {
+    padding: 13px 25px;
 
-    from {
-        transform:
-            rotate(0);
-    }
+    border: 1px solid var(--yellow);
 
-    to {
-        transform:
-            rotate(360deg);
-    }
+    background: var(--red);
+    color: var(--cream);
 
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    background: var(--soft-red);
 }
 
 
 /* =========================================================
-   LIGHT BEAMS
-========================================================= */
-
-.beam {
-
-    position:
-        absolute;
-
-    z-index:
-        2;
-
-    top:
-        40%;
-
-    left:
-        52%;
-
-    width:
-        1000px;
-
-    height:
-        130px;
-
-    transform-origin:
-        left center;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(243,197,27,.30),
-            rgba(243,197,27,.07),
-            transparent
-        );
-
-    clip-path:
-        polygon(
-            0 42%,
-            100% 0,
-            100% 100%,
-            0 58%
-        );
-
-    animation:
-        beamSweep
-        9s
-        ease-in-out
-        infinite;
-
-}
-
-
-@keyframes beamSweep {
-
-    0%,100% {
-        transform:
-            rotate(-13deg);
-        opacity:
-            .6;
-    }
-
-    50% {
-        transform:
-            rotate(22deg);
-        opacity:
-            .9;
-    }
-
-}
-
-
-/* =========================================================
-   OCEAN
-========================================================= */
-
-.ocean {
-
-    position:
-        absolute;
-
-    z-index:
-        6;
-
-    bottom:
-        0;
-
-    left:
-        0;
-
-    width:
-        100%;
-
-    height:
-        100px;
-
-    overflow:
-        hidden;
-
-}
-
-
-.wave {
-
-    position:
-        absolute;
-
-    left:
-        -10%;
-
-    bottom:
-        -55px;
-
-    width:
-        120%;
-
-    height:
-        110px;
-
-    border-radius:
-        50% 50% 0 0;
-
-    background:
-        var(--blue);
-
-    animation:
-        wave
-        7s
-        ease-in-out
-        infinite;
-
-}
-
-
-.wave:nth-child(2) {
-
-    bottom:
-        -75px;
-
-    background:
-        var(--navy);
-
-    animation-duration:
-        10s;
-
-    animation-direction:
-        reverse;
-
-}
-
-
-.wave:nth-child(3) {
-
-    bottom:
-        -90px;
-
-    background:
-        var(--night);
-
-    animation-duration:
-        13s;
-
-}
-
-
-@keyframes wave {
-
-    0%,100% {
-        transform:
-            translateX(-3%);
-    }
-
-    50% {
-        transform:
-            translateX(3%);
-    }
-
-}
-
-
-/* =========================================================
-   SIGNAL
-========================================================= */
-
-.signal {
-
-    position:
-        relative;
-
-    min-height:
-        72px;
-
-    background:
-        var(--red);
-
-    color:
-        var(--cream);
-
-    display:
-        flex;
-
-    justify-content:
-        center;
-
-    align-items:
-        center;
-
-    gap:
-        18px;
-
-    overflow:
-        hidden;
-
-}
-
-
-.signal::before,
-.signal::after {
-
-    content:
-        "⚓";
-
-    color:
-        var(--yellow);
-
-    font-size:
-        18px;
-
-}
-
-
-.signal strong {
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    letter-spacing:
-        .08em;
-
-}
-
-
-/* =========================================================
-   GENERAL SECTIONS
-========================================================= */
+   SECTIONS
+   ========================================================= */
 
 .section {
-
-    padding:
-        clamp(80px,10vw,150px)
-        clamp(24px,8vw,130px);
-
+    padding: 85px 0;
 }
 
-
-.section-label {
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    color:
-        var(--red);
-
-    font-size:
-        11px;
-
-    letter-spacing:
-        .15em;
-
-    margin-bottom:
-        25px;
-
+.container {
+    width: min(1160px, 92%);
+    margin: auto;
 }
 
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-.section-title {
+    gap: 60px;
 
-    font-family:
-        "Libre Baskerville",
-        Georgia,
-        serif;
-
-    font-size:
-        clamp(38px,5vw,70px);
-
-    font-weight:
-        400;
-
-    line-height:
-        1.08;
-
+    align-items: center;
 }
 
+.eyebrow {
+    color: var(--red);
 
-.section-title em {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
 
-    color:
-        var(--red);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+}
 
+h2 {
+    margin: 10px 0 22px;
+
+    color: var(--deep-blue);
+
+    font-size: clamp(34px, 4vw, 53px);
+    line-height: 1.05;
+}
+
+.lead {
+    font-size: 18px;
+    line-height: 1.85;
+}
+
+.signature {
+    margin-top: 25px;
+
+    font-size: 28px;
+    font-style: italic;
 }
 
 
 /* =========================================================
-   ABOUT
-========================================================= */
+   MARITIME IMAGE PLACEHOLDER
+   ========================================================= */
 
-.about {
+.marine-picture {
+    min-height: 390px;
 
-    background:
-        var(--cream);
+    position: relative;
 
-}
+    border: 9px solid var(--deep-blue);
 
+    box-shadow: var(--shadow);
 
-.about-grid {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:
-        clamp(50px,9vw,130px);
-
-    align-items:
-        center;
-
-}
-
-
-.about-text {
-
-    color:
-        #62594d;
-
-    font-size:
-        17px;
-
-    line-height:
-        1.75;
-
-}
-
-
-.about-text p {
-
-    margin-bottom:
-        20px;
-
-}
-
-
-/* =========================================================
-   OLD SIGN
-========================================================= */
-
-.sign-board {
-
-    position:
-        relative;
-
-    padding:
-        22px;
-
-    background:
-        var(--wood);
-
-    box-shadow:
-        var(--shadow);
-
-    transform:
-        rotate(-2deg);
-
-    transition:
-        .5s var(--ease);
-
-}
-
-
-.sign-board:hover {
-
-    transform:
-        rotate(0)
-        translateY(-8px);
-
-}
-
-
-.sign-board img {
-
-    width:
-        100%;
-
-    display:
-        block;
-
-}
-
-
-.sign-board::after {
-
-    content:
-        "ORIGINAL";
-
-    position:
-        absolute;
-
-    right:
-        25px;
-
-    bottom:
-        25px;
-
-    color:
-        var(--yellow);
-
-    border:
-        1px solid
-        var(--yellow);
-
-    padding:
-        6px 10px;
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    font-size:
-        9px;
-
-    transform:
-        rotate(-12deg);
-
-}
-
-
-/* =========================================================
-   WOOD SECTION
-========================================================= */
-
-.wood-section {
-
-    position:
-        relative;
-
-    background:
-        linear-gradient(
-            90deg,
-            var(--wood),
-            #281910,
-            var(--wood)
-        );
-
-    color:
-        var(--cream);
-
-    overflow:
-        hidden;
-
-}
-
-
-.wood-section::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    opacity:
-        .18;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 90px,
-            #000 92px,
-            transparent 95px 180px
-        );
-
-}
-
-
-.wood-content {
-
-    position:
-        relative;
-
-    z-index:
-        2;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:
-        90px;
-
-    align-items:
-        center;
-
-}
-
-
-.wood-copy p {
-
-    max-width:
-        570px;
-
-    color:
-        rgba(243,234,213,.68);
-
-    margin-top:
-        25px;
-
-}
-
-
-/* =========================================================
-   NAUTICAL CARDS
-========================================================= */
-
-.nautical-cards {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:
-        15px;
-
-}
-
-
-.nautical-card {
-
-    min-height:
-        170px;
-
-    padding:
-        25px;
-
-    background:
-        rgba(243,234,213,.06);
-
-    border:
-        1px solid
-        rgba(243,234,213,.12);
-
-    transition:
-        .35s var(--ease);
-
-}
-
-
-.nautical-card:hover {
-
-    transform:
-        translateY(-8px);
-
-    background:
-        rgba(243,234,213,.1);
-
-}
-
-
-.nautical-card .icon {
-
-    color:
-        var(--yellow);
-
-    font-size:
-        25px;
-
-    margin-bottom:
-        20px;
-
-}
-
-
-.nautical-card strong {
-
-    display:
-        block;
-
-    font-family:
-        "Libre Baskerville",
-        serif;
-
-    font-size:
-        17px;
-
-}
-
-
-.nautical-card span {
-
-    display:
-        block;
-
-    margin-top:
-        8px;
-
-    color:
-        rgba(243,234,213,.55);
-
-    font-size:
-        12px;
-
-}
-
-
-/* =========================================================
-   MENU INTRO
-========================================================= */
-
-.menu-section {
-
-    background:
-        var(--paper);
-
-    text-align:
-        center;
-
-}
-
-
-.menu-intro {
-
-    max-width:
-        700px;
-
-    margin:
-        0 auto 45px;
-
-}
-
-
-.menu-intro p {
-
-    color:
-        var(--muted);
-
-    margin-top:
-        20px;
-
-}
-
-
-/* =========================================================
-   MENU BOOK BUTTON
-========================================================= */
-
-.book-trigger {
-
-    position:
-        relative;
-
-    display:
-        inline-block;
-
-    width:
-        min(380px,90vw);
-
-    padding:
-        45px 35px;
-
-    border:
-        0;
-
-    color:
-        var(--cream);
+    overflow: hidden;
 
     background:
         linear-gradient(
             135deg,
-            #67221b,
-            #351711
+            rgba(49,91,127,.9),
+            rgba(32,63,93,.9)
         );
-
-    box-shadow:
-        0 25px 60px
-        rgba(0,0,0,.3);
-
-    transition:
-        .5s var(--ease);
-
-    overflow:
-        hidden;
-
 }
 
+.marine-picture::before {
+    content: "LEUCHTFEUER";
 
-.book-trigger::before {
+    position: absolute;
 
-    content:
-        "";
+    left: 50%;
+    top: 50%;
 
-    position:
-        absolute;
+    transform: translate(-50%, -50%);
 
-    inset:
-        14px;
+    color: var(--cream);
 
-    border:
-        1px solid
-        rgba(243,197,27,.5);
-
+    font-size: 42px;
+    font-style: italic;
 }
 
+.marine-picture::after {
+    content: "SEEMANNSKNEIPE · ELSFLETH";
 
-.book-trigger:hover {
+    position: absolute;
 
-    transform:
-        translateY(-10px)
-        rotate(-1deg);
+    bottom: 15px;
+    left: 20px;
 
-    box-shadow:
-        0 35px 80px
-        rgba(0,0,0,.4);
+    color: var(--yellow);
 
-}
-
-
-.book-trigger small {
-
-    display:
-        block;
-
-    color:
-        var(--yellow);
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    letter-spacing:
-        .2em;
-
-}
-
-
-.book-trigger strong {
-
-    display:
-        block;
-
-    margin-top:
-        15px;
-
-    font-family:
-        "Libre Baskerville",
-        serif;
-
-    font-size:
-        30px;
-
-}
-
-
-.book-trigger span {
-
-    display:
-        block;
-
-    margin-top:
-        15px;
-
-    opacity:
-        .65;
-
-    font-size:
-        11px;
-
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: .15em;
 }
 
 
 /* =========================================================
-   BOOK MODAL
-========================================================= */
+   FEATURE CARDS
+   ========================================================= */
 
-.book-overlay {
+.feature-grid {
+    display: grid;
 
-    position:
-        fixed;
+    grid-template-columns: repeat(3, 1fr);
 
-    inset:
-        0;
+    gap: 22px;
 
-    z-index:
-        1000;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    padding:
-        25px;
-
-    background:
-        rgba(3,8,11,.92);
-
-    backdrop-filter:
-        blur(12px);
-
-    opacity:
-        0;
-
-    visibility:
-        hidden;
-
-    transition:
-        .5s var(--ease);
-
+    margin-top: 40px;
 }
 
+.feature {
+    min-height: 210px;
 
-.book-overlay.open {
+    padding: 30px;
 
-    opacity:
-        1;
+    background: var(--deep-blue);
+    color: var(--cream);
 
-    visibility:
-        visible;
+    border-top: 4px solid var(--yellow);
 
+    box-shadow: var(--shadow);
 }
 
+.feature h3 {
+    margin: 0 0 12px;
 
-/* close */
+    color: var(--yellow);
 
-.book-close {
-
-    position:
-        absolute;
-
-    top:
-        25px;
-
-    right:
-        30px;
-
-    z-index:
-        20;
-
-    width:
-        45px;
-
-    height:
-        45px;
-
-    border:
-        1px solid
-        rgba(243,234,213,.4);
-
-    background:
-        transparent;
-
-    color:
-        var(--cream);
-
-    border-radius:
-        50%;
-
-    font-size:
-        18px;
-
+    font-size: 25px;
 }
 
+.feature p {
+    margin: 0;
 
-.book-close:hover {
-
-    background:
-        var(--red);
-
+    line-height: 1.7;
 }
 
 
 /* =========================================================
-   BOOK
-========================================================= */
+   EVENTS
+   ========================================================= */
 
-.book {
+.events-layout {
+    display: grid;
 
-    position:
-        relative;
+    grid-template-columns: .9fr 1.1fr;
 
-    width:
-        min(1050px,94vw);
+    gap: 60px;
 
-    height:
-        min(700px,82vh);
-
-    perspective:
-        2000px;
-
+    align-items: start;
 }
 
-
-/* book cover */
-
-.book-cover {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    z-index:
-        10;
-
-    background:
-        linear-gradient(
-            135deg,
-            #7d2b20,
-            #391812
-        );
-
-    border:
-        3px solid
-        var(--brass);
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.6);
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    cursor:
-        pointer;
-
-    transform-origin:
-        left center;
-
-    transition:
-        1.1s var(--ease);
-
+.events-list {
+    display: grid;
+    gap: 5px;
 }
 
+.event {
+    display: grid;
 
-.book-cover::before {
+    grid-template-columns: 85px 1fr;
 
-    content:
-        "";
+    gap: 20px;
 
-    position:
-        absolute;
+    padding: 17px 0;
 
-    inset:
-        22px;
-
-    border:
-        2px solid
-        rgba(212,173,97,.7);
-
+    border-bottom: 1px solid rgba(32,63,93,.22);
 }
 
+.event-date {
+    border: 1px solid var(--blue);
 
-.book-cover-content {
+    padding: 10px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    color:
-        var(--cream);
-
+    font-family: Arial, sans-serif;
 }
 
+.event-date strong {
+    display: block;
 
-.book-cover-content img {
+    color: var(--red);
 
-    width:
-        170px;
-
-    height:
-        170px;
-
-    object-fit:
-        contain;
-
-    border-radius:
-        50%;
-
-    background:
-        var(--cream);
-
-    margin-bottom:
-        25px;
-
+    font-size: 27px;
 }
 
+.event-date span {
+    font-size: 11px;
 
-.book-cover-content h3 {
-
-    font-family:
-        "Libre Baskerville",
-        serif;
-
-    font-size:
-        clamp(30px,4vw,50px);
-
-    font-weight:
-        400;
-
+    text-transform: uppercase;
 }
 
+.event h3 {
+    margin: 0 0 4px;
 
-.book-cover-content p {
+    color: var(--deep-blue);
 
-    margin-top:
-        12px;
-
-    color:
-        var(--yellow);
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    font-size:
-        11px;
-
-    letter-spacing:
-        .15em;
-
+    font-size: 21px;
 }
 
+.event-time {
+    color: var(--red);
 
-.book.opened .book-cover {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
 
-    transform:
-        rotateY(-155deg);
+.event p {
+    margin: 7px 0 0;
 
-    pointer-events:
-        none;
-
+    line-height: 1.55;
 }
 
 
 /* =========================================================
-   BOOK PAGES
-========================================================= */
+   LIGHTHOUSE ILLUSTRATION
+   ========================================================= */
 
-.book-pages {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    background:
-        var(--paper);
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.6);
-
-    overflow:
-        hidden;
-
+.lighthouse-section {
+    padding-top: 20px;
 }
 
+.lighthouse-wrap {
+    width: min(300px, 70vw);
+    margin: 0 auto;
 
-/* page */
-
-.page {
-
-    position:
-        relative;
-
-    padding:
-        clamp(25px,4vw,55px);
-
-    overflow:
-        hidden;
-
-    background:
-        linear-gradient(
-            90deg,
-            #eee4c8,
-            #e4d8b9
-        );
-
+    position: relative;
 }
 
-
-.page:first-child {
-
-    border-right:
-        1px solid
-        rgba(41,37,30,.2);
-
+.lighthouse {
+    width: 100%;
+    display: block;
 }
 
-
-.page::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    inset:
-        15px;
-
-    border:
-        1px solid
-        rgba(41,37,30,.15);
-
-    pointer-events:
-        none;
-
+.lighthouse-light {
+    animation: lighthouseLight 3.5s ease-in-out infinite;
 }
 
-
-/* page content */
-
-.page-header {
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    color:
-        var(--red);
-
-    font-size:
-        10px;
-
-    letter-spacing:
-        .15em;
-
-    margin-bottom:
-        15px;
-
-}
-
-
-.page h3 {
-
-    font-family:
-        "Libre Baskerville",
-        serif;
-
-    font-size:
-        clamp(25px,3vw,39px);
-
-    font-weight:
-        400;
-
-    line-height:
-        1.15;
-
-    margin-bottom:
-        25px;
-
-}
-
-
-.page h3 em {
-
-    color:
-        var(--red);
-
-}
-
-
-.drink-list {
-
-    display:
-        grid;
-
-    gap:
-        15px;
-
-}
-
-
-.drink {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        1fr auto;
-
-    gap:
-        10px;
-
-    padding-bottom:
-        12px;
-
-    border-bottom:
-        1px dashed
-        rgba(41,37,30,.25);
-
-}
-
-
-.drink-name {
-
-    font-family:
-        "Libre Baskerville",
-        serif;
-
-    font-size:
-        14px;
-
-}
-
-
-.drink-description {
-
-    display:
-        block;
-
-    margin-top:
-        3px;
-
-    color:
-        #756b5b;
-
-    font-size:
-        10px;
-
-}
-
-
-.price {
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    color:
-        var(--red);
-
-    font-size:
-        14px;
-
-}
-
-
-.page-number {
-
-    position:
-        absolute;
-
-    bottom:
-        25px;
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    font-size:
-        9px;
-
-    color:
-        var(--muted);
-
-}
-
-
-.page-left .page-number {
-
-    left:
-        35px;
-
-}
-
-
-.page-right .page-number {
-
-    right:
-        35px;
-
-}
-
-
-/* =========================================================
-   BOOK NAVIGATION
-========================================================= */
-
-.book-navigation {
-
-    position:
-        absolute;
-
-    z-index:
-        30;
-
-    bottom:
-        -70px;
-
-    left:
-        50%;
-
-    transform:
-        translateX(-50%);
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        15px;
-
-}
-
-
-.book-navigation button {
-
-    width:
-        42px;
-
-    height:
-        42px;
-
-    border:
-        1px solid
-        rgba(243,234,213,.4);
-
-    background:
-        rgba(16,24,29,.8);
-
-    color:
-        var(--cream);
-
-    border-radius:
-        50%;
-
-}
-
-
-.book-navigation button:hover {
-
-    background:
-        var(--red);
-
-}
-
-
-.book-page-count {
-
-    color:
-        var(--cream);
-
-    font-family:
-        "Special Elite",
-        monospace;
-
-    font-size:
-        10px;
-
-}
-
-
-/* =========================================================
-   BOOK PAGE TRANSITION
-========================================================= */
-
-.page-turn-left {
-
-    animation:
-        turnLeft
-        .45s
-        var(--ease);
-
-}
-
-
-.page-turn-right {
-
-    animation:
-        turnRight
-        .45s
-        var(--ease);
-
-}
-
-
-@keyframes turnLeft {
-
-    0% {
-        transform:
-            translateX(0)
-            rotateY(0);
-        opacity:
-            1;
-    }
-
-    50% {
-        transform:
-            translateX(-20px)
-            rotateY(-8deg);
-        opacity:
-            .2;
-    }
-
-    100% {
-        transform:
-            translateX(0)
-            rotateY(0);
-        opacity:
-            1;
-    }
-
-}
-
-
-@keyframes turnRight {
-
-    0% {
-        transform:
-            translateX(0)
-            rotateY(0);
-        opacity:
-            1;
-    }
-
-    50% {
-        transform:
-            translateX(20px)
-            rotateY(8deg);
-        opacity:
-            .2;
-    }
-
-    100% {
-        transform:
-            translateX(0)
-            rotateY(0);
-        opacity:
-            1;
-    }
-
-}
-
-
-/* =========================================================
-   LOCATION
-========================================================= */
-
-.location {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        .8fr 1.2fr;
-
-    padding:
-        0;
-
-    min-height:
-        560px;
-
-}
-
-
-.location-info {
-
-    background:
-        var(--navy);
-
-    color:
-        var(--cream);
-
-    padding:
-        clamp(55px,8vw,110px);
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    justify-content:
-        center;
-
-}
-
-
-.location-info p {
-
-    margin-top:
-        22px;
-
-    color:
-        rgba(243,234,213,.65);
-
-    max-width:
-        450px;
-
-}
-
-
-.address {
-
-    color:
-        var(--yellow)!important;
-
-    font-family:
-        "Libre Baskerville",
-        serif;
-
-    font-size:
-        20px;
-
-}
-
-
-.fake-map {
-
-    position:
-        relative;
-
-    overflow:
-        hidden;
-
-    min-height:
-        560px;
-
-    background:
-        #c7c1ab;
-
-}
-
-
-.fake-map::before {
-
-    content:
-        "";
-
-    position:
-        absolute;
-
-    width:
-        130%;
-
-    height:
-        60%;
-
-    left:
-        -10%;
-
-    top:
-        25%;
-
-    border-radius:
-        60%;
-
-    background:
-        #87aeb9;
-
-    transform:
-        rotate(-13deg);
-
-}
-
-
-.map-roads {
-
-    position:
-        absolute;
-
-    inset:
-        0;
-
-    background:
-        repeating-linear-gradient(
-            45deg,
-            transparent 0 75px,
-            rgba(58,37,25,.12) 77px 79px
-        );
-
-}
-
-
-.map-pin {
-
-    position:
-        absolute;
-
-    left:
-        52%;
-
-    top:
-        47%;
-
-    width:
-        65px;
-
-    height:
-        65px;
-
-    display:
-        grid;
-
-    place-items:
-        center;
-
-    background:
-        var(--red);
-
-    color:
-        var(--cream);
-
-    border-radius:
-        50% 50% 50% 0;
-
-    transform:
-        rotate(-45deg);
-
-    box-shadow:
-        0 12px 30px
-        rgba(0,0,0,.3);
-
-    animation:
-        pinPulse
-        2s
-        infinite;
-
-}
-
-
-.map-pin span {
-
-    transform:
-        rotate(45deg);
-
-}
-
-
-@keyframes pinPulse {
-
+@keyframes lighthouseLight {
     0%,100% {
-        box-shadow:
-            0 12px 30px
-            rgba(0,0,0,.3);
+        opacity: .7;
     }
 
     50% {
-        box-shadow:
-            0 12px 30px
-            rgba(189,38,48,.5),
-            0 0 0 15px
-            rgba(189,38,48,.08);
+        opacity: 1;
     }
+}
 
+
+/* =========================================================
+   COMPASS
+   ========================================================= */
+
+.compass-section {
+    text-align: center;
+}
+
+.compass {
+    width: min(410px, 84vw);
+    aspect-ratio: 1;
+
+    position: relative;
+
+    margin: 45px auto 0;
+
+    border: 5px solid var(--blue);
+
+    border-radius: 50%;
+
+    background: var(--cream);
+
+    box-shadow:
+        inset 0 0 0 7px var(--yellow),
+        var(--shadow);
+}
+
+.compass-inner-ring {
+    position: absolute;
+
+    inset: 12%;
+
+    border: 1px solid rgba(49,91,127,.5);
+
+    border-radius: 50%;
+}
+
+.compass-ticks {
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        repeating-conic-gradient(
+            from 0deg,
+            transparent 0deg 7deg,
+            var(--blue) 7deg 8deg,
+            transparent 8deg 15deg
+        );
+
+    mask:
+        radial-gradient(
+            circle,
+            transparent 0 74%,
+            black 75% 100%
+        );
+
+    -webkit-mask:
+        radial-gradient(
+            circle,
+            transparent 0 74%,
+            black 75% 100%
+        );
+}
+
+.compass-direction {
+    position: absolute;
+
+    color: var(--deep-blue);
+
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.direction-n {
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.direction-e {
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.direction-s {
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.direction-w {
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Die Gradangaben liegen bewusst außerhalb
+   des inneren Kreises und sind dadurch deutlich lesbar. */
+
+.degree {
+    position: absolute;
+
+    color: var(--red);
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+
+    transform: translate(-50%, -50%);
+}
+
+.d0   { left:50%; top:7%; }
+.d30  { left:72%; top:13%; }
+.d60  { left:87%; top:29%; }
+.d90  { left:93%; top:50%; }
+.d120 { left:87%; top:71%; }
+.d150 { left:72%; top:87%; }
+.d180 { left:50%; top:93%; }
+.d210 { left:28%; top:87%; }
+.d240 { left:13%; top:71%; }
+.d270 { left:7%; top:50%; }
+.d300 { left:13%; top:29%; }
+.d330 { left:28%; top:13%; }
+
+.compass-needle {
+    position: absolute;
+
+    width: 14px;
+    height: 180px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(28deg);
+
+    transform-origin: center;
+
+    z-index: 5;
+}
+
+.compass-needle::before {
+    content: "";
+
+    position: absolute;
+
+    left: 3px;
+    top: 0;
+
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 82px solid var(--red);
+}
+
+.compass-needle::after {
+    content: "";
+
+    position: absolute;
+
+    left: 3px;
+    bottom: 0;
+
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 82px solid var(--blue);
+}
+
+.compass-center {
+    position: absolute;
+
+    z-index: 10;
+
+    width: 24px;
+    height: 24px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: var(--yellow);
+
+    border: 4px solid var(--deep-blue);
+}
+
+
+/* =========================================================
+   SPECIAL OFFER
+   ========================================================= */
+
+.offer-section {
+    padding-top: 0;
+}
+
+.offer {
+    padding: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    background: var(--red);
+
+    color: var(--cream);
+}
+
+.offer h2 {
+    margin: 0 0 7px;
+
+    color: var(--cream);
+    font-size: 34px;
+}
+
+.offer p {
+    margin: 0;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ADDRESS + MAP
+   ========================================================= */
+
+.location-section {
+    background: var(--deep-blue);
+    color: var(--cream);
+}
+
+.location-section h2 {
+    color: var(--cream);
+}
+
+.location-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+.address-box,
+.map-box {
+    min-height: 330px;
+
+    padding: 38px;
+
+    border: 1px solid rgba(217,189,112,.45);
+
+    background: rgba(49,91,127,.28);
+}
+
+.address-text {
+    font-size: 23px;
+
+    line-height: 1.65;
+}
+
+.address-text small {
+    display: block;
+
+    margin-top: 12px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.map-box {
+    padding: 0;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.map-placeholder {
+    padding: 35px;
+}
+
+.map-box iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 330px;
+
+    border: 0;
 }
 
 
 /* =========================================================
    FOOTER
-========================================================= */
+   ========================================================= */
 
 footer {
+    background: var(--deep-blue);
+    color: var(--cream);
 
-    background:
-        var(--night);
+    border-top: 1px solid rgba(217,189,112,.3);
 
-    color:
-        rgba(243,234,213,.55);
+    padding: 32px 0;
 
-    padding:
-        35px clamp(20px,8vw,130px);
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    flex-wrap:
-        wrap;
-
-    gap:
-        15px;
-
-    font-size:
-        10px;
-
+    font-family: Arial, sans-serif;
+    font-size: 12px;
 }
 
+.footer-inner {
+    display: flex;
 
-footer strong {
+    justify-content: space-between;
+    align-items: center;
 
-    color:
-        var(--cream);
+    gap: 20px;
+}
 
-    font-family:
-        "Special Elite",
-        monospace;
+.footer-links {
+    display: flex;
 
-    letter-spacing:
-        .13em;
+    gap: 20px;
 
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--yellow);
 }
 
 
 /* =========================================================
-   SCROLL ANIMATION
-========================================================= */
+   BOOK / MENU
+   ========================================================= */
 
-.reveal {
+.modal {
+    position: fixed;
 
-    opacity:
-        0;
+    inset: 0;
 
-    transform:
-        translateY(45px);
+    z-index: 5000;
+
+    display: none;
+
+    background: rgba(32,63,93,.97);
+
+    overflow-y: auto;
+}
+
+.modal.open {
+    display: block;
+}
+
+.modal-close {
+    position: fixed;
+
+    right: 25px;
+    top: 18px;
+
+    z-index: 5100;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid var(--yellow);
+
+    background: var(--red);
+    color: var(--cream);
+
+    font-size: 25px;
+}
+
+.modal-inner {
+    width: min(950px, 94%);
+
+    margin: 50px auto 70px;
+}
+
+.book {
+    position: relative;
+
+    min-height: 580px;
+
+    perspective: 1800px;
+
+    border: 9px solid var(--deep-blue);
+
+    background: #d4c3ae;
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,.35);
+}
+
+.book-page {
+    min-height: 562px;
+
+    padding: 55px 60px;
+
+    background: var(--cream);
+
+    transform-origin: left center;
+
+    backface-visibility: hidden;
 
     transition:
-        1s var(--ease);
-
+        transform .65s cubic-bezier(.2,.7,.2,1);
 }
 
+.book-page.turning {
+    transform: rotateY(-17deg);
+}
 
-.reveal.visible {
+.book-cover {
+    display: grid;
 
-    opacity:
-        1;
+    place-items: center;
 
-    transform:
-        translateY(0);
+    text-align: center;
 
+    background: var(--deep-blue);
+    color: var(--cream);
+}
+
+.book-cover h2 {
+    color: var(--yellow);
+
+    font-size: clamp(44px,7vw,70px);
+}
+
+.book-cover .book-small {
+    font-family: Arial, sans-serif;
+
+    letter-spacing: .25em;
+
+    font-size: 12px;
+}
+
+.menu-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 28px;
+}
+
+.menu-category h3 {
+    margin: 0 0 12px;
+
+    color: var(--red);
+
+    font-size: 26px;
+
+    border-bottom: 1px solid var(--yellow);
+
+    padding-bottom: 8px;
+}
+
+.menu-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 9px 0;
+
+    border-bottom: 1px dashed rgba(32,63,93,.25);
+}
+
+.menu-item strong {
+    color: var(--deep-blue);
+
+    white-space: nowrap;
+}
+
+.book-controls {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+.book-controls button {
+    padding: 12px 20px;
+
+    border: 1px solid var(--yellow);
+
+    background: var(--red);
+    color: var(--cream);
 }
 
 
 /* =========================================================
-   RESPONSIVE
-========================================================= */
+   LEGAL
+   ========================================================= */
 
-@media(max-width: 900px) {
+.legal {
+    padding: 45px;
 
+    background: var(--cream);
+
+    line-height: 1.75;
+}
+
+.legal h2 {
+    font-size: 38px;
+}
+
+.legal h3 {
+    color: var(--red);
+}
+
+.legal-placeholder {
+    padding: 3px 6px;
+
+    background: rgba(217,189,112,.35);
+
+    border-bottom: 1px solid var(--red);
+}
+
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .header-inner {
+        flex-direction: column;
+
+        padding: 12px 0;
+    }
 
     .navigation {
+        width: 100%;
 
-        display:
-            none;
+        overflow-x: auto;
 
-        position:
-            absolute;
+        justify-content: flex-start;
 
-        top:
-            82px;
-
-        left:
-            0;
-
-        right:
-            0;
-
-        padding:
-            20px;
-
-        background:
-            var(--night);
-
-        flex-direction:
-            column;
-
-        align-items:
-            flex-start;
-
+        gap: 18px;
     }
 
+    .navigation a {
+        padding: 5px 0 8px;
 
-    .navigation.open {
-
-        display:
-            flex;
-
+        white-space: nowrap;
     }
 
-
-    .mobile-toggle {
-
-        display:
-            block;
-
+    .two-columns,
+    .events-layout,
+    .location-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    .hero-logo {
-
-        width:
-            350px;
-
-        right:
-            -80px;
-
-        opacity:
-            .35;
-
+    .feature-grid {
+        grid-template-columns: 1fr;
     }
 
+    .offer {
+        flex-direction: column;
 
-    .about-grid,
-    .wood-content {
-
-        grid-template-columns:
-            1fr;
-
+        align-items: flex-start;
     }
 
-
-    .location {
-
-        grid-template-columns:
-            1fr;
-
+    .menu-grid {
+        grid-template-columns: 1fr;
     }
 
-
-    .location-info {
-
-        min-height:
-            500px;
-
+    .book-page {
+        padding: 35px 25px;
     }
 
+    .footer-inner {
+        flex-direction: column;
 
-    .fake-map {
-
-        min-height:
-            400px;
-
+        align-items: flex-start;
     }
-
-
 }
 
+@media (max-width: 500px) {
 
-@media(max-width: 700px) {
-
-
-    .hero-logo {
-
-        width:
-            290px;
-
-        right:
-            -80px;
-
-        top:
-            42%;
-
+    .hero {
+        min-height: 600px;
     }
 
-
-    .hero-content {
-
-        padding:
-            120px 25px 130px;
-
+    .logo img {
+        width: 160px;
     }
 
-
-    .hero-description {
-
-        font-size:
-            15px;
-
+    .event {
+        grid-template-columns: 70px 1fr;
     }
 
-
-    .nautical-cards {
-
-        grid-template-columns:
-            1fr;
-
+    .address-box,
+    .map-box {
+        padding: 25px;
     }
 
-
-    /* BOOK */
-
-    .book {
-
-        height:
-            75vh;
-
-        width:
-            94vw;
-
+    .legal {
+        padding: 28px 22px;
     }
-
-
-    .book-pages {
-
-        grid-template-columns:
-            1fr;
-
-    }
-
-
-    .page-right {
-
-        display:
-            none;
-
-    }
-
-
-    .page {
-
-        padding:
-            35px 25px;
-
-    }
-
-
-    .book-navigation {
-
-        bottom:
-            -60px;
-
-    }
-
-
 }
 
+@media (prefers-reduced-motion: reduce) {
 
-@media(max-width: 480px) {
-
-
-    .brand-text span {
-
-        display:
-            none;
-
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
     }
-
-
-    .brand img {
-
-        width:
-            43px;
-
-        height:
-            43px;
-
-    }
-
-
-    .hero h1 {
-
-        font-size:
-            51px;
-
-    }
-
-
-    .hero-actions {
-
-        flex-direction:
-            column;
-
-    }
-
-
-    .button {
-
-        width:
-            100%;
-
-    }
-
-
-    .book-cover-content img {
-
-        width:
-            130px;
-
-        height:
-            130px;
-
-    }
-
-
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<!-- =========================================================
+<!-- ======================================================
      HEADER
-========================================================= -->
+     ====================================================== -->
 
-<header class="header" id="header">
+<header class="site-header">
 
+    <div class="header-inner">
 
-    <a href="#start" class="brand">
-
-        <img
-            src="/pic/logo.png"
-            alt="Leuchtfeuer Elsfleth Logo"
-        >
-
-        <div class="brand-text">
-
-            <strong>
-                LEUCHTFEUER
-            </strong>
-
-            <span>
-                ELSFLETH · KLAR ZUM ANHEUERN
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <nav class="navigation" id="navigation">
-
-        <a href="#ueber-uns">
-            Die Leuchte
+        <a class="logo" href="#start">
+            <img
+                src="/pic/logo.png"
+                alt="Leuchtfeuer Elsfleth"
+            >
         </a>
 
-        <a href="#abend">
-            Die Kneipe
-        </a>
+        <nav class="navigation">
 
-        <a href="#menu">
-            Menükarte
-        </a>
+            <a href="#start">
+                Startseite
+            </a>
 
-        <a href="#anfahrt">
-            Ankerplatz
-        </a>
+            <a href="#ueber-uns">
+                Über uns
+            </a>
 
-        <a
-            class="menu-button"
-            href="https://www.facebook.com/LeuchtfeuerElsfleth/"
-            target="_blank"
-        >
-            Facebook ↗
-        </a>
+            <a href="#speisekarte"
+               onclick="openMenu(event)">
+                Speisekarte
+            </a>
 
-    </nav>
+            <a href="#events">
+                Veranstaltungen
+            </a>
 
+            <a href="#angebot">
+                Angebote
+            </a>
 
-    <button
-        class="mobile-toggle"
-        id="mobileToggle"
-        aria-label="Menü öffnen"
-    >
-        ☰
-    </button>
+            <a href="#kontakt">
+                Kontakt
+            </a>
 
+        </nav>
+
+    </div>
 
 </header>
 
 
 
-<!-- =========================================================
+<!-- ======================================================
      HERO
-========================================================= -->
+     ====================================================== -->
 
-<main id="start">
-
-
-<section class="hero">
-
-
-    <div
-        class="stars"
-        id="stars"
-    ></div>
-
-
-    <div class="beam"></div>
-
+<section class="hero" id="start">
 
     <div class="hero-content">
 
+        <img
+            class="hero-logo"
+            src="/pic/logo.png"
+            alt="Leuchtfeuer Seemannskneipe"
+        >
 
-        <div class="hero-copy">
+        <div class="hero-kicker">
+            Tradition · Gemütlichkeit · Nordsee im Herzen
+        </div>
+
+        <h1>
+            Willkommen an Bord.
+        </h1>
+
+        <p>
+            Eine echte Seemannskneipe im Herzen von Elsfleth –
+            für gute Drinks, ehrliches Essen und maritime Abende.
+        </p>
+
+        <a
+            class="button"
+            href="#ueber-uns"
+        >
+            Jetzt entdecken
+        </a>
+
+    </div>
+
+</section>
 
 
-            <div class="kicker">
 
-                ⚓ MÜHLENSTRASSE · ELSFLETH
+<!-- ======================================================
+     ÜBER UNS
+     ====================================================== -->
 
+<section class="section" id="ueber-uns">
+
+    <div class="container two-columns reveal">
+
+        <div>
+
+            <div class="eyebrow">
+                Willkommen im Leuchtfeuer
             </div>
 
+            <h2>
+                Ein Stück Elsfleth.
+                Ein Stück Seefahrt.
+            </h2>
 
-            <h1>
-
-                Leinen los.
-
-                <span>
-                    Feierabend an.
-                </span>
-
-            </h1>
-
-
-            <p class="hero-description">
-
-                Eine alte Seefahrtskneipe.
-                Eine neue Crew.
-                Und ein guter Grund,
-                heute Abend noch an Bord zu kommen.
-
+            <p class="lead">
+                Das Leuchtfeuer steht für maritime Atmosphäre,
+                norddeutsche Gemütlichkeit und gesellige Abende.
+                Ob Seeleute, Studierende, Landratten oder
+                einfach Menschen, die einen guten Abend verbringen
+                möchten – hier ist jeder willkommen.
             </p>
 
-
-            <div class="hero-actions">
-
-
-                <a
-                    href="#menu"
-                    class="button button-yellow"
-                >
-                    🍺 Menükarte öffnen
-                </a>
-
-
-                <a
-                    href="#anfahrt"
-                    class="button button-outline"
-                >
-                    ⚓ Ankerplatz finden
-                </a>
-
-
+            <div class="signature">
+                „Moin & herzlich willkommen!“
             </div>
-
 
         </div>
 
 
-        <!-- LOGO -->
+        <div class="marine-picture">
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     FEATURES
+     ====================================================== -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="eyebrow">
+            Das Leuchtfeuer
+        </div>
+
+        <h2>
+            Gute Abende gehören an Bord.
+        </h2>
+
+
+        <div class="feature-grid">
+
+            <article class="feature reveal">
+
+                <h3>
+                    Gute Drinks
+                </h3>
+
+                <p>
+                    Bier, Longdrinks, alkoholfreie Klassiker
+                    und weitere Getränke aus unserer aktuellen Karte.
+                </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+                <h3>
+                    Gutes Essen
+                </h3>
+
+                <p>
+                    Herzhafte Küche und wechselnde Angebote
+                    für den kleinen oder großen Hunger.
+                </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+                <h3>
+                    Gute Abende
+                </h3>
+
+                <p>
+                    Veranstaltungen, Musik, Themenabende
+                    und besondere Aktionen.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     EVENTS
+     ====================================================== -->
+
+<section class="section" id="events">
+
+    <div class="container events-layout reveal">
+
+        <div>
+
+            <div class="eyebrow">
+                Aktuelle Veranstaltungen
+            </div>
+
+            <h2>
+                Was ist los?
+            </h2>
+
+            <p class="lead">
+                Hier erscheinen die Veranstaltungen,
+                die im Admin-Bereich veröffentlicht wurden.
+            </p>
+
+            <button
+                class="button"
+                onclick="window.location.href='/admin/'"
+            >
+                Veranstaltungen verwalten
+            </button>
+
+        </div>
+
 
         <div
-            class="hero-logo"
-            id="heroLogo"
+            class="events-list"
+            id="eventsList"
         >
-
-            <img
-                src="/pic/logo.png"
-                alt="Leuchtfeuer Elsfleth"
-            >
-
         </div>
 
-
     </div>
-
-
-    <!-- OCEAN -->
-
-    <div class="ocean">
-
-        <div class="wave"></div>
-
-        <div class="wave"></div>
-
-        <div class="wave"></div>
-
-    </div>
-
 
 </section>
 
 
 
-<!-- =========================================================
-     SIGNAL
-========================================================= -->
+<!-- ======================================================
+     LEUCHTTURM
+     ====================================================== -->
 
-<div class="signal">
+<section class="section lighthouse-section">
 
-    <strong>
-        Institut für Bierologie &amp; Hektoliteratur
-    </strong>
+    <div class="container reveal">
 
-</div>
+        <div style="text-align:center">
 
+            <div class="eyebrow">
+                Unser Leuchtfeuer
+            </div>
 
-
-<!-- =========================================================
-     ABOUT
-========================================================= -->
-
-<section
-    class="section about"
-    id="ueber-uns"
->
-
-
-    <div class="section-label reveal">
-
-        01 · DAS LOGBUCH
-
-    </div>
-
-
-    <div class="about-grid">
-
-
-        <div class="reveal">
-
-            <h2 class="section-title">
-
-                Alte Seele.<br>
-
-                <em>Neuer Kurs.</em>
-
+            <h2>
+                Immer den richtigen Kurs.
             </h2>
 
         </div>
 
 
-        <div class="about-text reveal">
+        <div class="lighthouse-wrap">
 
-            <p>
+            <svg
+                class="lighthouse"
+                viewBox="0 0 240 360"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="Leuchtturm"
+            >
 
-                Das Leuchtfeuer ist keine Bar,
-                die gestern aus einem Baukasten
-                gefallen ist.
+                <!-- Lichtstrahlen -->
 
-            </p>
+                <g
+                    class="lighthouse-light"
+                    fill="var(--yellow)"
+                    opacity=".7"
+                >
+
+                    <path
+                        d="
+                            M108 45
+                            L30 28
+                            L30 38
+                            L108 53
+                            Z
+                        "
+                    />
+
+                    <path
+                        d="
+                            M132 45
+                            L210 28
+                            L210 38
+                            L132 53
+                            Z
+                        "
+                    />
+
+                </g>
 
 
-            <p>
+                <!-- Leuchtturm-Kopf -->
 
-                Hier trifft maritime Geschichte
-                auf neue Ideen. Direkt gegenüber
-                der Jade Hochschule für Seefahrt
-                ist die „Leuchte“ seit Jahren
-                ein Treffpunkt für Studierende,
-                Seebären und Elsflether.
+                <rect
+                    x="101"
+                    y="29"
+                    width="38"
+                    height="14"
+                    fill="var(--deep-blue)"
+                />
 
-            </p>
+                <!-- Dach -->
+
+                <path
+                    d="
+                        M96 29
+                        L144 29
+                        L120 12
+                        Z
+                    "
+                    fill="var(--blue)"
+                />
+
+                <!-- Laternenhaus -->
+
+                <rect
+                    x="103"
+                    y="43"
+                    width="34"
+                    height="27"
+                    rx="2"
+                    fill="var(--cream)"
+                    stroke="var(--deep-blue)"
+                    stroke-width="3"
+                />
+
+                <!-- ZENTRIERTES LICHT -->
+
+                <circle
+                    class="lighthouse-light"
+                    cx="120"
+                    cy="56"
+                    r="7"
+                    fill="var(--yellow)"
+                />
+
+                <circle
+                    class="lighthouse-light"
+                    cx="120"
+                    cy="56"
+                    r="3"
+                    fill="var(--cream)"
+                />
 
 
-            <p>
+                <!-- Balkon -->
 
-                Die neue Crew bringt frischen Wind.
-                Der Charakter der alten Kneipe
-                bleibt dabei an Bord.
+                <rect
+                    x="91"
+                    y="70"
+                    width="58"
+                    height="7"
+                    fill="var(--deep-blue)"
+                />
 
-            </p>
+
+                <!-- Turm -->
+
+                <path
+                    d="
+                        M101 77
+                        L139 77
+                        L150 285
+                        L90 285
+                        Z
+                    "
+                    fill="var(--cream)"
+                    stroke="var(--deep-blue)"
+                    stroke-width="4"
+                />
+
+
+                <!-- Rote Streifen -->
+
+                <path
+                    d="
+                        M96 130
+                        L144 130
+                        L145 151
+                        L95 151
+                        Z
+                    "
+                    fill="var(--red)"
+                />
+
+                <path
+                    d="
+                        M94 188
+                        L146 188
+                        L147 209
+                        L93 209
+                        Z
+                    "
+                    fill="var(--red)"
+                />
+
+                <path
+                    d="
+                        M91 246
+                        L149 246
+                        L150 267
+                        L90 267
+                        Z
+                    "
+                    fill="var(--red)"
+                />
+
+
+                <!-- Fenster -->
+
+                <rect
+                    x="112"
+                    y="100"
+                    width="16"
+                    height="27"
+                    rx="5"
+                    fill="var(--blue)"
+                />
+
+                <rect
+                    x="112"
+                    y="158"
+                    width="16"
+                    height="27"
+                    rx="5"
+                    fill="var(--blue)"
+                />
+
+
+                <!-- Tür -->
+
+                <path
+                    d="
+                        M109 285
+                        L109 260
+                        Q120 247 131 260
+                        L131 285
+                        Z
+                    "
+                    fill="var(--blue)"
+                />
+
+
+                <!-- Fundament -->
+
+                <path
+                    d="
+                        M72 285
+                        L168 285
+                        L182 303
+                        L58 303
+                        Z
+                    "
+                    fill="var(--deep-blue)"
+                />
+
+
+                <!-- Wellen -->
+
+                <path
+                    d="
+                        M40 320
+                        Q65 302 90 320
+                        T140 320
+                        T190 320
+                        T240 320
+                    "
+                    fill="none"
+                    stroke="var(--blue)"
+                    stroke-width="5"
+                />
+
+                <path
+                    d="
+                        M25 338
+                        Q50 320 75 338
+                        T125 338
+                        T175 338
+                        T225 338
+                    "
+                    fill="none"
+                    stroke="var(--yellow)"
+                    stroke-width="4"
+                />
+
+            </svg>
 
         </div>
 
-
     </div>
-
-
-    <div
-        class="sign-board reveal"
-        style="margin-top:80px;max-width:850px;margin-left:auto;margin-right:auto;"
-    >
-
-        <img
-            src="/pic/logo.png"
-            alt="Leuchtfeuer Logo"
-        >
-
-    </div>
-
 
 </section>
 
 
 
-<!-- =========================================================
-     KNEIPE
-========================================================= -->
+<!-- ======================================================
+     KOMPASS
+     ====================================================== -->
+
+<section class="section compass-section">
+
+    <div class="container reveal">
+
+        <div class="eyebrow">
+            Auf Kurs bleiben
+        </div>
+
+        <h2>
+            Unser Kompass.
+        </h2>
+
+        <p class="lead">
+            Für alle, die wissen, dass ein guter Abend
+            manchmal genau die richtige Richtung braucht.
+        </p>
+
+
+        <div class="compass">
+
+            <div class="compass-inner-ring"></div>
+
+            <div class="compass-ticks"></div>
+
+
+            <!-- Gradangaben außerhalb -->
+
+            <span class="degree d0">0°</span>
+            <span class="degree d30">30°</span>
+            <span class="degree d60">60°</span>
+            <span class="degree d90">90°</span>
+            <span class="degree d120">120°</span>
+            <span class="degree d150">150°</span>
+            <span class="degree d180">180°</span>
+            <span class="degree d210">210°</span>
+            <span class="degree d240">240°</span>
+            <span class="degree d270">270°</span>
+            <span class="degree d300">300°</span>
+            <span class="degree d330">330°</span>
+
+
+            <!-- Himmelsrichtungen -->
+
+            <span class="compass-direction direction-n">
+                N
+            </span>
+
+            <span class="compass-direction direction-e">
+                E
+            </span>
+
+            <span class="compass-direction direction-s">
+                S
+            </span>
+
+            <span class="compass-direction direction-w">
+                W
+            </span>
+
+
+            <div class="compass-needle"></div>
+
+            <div class="compass-center"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     ANGEBOT
+     ====================================================== -->
 
 <section
-    class="section wood-section"
-    id="abend"
+    class="section offer-section"
+    id="angebot"
 >
 
+    <div class="container">
 
-    <div class="wood-content">
+        <div class="offer reveal">
+
+            <div>
+
+                <h2>
+                    <span id="offerTitle">
+                        Sonderangebot
+                    </span>
+                </h2>
+
+                <p id="offerText">
+                    Aktuell ist kein Sonderangebot veröffentlicht.
+                </p>
+
+            </div>
 
 
-        <div class="wood-copy reveal">
+            <button
+                class="button"
+                onclick="openMenu()"
+            >
+                Karte öffnen
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     KONTAKT / ADRESSE / GOOGLE MAPS
+     ====================================================== -->
+
+<section
+    class="section location-section"
+    id="kontakt"
+>
+
+    <div class="container">
+
+        <div class="eyebrow" style="color:var(--yellow)">
+            So findest du uns
+        </div>
+
+        <h2>
+            Mitten in Elsfleth.
+        </h2>
+
+
+        <div class="location-grid">
+
+
+            <div class="address-box">
+
+                <div class="address-text">
+
+                    <strong>
+                        Leuchtfeuer Seemannskneipe
+                    </strong>
+
+                    <br>
+
+                    Mühlenstraße 75
+
+                    <br>
+
+                    26931 Elsfleth
+
+                    <small>
+                        Maritime Atmosphäre im Herzen von Elsfleth.
+                    </small>
+
+                </div>
+
+
+                <br>
+
+                <a
+                    class="button"
+                    href="https://maps.app.goo.gl/taHxQRXDgLNWMMoy6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Google Maps · Route öffnen
+                </a>
+
+            </div>
+
 
             <div
-                class="section-label"
-                style="color:#f3c51b"
+                class="map-box"
+                id="mapBox"
             >
-                02 · ABENDWACHE
+
+                <div class="map-placeholder">
+
+                    <h3>
+                        Google Maps
+                    </h3>
+
+                    <p>
+                        Die Karte wird erst geladen,
+                        wenn du sie aktiv öffnest.
+                    </p>
+
+                    <button
+                        class="button"
+                        onclick="loadGoogleMap()"
+                    >
+                        Karte laden
+                    </button>
+
+                </div>
+
             </div>
-
-
-            <h2 class="section-title">
-
-                Wenn der Tag<br>
-
-                <em style="color:#f3c51b">
-                    Feierabend macht.
-                </em>
-
-            </h2>
-
-
-            <p>
-
-                Kein Dresscode.
-                Keine Förmlichkeiten.
-                Einfach durch die Tür,
-                Platz suchen und schauen,
-                wer heute noch an Bord ist.
-
-            </p>
 
         </div>
-
-
-        <div class="nautical-cards reveal">
-
-
-            <div class="nautical-card">
-
-                <div class="icon">
-                    ⚓
-                </div>
-
-                <strong>
-                    Die Stammcrew
-                </strong>
-
-                <span>
-                    Die, die immer da sind.
-                </span>
-
-            </div>
-
-
-            <div class="nautical-card">
-
-                <div class="icon">
-                    🧭
-                </div>
-
-                <strong>
-                    Neue Gesichter
-                </strong>
-
-                <span>
-                    Jeder kann anheuern.
-                </span>
-
-            </div>
-
-
-            <div class="nautical-card">
-
-                <div class="icon">
-                    🍺
-                </div>
-
-                <strong>
-                    Bierologie
-                </strong>
-
-                <span>
-                    Flüssige Navigation.
-                </span>
-
-            </div>
-
-
-            <div class="nautical-card">
-
-                <div class="icon">
-                    🌙
-                </div>
-
-                <strong>
-                    Nachtwache
-                </strong>
-
-                <span>
-                    Wenn aus einem Drink zwei werden.
-                </span>
-
-            </div>
-
-
-        </div>
-
 
     </div>
-
 
 </section>
 
 
 
-<!-- =========================================================
-     MENÜ
-========================================================= -->
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
 
-<section
-    class="section menu-section"
-    id="menu"
->
+<footer>
 
+    <div class="container footer-inner">
 
-    <div class="menu-intro reveal">
-
-
-        <div class="section-label">
-
-            03 · DAS BORDMENÜ
-
+        <div>
+            © <span id="year"></span>
+            Leuchtfeuer Seemannskneipe
         </div>
 
 
-        <h2 class="section-title">
-
-            Was kommt<br>
-
-            <em>an Bord?</em>
-
-        </h2>
-
-
-        <p>
-
-            Unsere Getränkekarte liegt nicht einfach
-            als PDF herum. Sie hat schließlich
-            eine Geschichte zu erzählen.
-
-        </p>
-
-
-    </div>
-
-
-    <button
-        class="book-trigger reveal"
-        id="openBook"
-    >
-
-        <small>
-            LEUCHTFEUER · ELSFLETH
-        </small>
-
-
-        <strong>
-            Die Menükarte
-        </strong>
-
-
-        <span>
-            Klicken zum Öffnen · Auf dem Handy wischen
-        </span>
-
-    </button>
-
-
-</section>
-
-
-
-<!-- =========================================================
-     ANKERPLATZ
-========================================================= -->
-
-<section
-    class="location"
-    id="anfahrt"
->
-
-
-    <div class="location-info">
-
-
-        <div class="section-label"
-             style="color:#f3c51b">
-
-            04 · ANKERPLATZ
-
-        </div>
-
-
-        <h2 class="section-title">
-
-            Hier geht's<br>
-
-            <em style="color:#f3c51b">
-                an Bord.
-            </em>
-
-        </h2>
-
-
-        <p class="address">
-
-            Mühlenstraße 75<br>
-            26931 Elsfleth
-
-        </p>
-
-
-        <p>
-
-            Direkt gegenüber vom
-            Fachbereich Seefahrt und Logistik
-            der Jade Hochschule.
-
-        </p>
-
-
-        <div style="margin-top:30px">
+        <div class="footer-links">
 
             <a
-                href="https://maps.app.goo.gl/taHxQRXDgLNWMMoy6"
-                target="_blank"
-                class="button button-yellow"
+                href="#impressum"
+                onclick="openLegal(event,'impressum')"
             >
-                Route öffnen ↗
+                Impressum
+            </a>
+
+            <a
+                href="#datenschutz"
+                onclick="openLegal(event,'datenschutz')"
+            >
+                Datenschutz
+            </a>
+
+            <a
+                href="https://www.facebook.com/LeuchtfeuerElsfleth/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Facebook
             </a>
 
         </div>
 
-
     </div>
-
-
-    <div class="fake-map">
-
-
-        <div class="map-roads"></div>
-
-
-        <div class="map-pin">
-
-            <span>
-                ⚓
-            </span>
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-    <strong>
-        LEUCHTFEUER · ELSFLETH
-    </strong>
-
-
-    <span>
-        Institut für Bierologie &amp; Hektoliteratur
-    </span>
-
-
-    <span>
-        © <span id="year"></span>
-    </span>
 
 </footer>
 
 
-</main>
 
-
-
-<!-- =========================================================
-     MENÜBUCH / MODAL
-========================================================= -->
+<!-- ======================================================
+     GETRÄNKE-/SPEISEKARTE ALS BUCH
+     ====================================================== -->
 
 <div
-    class="book-overlay"
-    id="bookOverlay"
+    class="modal"
+    id="menuModal"
 >
 
-
     <button
-        class="book-close"
-        id="closeBook"
-        aria-label="Menükarte schließen"
+        class="modal-close"
+        onclick="closeModal('menuModal')"
+        aria-label="Schließen"
     >
         ×
     </button>
 
 
-    <div
-        class="book"
-        id="book"
-    >
+    <div class="modal-inner">
 
+        <div class="book">
 
-        <!-- COVER -->
-
-        <div
-            class="book-cover"
-            id="bookCover"
-        >
-
-
-            <div class="book-cover-content">
-
-
-                <img
-                    src="/pic/logo.png"
-                    alt="Leuchtfeuer Logo"
-                >
-
-
-                <h3>
-                    Bordkarte
-                </h3>
-
-
-                <p>
-                    INSTITUT FÜR BIERologie
-                </p>
-
-
-                <p style="margin-top:25px;color:#f3ead5">
-
-                    Zum Öffnen anklicken
-
-                </p>
-
-
+            <div
+                class="book-page book-cover"
+                id="bookPage"
+            >
             </div>
 
-
         </div>
 
 
+        <div class="book-controls">
 
-        <!-- PAGES -->
-
-        <div class="book-pages">
-
-
-            <!-- =================================================
-                 LINKER TEIL
-            ================================================== -->
-
-            <article
-                class="page page-left"
-                id="pageLeft"
-            >
-
-
-                <div class="page-header">
-                    LEUCHTFEUER · BORDMENÜ
-                </div>
-
-
-                <h3>
-
-                    Vom Fass &amp;<br>
-
-                    <em>aus der Flasche.</em>
-
-                </h3>
-
-
-                <div class="drink-list">
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Bier vom Fass
-                            </span>
-
-                            <span class="drink-description">
-                                Frisch gezapft · 0,3 l
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            3,80 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Bier vom Fass
-                            </span>
-
-                            <span class="drink-description">
-                                Frisch gezapft · 0,5 l
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            5,20 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Pils
-                            </span>
-
-                            <span class="drink-description">
-                                Klassischer Kurs · 0,33 l
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            3,60 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Weizen
-                            </span>
-
-                            <span class="drink-description">
-                                Hefe · 0,5 l
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            5,00 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Alkoholfrei
-                            </span>
-
-                            <span class="drink-description">
-                                Für die nächste Wache
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            3,80 €
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
-                <span class="page-number">
-                    — 01 —
-                </span>
-
-
-            </article>
-
-
-
-            <!-- =================================================
-                 RECHTER TEIL
-            ================================================== -->
-
-            <article
-                class="page page-right"
-                id="pageRight"
-            >
-
-
-                <div class="page-header">
-                    LEUCHTFEUER · BORDMENÜ
-                </div>
-
-
-                <h3>
-
-                    Longdrinks &amp;<br>
-
-                    <em>Kurze Kurse.</em>
-
-                </h3>
-
-
-                <div class="drink-list">
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Gin Tonic
-                            </span>
-
-                            <span class="drink-description">
-                                Gin · Tonic · Zitrone
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            8,50 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Cuba Libre
-                            </span>
-
-                            <span class="drink-description">
-                                Rum · Cola · Limette
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            8,50 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Whisky Cola
-                            </span>
-
-                            <span class="drink-description">
-                                Whisky · Cola
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            8,50 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Rum
-                            </span>
-
-                            <span class="drink-description">
-                                Verschiedene Sorten
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            ab 3,50 €
-                        </span>
-
-                    </div>
-
-
-                    <div class="drink">
-
-                        <div>
-
-                            <span class="drink-name">
-                                Kurzer Kurs
-                            </span>
-
-                            <span class="drink-description">
-                                Frag die Crew
-                            </span>
-
-                        </div>
-
-                        <span class="price">
-                            ab 2,50 €
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
-                <span class="page-number">
-                    — 02 —
-                </span>
-
-
-            </article>
-
-
-        </div>
-
-
-
-        <!-- NAVIGATION -->
-
-        <div class="book-navigation">
-
-
-            <button
-                id="previousPage"
-                aria-label="Vorherige Seite"
-            >
-                ←
+            <button onclick="previousMenuPage()">
+                ← Zurück
             </button>
 
-
-            <span
-                class="book-page-count"
-                id="pageCount"
-            >
-                SEITE 01 / 02
-            </span>
-
-
-            <button
-                id="nextPage"
-                aria-label="Nächste Seite"
-            >
-                →
+            <button onclick="nextMenuPage()">
+                Weiter →
             </button>
-
 
         </div>
 
+    </div>
+
+</div>
+
+
+
+<!-- ======================================================
+     LEGAL MODAL
+     ====================================================== -->
+
+<div
+    class="modal"
+    id="legalModal"
+>
+
+    <button
+        class="modal-close"
+        onclick="closeModal('legalModal')"
+    >
+        ×
+    </button>
+
+
+    <div class="modal-inner">
+
+        <div
+            class="legal"
+            id="legalContent"
+        >
+        </div>
 
     </div>
 
@@ -3927,531 +2072,996 @@ footer strong {
 <script>
 
 /* =========================================================
-   HEADER
-========================================================= */
+   DATEN
+   ========================================================= */
 
-const header =
-    document.getElementById("header");
+const DEFAULT_DATA = {
+
+    events: [
+
+        {
+            date: "2026-09-26",
+            startTime: "20:00",
+            endDate: "2026-09-26",
+            endTime: "23:59",
+            title: "Live-Musik",
+            description:
+                "Maritimer Abend mit guter Stimmung und kühlen Getränken.",
+            published: true
+        },
+
+        {
+            date: "2026-10-02",
+            startTime: "18:00",
+            endDate: "2026-10-02",
+            endTime: "23:59",
+            title: "Themenabend",
+            description:
+                "Herzhafte Klassiker und gemütlicher Abend im Leuchtfeuer.",
+            published: true
+        },
+
+        {
+            date: "2026-10-10",
+            startTime: "19:00",
+            endDate: "2026-10-11",
+            endTime: "01:00",
+            title: "Tanzabend",
+            description:
+                "Feiern, tanzen, genießen – bei uns an der Weser.",
+            published: true
+        }
+
+    ],
 
 
-window.addEventListener(
-    "scroll",
-    () => {
+    offer: {
 
-        if(window.scrollY > 50) {
+        active: true,
 
-            header.classList.add("scrolled");
+        title: "Sonderangebot",
 
-        } else {
+        text:
+            "Hier kann jederzeit ein aktuelles Angebot veröffentlicht werden."
 
-            header.classList.remove("scrolled");
+    },
+
+
+    menu: [
+
+        {
+            category: "Bier",
+
+            items: [
+
+                ["Pils 0,3 l", "3,20 €"],
+                ["Helles 0,3 l", "3,20 €"],
+                ["Weizen 0,5 l", "4,90 €"],
+                ["Alster 0,3 l", "3,20 €"]
+
+            ]
+        },
+
+
+        {
+            category: "Alkoholfrei",
+
+            items: [
+
+                ["Wasser 0,25 l", "2,80 €"],
+                ["Cola / Fanta 0,3 l", "3,00 €"],
+                ["Alkoholfreies Bier 0,33 l", "3,20 €"]
+
+            ]
+        },
+
+
+        {
+            category: "Longdrinks",
+
+            items: [
+
+                ["Gin Tonic", "7,50 €"],
+                ["Rum Cola", "7,50 €"],
+                ["Vodka Lemon", "7,50 €"]
+
+            ]
+        },
+
+
+        {
+            category: "Kleine Kombüse",
+
+            items: [
+
+                ["Tagesangebot", "auf Anfrage"],
+                ["Snack des Tages", "auf Anfrage"]
+
+            ]
+        }
+
+    ]
+
+};
+
+
+/* =========================================================
+   STORAGE
+   ========================================================= */
+
+function getData() {
+
+    try {
+
+        const saved =
+            localStorage.getItem("leuchtfeuerData");
+
+        if (!saved) {
+
+            return structuredClone(DEFAULT_DATA);
 
         }
 
-    }
-);
+        return JSON.parse(saved);
 
+    } catch {
 
-/* =========================================================
-   MOBILE NAVIGATION
-========================================================= */
-
-const mobileToggle =
-    document.getElementById("mobileToggle");
-
-const navigation =
-    document.getElementById("navigation");
-
-
-mobileToggle.addEventListener(
-    "click",
-    () => {
-
-        navigation.classList.toggle("open");
+        return structuredClone(DEFAULT_DATA);
 
     }
-);
-
-
-navigation
-    .querySelectorAll("a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            () => {
-
-                navigation.classList.remove("open");
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================================
-   STARS
-========================================================= */
-
-const stars =
-    document.getElementById("stars");
-
-
-for(let i = 0; i < 110; i++) {
-
-    const star =
-        document.createElement("span");
-
-    star.className =
-        "star";
-
-    star.style.left =
-        Math.random() * 100 + "%";
-
-    star.style.top =
-        Math.random() * 80 + "%";
-
-    star.style.setProperty(
-        "--duration",
-        (2 + Math.random() * 5) + "s"
-    );
-
-    star.style.animationDelay =
-        Math.random() * 5 + "s";
-
-    stars.appendChild(star);
 
 }
 
 
+function saveData(data) {
 
-/* =========================================================
-   HERO PARALLAX
-========================================================= */
-
-const heroLogo =
-    document.getElementById("heroLogo");
-
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        if(window.innerWidth < 900)
-            return;
-
-
-        const x =
-            (event.clientX /
-            window.innerWidth - .5);
-
-
-        const y =
-            (event.clientY /
-            window.innerHeight - .5);
-
-
-        heroLogo.style.marginLeft =
-            `${x * 15}px`;
-
-        heroLogo.style.marginTop =
-            `${y * 15}px`;
-
-    }
-);
-
-
-
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
-
-
-const observer =
-    new IntersectionObserver(
-
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if(entry.isIntersecting) {
-
-                        entry.target
-                            .classList
-                            .add("visible");
-
-                    }
-
-                }
-            );
-
-        },
-
-        {
-            threshold:
-                .12
-        }
-
+    localStorage.setItem(
+        "leuchtfeuerData",
+        JSON.stringify(data)
     );
 
+}
 
-revealElements.forEach(
-    element =>
-        observer.observe(element)
-);
 
+/* =========================================================
+   ESCAPING
+   ========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+function renderEvents() {
+
+    const data = getData();
+
+    const container =
+        document.getElementById("eventsList");
+
+
+    const now = new Date();
+
+
+    const events = data.events
+
+        .filter(event => event.published)
+
+        .filter(event => {
+
+            if (!event.endDate) {
+                return true;
+            }
+
+            const end =
+                new Date(
+                    `${event.endDate}T${event.endTime || "23:59"}`
+                );
+
+            return end >= now;
+
+        })
+
+        .sort(
+            (a,b) =>
+                new Date(`${a.date}T${a.startTime || "00:00"}`)
+                -
+                new Date(`${b.date}T${b.startTime || "00:00"}`)
+        )
+
+        .slice(0,4);
+
+
+    if (!events.length) {
+
+        container.innerHTML =
+            `<p>Noch keine veröffentlichten Veranstaltungen.</p>`;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        events.map(event => {
+
+            const date =
+                new Date(
+                    `${event.date}T12:00:00`
+                );
+
+            return `
+
+                <article class="event">
+
+                    <div class="event-date">
+
+                        <strong>
+                            ${date.getDate()}
+                        </strong>
+
+                        <span>
+                            ${date.toLocaleDateString(
+                                "de-DE",
+                                {month:"short"}
+                            )}
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+                            ${escapeHTML(event.title)}
+                        </h3>
+
+                        <div class="event-time">
+
+                            ${escapeHTML(
+                                event.startTime || ""
+                            )}
+
+                            ${
+                                event.endTime
+                                ? " Uhr"
+                                : ""
+                            }
+
+                        </div>
+
+                        <p>
+                            ${escapeHTML(
+                                event.description
+                            )}
+                        </p>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =========================================================
+   OFFER
+   ========================================================= */
+
+function renderOffer() {
+
+    const data = getData();
+
+    const title =
+        document.getElementById("offerTitle");
+
+    const text =
+        document.getElementById("offerText");
+
+
+    if (!data.offer.active) {
+
+        title.textContent =
+            "Aktuell kein Sonderangebot";
+
+        text.textContent =
+            "Schau gerne später wieder vorbei.";
+
+        return;
+
+    }
+
+
+    title.textContent =
+        data.offer.title || "Sonderangebot";
+
+    text.textContent =
+        data.offer.text || "";
+
+}
 
 
 /* =========================================================
    MENU BOOK
-========================================================= */
+   ========================================================= */
 
-const overlay =
-    document.getElementById("bookOverlay");
-
-const book =
-    document.getElementById("book");
-
-const openBook =
-    document.getElementById("openBook");
-
-const closeBook =
-    document.getElementById("closeBook");
-
-const bookCover =
-    document.getElementById("bookCover");
-
-const nextPage =
-    document.getElementById("nextPage");
-
-const previousPage =
-    document.getElementById("previousPage");
-
-const pageCount =
-    document.getElementById("pageCount");
-
-const pageLeft =
-    document.getElementById("pageLeft");
-
-const pageRight =
-    document.getElementById("pageRight");
-
-
-/* OPEN */
-
-openBook.addEventListener(
-    "click",
-    () => {
-
-        overlay.classList.add("open");
-
-        document.body.classList.add("no-scroll");
-
-        setTimeout(
-            () => {
-
-                book.classList.add("opened");
-
-            },
-            250
-        );
-
-    }
-);
-
-
-/* COVER CLICK */
-
-bookCover.addEventListener(
-    "click",
-    () => {
-
-        book.classList.add("opened");
-
-    }
-);
-
-
-/* CLOSE */
-
-function closeMenuBook() {
-
-    book.classList.remove("opened");
-
-    setTimeout(
-        () => {
-
-            overlay.classList.remove("open");
-
-            document.body
-                .classList
-                .remove("no-scroll");
-
-        },
-        700
-    );
-
-}
-
-
-closeBook.addEventListener(
-    "click",
-    closeMenuBook
-);
-
-
-/* click outside */
-
-overlay.addEventListener(
-    "click",
-    event => {
-
-        if(event.target === overlay) {
-
-            closeMenuBook();
-
-        }
-
-    }
-);
-
-
-/* ESC */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key === "Escape" &&
-            overlay.classList.contains("open")
-        ) {
-
-            closeMenuBook();
-
-        }
-
-    }
-);
-
-
-
-/* =========================================================
-   BOOK PAGE TURN
-========================================================= */
-
-let currentPage = 1;
-
-
-/*
-    Aktuell haben wir zwei Seiten.
-    Später kannst du hier problemlos
-    weitere Seiten hinzufügen.
-*/
-
-
-function updatePage() {
-
-    pageCount.textContent =
-        `SEITE 0${currentPage} / 02`;
-
-
-    if(window.innerWidth <= 700) {
-
-        if(currentPage === 1) {
-
-            pageLeft.style.display =
-                "block";
-
-            pageRight.style.display =
-                "none";
-
-        } else {
-
-            pageLeft.style.display =
-                "none";
-
-            pageRight.style.display =
-                "block";
-
-        }
-
-    }
-
-}
-
-
-/* NEXT */
-
-nextPage.addEventListener(
-    "click",
-    () => {
-
-        if(currentPage >= 2)
-            return;
-
-
-        currentPage++;
-
-
-        pageRight.classList.remove(
-            "page-turn-right"
-        );
-
-
-        void pageRight.offsetWidth;
-
-
-        pageRight.classList.add(
-            "page-turn-right"
-        );
-
-
-        updatePage();
-
-    }
-);
-
-
-/* PREVIOUS */
-
-previousPage.addEventListener(
-    "click",
-    () => {
-
-        if(currentPage <= 1)
-            return;
-
-
-        currentPage--;
-
-
-        pageLeft.classList.remove(
-            "page-turn-left"
-        );
-
-
-        void pageLeft.offsetWidth;
-
-
-        pageLeft.classList.add(
-            "page-turn-left"
-        );
-
-
-        updatePage();
-
-    }
-);
-
-
-
-/* =========================================================
-   SWIPE SUPPORT
-========================================================= */
+let menuPage = 0;
 
 let touchStartX = 0;
 
-let touchEndX = 0;
 
+function openMenu(event) {
 
-overlay.addEventListener(
-    "touchstart",
-    event => {
-
-        touchStartX =
-            event.changedTouches[0].screenX;
-
-    },
-    {
-        passive: true
+    if (event) {
+        event.preventDefault();
     }
-);
+
+    menuPage = 0;
+
+    document
+        .getElementById("menuModal")
+        .classList.add("open");
+
+    document.body.classList.add("locked");
+
+    renderMenuPage();
+
+}
 
 
-overlay.addEventListener(
-    "touchend",
-    event => {
+function renderMenuPage() {
 
-        touchEndX =
-            event.changedTouches[0].screenX;
+    const data = getData();
 
-
-        const distance =
-            touchEndX - touchStartX;
+    const page =
+        document.getElementById("bookPage");
 
 
-        if(Math.abs(distance) < 50)
-            return;
+    if (menuPage === 0) {
 
+        page.className =
+            "book-page book-cover";
 
-        if(distance < 0) {
+        page.innerHTML = `
 
-            nextPage.click();
+            <div>
 
-        } else {
+                <div class="book-small">
+                    LEUCHTFEUER ELSFLETH
+                </div>
 
-            previousPage.click();
+                <h2>
+                    Getränke<br>
+                    & Speisekarte
+                </h2>
 
-        }
+                <p>
+                    Blättere durch unsere Karte.
+                </p>
 
-    },
-    {
-        passive: true
+            </div>
+
+        `;
+
+        return;
+
     }
-);
 
+
+    const category =
+        data.menu[menuPage - 1];
+
+
+    if (!category) {
+
+        menuPage = 0;
+
+        renderMenuPage();
+
+        return;
+
+    }
+
+
+    page.className =
+        "book-page";
+
+
+    page.innerHTML = `
+
+        <div>
+
+            <div class="eyebrow">
+                ${escapeHTML(category.category)}
+            </div>
+
+            <h2>
+                ${escapeHTML(category.category)}
+            </h2>
+
+
+            <div class="menu-grid">
+
+                <div class="menu-category">
+
+                    ${category.items.map(item => `
+
+                        <div class="menu-item">
+
+                            <span>
+                                ${escapeHTML(item[0])}
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(item[1])}
+                            </strong>
+
+                        </div>
+
+                    `).join("")}
+
+                </div>
+
+            </div>
+
+
+            <p style="
+                margin-top:35px;
+                font-style:italic;
+            ">
+                Unsere aktuelle Karte kann über den
+                Admin-Bereich angepasst werden.
+            </p>
+
+        </div>
+
+    `;
+
+
+    page.classList.add("turning");
+
+    setTimeout(() => {
+
+        page.classList.remove("turning");
+
+    }, 650);
+
+}
+
+
+function nextMenuPage() {
+
+    const data = getData();
+
+    menuPage++;
+
+    if (
+        menuPage >
+        data.menu.length
+    ) {
+
+        menuPage = 0;
+
+    }
+
+    renderMenuPage();
+
+}
+
+
+function previousMenuPage() {
+
+    const data = getData();
+
+    menuPage--;
+
+    if (menuPage < 0) {
+
+        menuPage =
+            data.menu.length;
+
+    }
+
+    renderMenuPage();
+
+}
 
 
 /* =========================================================
-   KEYBOARD PAGE TURN
-========================================================= */
+   SWIPE
+   ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    event => {
+document
+    .getElementById("menuModal")
+    .addEventListener(
+        "touchstart",
+        event => {
 
-        if(
-            !overlay.classList.contains("open")
-        )
-            return;
+            touchStartX =
+                event.changedTouches[0].screenX;
 
-
-        if(event.key === "ArrowRight") {
-
-            nextPage.click();
-
-        }
+        },
+        {passive:true}
+    );
 
 
-        if(event.key === "ArrowLeft") {
+document
+    .getElementById("menuModal")
+    .addEventListener(
+        "touchend",
+        event => {
 
-            previousPage.click();
+            const endX =
+                event.changedTouches[0].screenX;
 
-        }
+            const difference =
+                endX - touchStartX;
 
-    }
-);
 
+            if (Math.abs(difference) < 50) {
+                return;
+            }
+
+
+            if (difference < 0) {
+
+                nextMenuPage();
+
+            } else {
+
+                previousMenuPage();
+
+            }
+
+        },
+        {passive:true}
+    );
 
 
 /* =========================================================
-   YEAR
-========================================================= */
+   MODALS
+   ========================================================= */
+
+function closeModal(id) {
+
+    document
+        .getElementById(id)
+        .classList.remove("open");
+
+    document.body.classList.remove("locked");
+
+}
+
+
+/* =========================================================
+   LEGAL
+   ========================================================= */
+
+function openLegal(event, type) {
+
+    if (event) {
+        event.preventDefault();
+    }
+
+
+    const modal =
+        document.getElementById("legalModal");
+
+    const content =
+        document.getElementById("legalContent");
+
+
+    if (type === "impressum") {
+
+        content.innerHTML = `
+
+            <h2>
+                Impressum
+            </h2>
+
+
+            <h3>
+                Angaben gemäß § 5 DDG
+            </h3>
+
+
+            <p>
+
+                <strong>
+                    Betreiber:
+                </strong>
+
+                <span class="legal-placeholder">
+                    [Name/Firma des neuen Betreibers eintragen]
+                </span>
+
+                <br>
+
+                Mühlenstraße 75
+                <br>
+                26931 Elsfleth
+                <br>
+                Deutschland
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    Vertretungsberechtigte Person:
+                </strong>
+
+                <br>
+
+                <span class="legal-placeholder">
+                    [Vor- und Nachname eintragen]
+                </span>
+
+            </p>
+
+
+            <h3>
+                Kontakt
+            </h3>
+
+
+            <p>
+
+                Telefon:
+
+                <span class="legal-placeholder">
+                    [Telefonnummer eintragen]
+                </span>
+
+                <br>
+
+                E-Mail:
+
+                <span class="legal-placeholder">
+                    [E-Mail-Adresse eintragen]
+                </span>
+
+            </p>
+
+
+            <h3>
+                Verantwortlich für den Inhalt
+            </h3>
+
+
+            <p>
+
+                <span class="legal-placeholder">
+                    [Name und vollständige Anschrift
+                    des Verantwortlichen eintragen]
+                </span>
+
+            </p>
+
+
+            <h3>
+                Haftung für Inhalte
+            </h3>
+
+
+            <p>
+                Die Inhalte dieser Website werden mit
+                größtmöglicher Sorgfalt erstellt.
+                Für die Richtigkeit, Vollständigkeit und
+                Aktualität der Inhalte wird jedoch keine
+                Gewähr übernommen.
+            </p>
+
+
+            <h3>
+                Haftung für Links
+            </h3>
+
+
+            <p>
+                Diese Website enthält Links zu externen
+                Websites, insbesondere Google Maps und
+                Facebook. Auf deren Inhalte besteht kein
+                Einfluss. Für die Inhalte der verlinkten
+                Seiten ist stets der jeweilige Anbieter
+                verantwortlich.
+            </p>
+
+
+            <h3>
+                Urheberrecht
+            </h3>
+
+
+            <p>
+                Die auf dieser Website veröffentlichten
+                Inhalte, Texte, Bilder, Logos und Grafiken
+                sind urheberrechtlich geschützt, soweit
+                nicht anders gekennzeichnet.
+            </p>
+
+
+            <p>
+                Die markierten Betreiber- und Kontaktdaten
+                müssen vor der Veröffentlichung vollständig
+                ersetzt und geprüft werden.
+            </p>
+
+        `;
+
+    } else {
+
+        content.innerHTML = `
+
+            <h2>
+                Datenschutzerklärung
+            </h2>
+
+
+            <h3>
+                1. Verantwortlicher
+            </h3>
+
+
+            <p>
+
+                <span class="legal-placeholder">
+                    [Name/Firma, Anschrift und
+                    E-Mail-Adresse des Betreibers eintragen]
+                </span>
+
+            </p>
+
+
+            <h3>
+                2. Allgemeine Hinweise
+            </h3>
+
+
+            <p>
+                Wir verarbeiten personenbezogene Daten nur
+                soweit dies zur Bereitstellung dieser Website,
+                zur Kommunikation oder aufgrund gesetzlicher
+                Verpflichtungen erforderlich ist.
+            </p>
+
+
+            <h3>
+                3. Hosting und Server-Logdaten
+            </h3>
+
+
+            <p>
+                Beim Aufruf dieser Website können technisch
+                notwendige Daten wie IP-Adresse, Zeitpunkt
+                des Zugriffs, angeforderte Ressourcen und
+                technische Browserinformationen verarbeitet
+                werden. Die konkreten Angaben hängen vom
+                tatsächlich verwendeten Hostinganbieter ab
+                und müssen vor Veröffentlichung entsprechend
+                ergänzt werden.
+            </p>
+
+
+            <h3>
+                4. Google Maps
+            </h3>
+
+
+            <p>
+                Die Google-Maps-Karte wird erst nach einem
+                aktiven Klick auf „Karte laden“ eingebunden.
+                Erst zu diesem Zeitpunkt wird eine Verbindung
+                zu Google hergestellt.
+            </p>
+
+
+            <p>
+                Alternativ kann die externe Google-Maps-Seite
+                über den bereitgestellten Routenlink geöffnet
+                werden.
+            </p>
+
+
+            <h3>
+                5. Facebook
+            </h3>
+
+
+            <p>
+                Auf der Website befindet sich lediglich ein
+                externer Link zu Facebook. Es wird kein
+                Facebook-Plugin automatisch eingebunden.
+                Beim Öffnen der externen Seite können Daten
+                an den jeweiligen Anbieter übertragen werden.
+            </p>
+
+
+            <h3>
+                6. Cookies und Tracking
+            </h3>
+
+
+            <p>
+                Diese Website verwendet in dieser technischen
+                Version kein eigenes Analyse- oder
+                Werbetracking.
+            </p>
+
+
+            <h3>
+                7. Lokaler Speicher
+            </h3>
+
+
+            <p>
+                Das Admin-Panel verwendet localStorage des
+                Browsers, um die lokal eingegebenen
+                Veranstaltungs-, Angebots- und Kartendaten
+                auf diesem Gerät zu speichern.
+            </p>
+
+
+            <h3>
+                8. Rechte betroffener Personen
+            </h3>
+
+
+            <p>
+                Betroffene Personen haben nach Maßgabe der
+                DSGVO insbesondere Rechte auf Auskunft,
+                Berichtigung, Löschung, Einschränkung der
+                Verarbeitung, Datenübertragbarkeit und
+                Widerspruch sowie das Recht auf Beschwerde
+                bei einer Datenschutzaufsichtsbehörde.
+            </p>
+
+
+            <h3>
+                9. Aktualisierung
+            </h3>
+
+
+            <p>
+                Diese Vorlage muss vor Veröffentlichung an
+                das tatsächliche Hosting, die tatsächlich
+                verwendeten Dienste und die konkrete
+                Datenverarbeitung angepasst werden.
+            </p>
+
+
+            <p>
+                <strong>
+                    Hinweis:
+                </strong>
+                Dies ist eine technische Vorlage und keine
+                individuelle Rechtsberatung.
+            </p>
+
+        `;
+
+    }
+
+
+    modal.classList.add("open");
+
+    document.body.classList.add("locked");
+
+}
+
+
+/* =========================================================
+   GOOGLE MAPS
+   ========================================================= */
+
+function loadGoogleMap() {
+
+    const map =
+        document.getElementById("mapBox");
+
+
+    map.innerHTML = `
+
+        <iframe
+            title="Google Maps – Leuchtfeuer Elsfleth"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=M%C3%BChlenstra%C3%9Fe%2075%2C%2026931%20Elsfleth&output=embed"
+        ></iframe>
+
+    `;
+
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element =>
+        observer.observe(element)
+    );
+
+
+/* =========================================================
+   START
+   ========================================================= */
 
 document.getElementById("year")
     .textContent =
     new Date().getFullYear();
 
 
+renderEvents();
+renderOffer();
+
+
+/* =========================================================
+   ESC KEY
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+
+            document
+                .querySelectorAll(".modal.open")
+                .forEach(modal => {
+
+                    modal.classList.remove("open");
+
+                });
+
+            document.body.classList.remove("locked");
+
+        }
+
+    }
+);
+
 </script>
 
-
 </body>
-
 </html>
