@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Leuchtfeuer – Admin
+</title>
+
+
+<style>
+
+:root {
+
+    --blue: #315b7f;
+    --deep-blue: #203f5d;
+
+    --red: #a9564f;
+
+    --yellow: #d9bd70;
+
+    --cream: #f2eadf;
+
+    --text: #19344c;
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+
+    margin: 0;
+
+    background: var(--cream);
+
+    color: var(--text);
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+button,
+input,
+textarea,
+select {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+/* ======================================================
+   HEADER
+   ====================================================== */
+
+.admin-header {
+
+    background: var(--deep-blue);
+
+    color: var(--cream);
+
+    padding: 18px 4%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+
+.admin-title {
+
+    font-family: Georgia, serif;
+
+    font-size: 25px;
+
+}
+
+
+/* ======================================================
+   LAYOUT
+   ====================================================== */
+
+.container {
+
+    width: min(1150px, 94%);
+
+    margin: 35px auto;
+
+}
+
+
+.panel {
+
+    padding: 28px;
+
+    margin-bottom: 25px;
+
+    background: var(--cream);
+
+    border: 1px solid rgba(32,63,93,.25);
+
+    box-shadow:
+        0 12px 35px rgba(23,52,76,.12);
+
+}
+
+
+.panel h2 {
+
+    margin-top: 0;
+
+    color: var(--deep-blue);
+
+    font-family: Georgia, serif;
+
+}
+
+
+.panel h3 {
+
+    color: var(--red);
+
+}
+
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+
+}
+
+
+input,
+textarea,
+select {
+
+    width: 100%;
+
+    padding: 11px;
+
+    margin-bottom: 14px;
+
+    border: 1px solid var(--blue);
+
+    background: #f7efe5;
+
+    color: var(--text);
+
+}
+
+
+textarea {
+
+    min-height: 110px;
+
+    resize: vertical;
+
+}
+
+
+.button {
+
+    border: 1px solid var(--yellow);
+
+    background: var(--red);
+
+    color: var(--cream);
+
+    padding: 11px 18px;
+
+}
+
+
+.button.blue {
+
+    background: var(--blue);
+
+}
+
+
+.button.dark {
+
+    background: var(--deep-blue);
+
+}
+
+
+/* ======================================================
+   LOGIN
+   ====================================================== */
+
+.login {
+
+    width: min(430px, 92%);
+
+    margin: 12vh auto;
+
+    text-align: center;
+
+}
+
+
+.login img {
+
+    width: 190px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* ======================================================
+   EVENTS
+   ====================================================== */
+
+.event-row {
+
+    padding: 18px 0;
+
+    border-top: 1px solid rgba(32,63,93,.22);
+
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    gap: 20px;
+
+}
+
+
+.event-status {
+
+    display: inline-block;
+
+    padding: 5px 8px;
+
+    margin-bottom: 8px;
+
+    background: var(--yellow);
+
+    color: var(--deep-blue);
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+}
+
+
+.event-row h3 {
+
+    margin: 5px 0;
+
+}
+
+
+.actions {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    align-items: start;
+
+}
+
+
+/* ======================================================
+   MENU
+   ====================================================== */
+
+.category {
+
+    margin-bottom: 25px;
+
+    padding: 22px;
+
+    border: 1px solid rgba(32,63,93,.2);
+
+}
+
+
+.menu-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 160px auto;
+
+    gap: 10px;
+
+    align-items: center;
+
+}
+
+
+/* ======================================================
+   RESPONSIVE
+   ====================================================== */
+
+@media(max-width: 750px) {
+
+    .grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .event-row {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .menu-row {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .admin-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     LOGIN
+     ====================================================== -->
+
+<div
+    id="loginScreen"
+    class="login panel"
+>
+
+    <img
+        src="/pic/logo.png"
+        alt="Leuchtfeuer"
+    >
+
+
+    <h2>
+        Leuchtfeuer Admin
+    </h2>
+
+
+    <p>
+        Verwaltung der Website
+    </p>
+
+
+    <label>
+        Benutzer
+    </label>
+
+    <input
+        id="username"
+        autocomplete="username"
+    >
+
+
+    <label>
+        Passwort
+    </label>
+
+    <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+    >
+
+
+    <button
+        class="button"
+        onclick="login()"
+    >
+        Anmelden
+    </button>
+
+
+    <p
+        id="loginError"
+        style="color:var(--red)"
+    ></p>
+
+</div>
+
+
+
+<!-- ======================================================
+     ADMIN APP
+     ====================================================== -->
+
+<div
+    id="adminApp"
+    class="hidden"
+>
+
+
+<header class="admin-header">
+
+    <div class="admin-title">
+        ⚓ Leuchtfeuer · Admin
+    </div>
+
+
+    <div>
+
+        <button
+            class="button blue"
+            onclick="window.open('/', '_blank')"
+        >
+            Website öffnen
+        </button>
+
+
+        <button
+            class="button"
+            onclick="logout()"
+        >
+            Abmelden
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- ======================================================
+     INFO
+     ====================================================== -->
+
+<section class="panel">
+
+    <h2>
+        Website-Verwaltung
+    </h2>
+
+    <p>
+        Hier kannst du Veranstaltungen,
+        Sonderangebote sowie Getränke- und
+        Speisekarte bearbeiten.
+    </p>
+
+    <p>
+        <strong>
+            Technischer Hinweis:
+        </strong>
+        Diese GitHub-Pages-Version speichert die
+        Änderungen im Browser über localStorage.
+        Sie werden damit nicht automatisch auf
+        andere Geräte übertragen.
+    </p>
+
+</section>
+
+
+
+<!-- ======================================================
+     EVENTS
+     ====================================================== -->
+
+<section class="panel">
+
+    <h2>
+        Veranstaltungen
+    </h2>
+
+
+    <div id="eventsAdmin"></div>
+
+
+    <hr>
+
+
+    <h3>
+        Neue Veranstaltung
+    </h3>
+
+
+    <div class="grid">
+
+        <div>
+
+            <label>
+                Beginn – Datum
+            </label>
+
+            <input
+                id="eventDate"
+                type="date"
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>
+                Beginn – Uhrzeit
+            </label>
+
+            <input
+                id="eventStartTime"
+                type="time"
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>
+                Ende – Datum
+            </label>
+
+            <input
+                id="eventEndDate"
+                type="date"
+            >
+
+        </div>
+
+
+        <div>
+
+            <label>
+                Ende – Uhrzeit
+            </label>
+
+            <input
+                id="eventEndTime"
+                type="time"
+            >
+
+        </div>
+
+    </div>
+
+
+    <label>
+        Überschrift
+    </label>
+
+    <input
+        id="eventTitle"
+        placeholder="z.B. Live-Musik"
+    >
+
+
+    <label>
+        Beschreibung
+    </label>
+
+    <textarea
+        id="eventDescription"
+        placeholder="Beschreibung der Veranstaltung..."
+    ></textarea>
+
+
+    <label>
+
+        <input
+            id="eventPublished"
+            type="checkbox"
+            style="width:auto"
+            checked
+        >
+
+        Veranstaltung sofort veröffentlichen
+
+    </label>
+
+
+    <button
+        class="button"
+        onclick="addEvent()"
+    >
+        Veranstaltung hinzufügen
+    </button>
+
+</section>
+
+
+
+<!-- ======================================================
+     SPECIAL OFFER
+     ====================================================== -->
+
+<section class="panel">
+
+    <h2>
+        Spezielles Angebot
+    </h2>
+
+
+    <label>
+
+        <input
+            id="offerActive"
+            type="checkbox"
+            style="width:auto"
+        >
+
+        Angebot auf der Startseite anzeigen
+
+    </label>
+
+
+    <label>
+        Überschrift
+    </label>
+
+    <input
+        id="offerTitle"
+    >
+
+
+    <label>
+        Beschreibung
+    </label>
+
+    <textarea
+        id="offerDescription"
+    ></textarea>
+
+
+    <button
+        class="button"
+        onclick="saveOffer()"
+    >
+        Angebot speichern
+    </button>
+
+</section>
+
+
+
+<!-- ======================================================
+     MENU
+     ====================================================== -->
+
+<section class="panel">
+
+    <h2>
+        Getränke- & Speisekarte
+    </h2>
+
+
+    <p>
+        Die Änderungen erscheinen anschließend
+        in der interaktiven Buchkarte.
+    </p>
+
+
+    <div id="menuAdmin"></div>
+
+
+    <button
+        class="button blue"
+        onclick="addCategory()"
+    >
+        + Kategorie hinzufügen
+    </button>
+
+
+    <button
+        class="button"
+        onclick="saveMenu()"
+    >
+        Karte speichern
+    </button>
+
+</section>
+
+
+
+<!-- ======================================================
+     DATA
+     ====================================================== -->
+
+<section class="panel">
+
+    <h2>
+        Daten
+    </h2>
+
+
+    <button
+        class="button blue"
+        onclick="downloadData()"
+    >
+        Daten als JSON sichern
+    </button>
+
+
+    <button
+        class="button dark"
+        onclick="resetData()"
+    >
+        Beispieldaten zurücksetzen
+    </button>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   DEFAULT DATA
+   ========================================================= */
+
+const DEFAULT_DATA = {
+
+    events: [
+
+        {
+            date: "2026-09-26",
+            startTime: "20:00",
+            endDate: "2026-09-26",
+            endTime: "23:59",
+            title: "Live-Musik",
+            description:
+                "Maritimer Abend mit guter Stimmung und kühlen Getränken.",
+            published: true
+        },
+
+        {
+            date: "2026-10-02",
+            startTime: "18:00",
+            endDate: "2026-10-02",
+            endTime: "23:59",
+            title: "Themenabend",
+            description:
+                "Herzhafte Klassiker und gemütlicher Abend im Leuchtfeuer.",
+            published: true
+        }
+
+    ],
+
+
+    offer: {
+
+        active: true,
+
+        title: "Sonderangebot",
+
+        text:
+            "Hier kann jederzeit ein aktuelles Angebot veröffentlicht werden."
+
+    },
+
+
+    menu: [
+
+        {
+            category: "Bier",
+
+            items: [
+
+                ["Pils 0,3 l", "3,20 €"],
+                ["Helles 0,3 l", "3,20 €"],
+                ["Weizen 0,5 l", "4,90 €"],
+                ["Alster 0,3 l", "3,20 €"]
+
+            ]
+
+        },
+
+
+        {
+            category: "Alkoholfrei",
+
+            items: [
+
+                ["Wasser 0,25 l", "2,80 €"],
+                ["Cola / Fanta 0,3 l", "3,00 €"],
+                ["Alkoholfreies Bier 0,33 l", "3,20 €"]
+
+            ]
+
+        },
+
+
+        {
+            category: "Longdrinks",
+
+            items: [
+
+                ["Gin Tonic", "7,50 €"],
+                ["Rum Cola", "7,50 €"],
+                ["Vodka Lemon", "7,50 €"]
+
+            ]
+
+        }
+
+    ]
+
+};
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
+const ADMIN_USER = "admin";
+
+const ADMIN_PASSWORD =
+    "leuchtfeuer-passwort1";
+
+
+function login() {
+
+    const user =
+        document.getElementById("username")
+            .value;
+
+    const password =
+        document.getElementById("password")
+            .value;
+
+
+    if (
+        user === ADMIN_USER &&
+        password === ADMIN_PASSWORD
+    ) {
+
+        sessionStorage.setItem(
+            "leuchtfeuerAdmin",
+            "true"
+        );
+
+        showAdmin();
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("loginError")
+        .textContent =
+        "Benutzer oder Passwort ist falsch.";
+
+}
+
+
+function showAdmin() {
+
+    document
+        .getElementById("loginScreen")
+        .classList.add("hidden");
+
+
+    document
+        .getElementById("adminApp")
+        .classList.remove("hidden");
+
+
+    renderAll();
+
+}
+
+
+function logout() {
+
+    sessionStorage.removeItem(
+        "leuchtfeuerAdmin"
+    );
+
+    location.reload();
+
+}
+
+
+if (
+    sessionStorage.getItem(
+        "leuchtfeuerAdmin"
+    ) === "true"
+) {
+
+    showAdmin();
+
+}
+
+
+/* =========================================================
+   DATA
+   ========================================================= */
+
+function getData() {
+
+    const saved =
+        localStorage.getItem(
+            "leuchtfeuerData"
+        );
+
+
+    if (!saved) {
+
+        return structuredClone(
+            DEFAULT_DATA
+        );
+
+    }
+
+
+    try {
+
+        return JSON.parse(saved);
+
+    } catch {
+
+        return structuredClone(
+            DEFAULT_DATA
+        );
+
+    }
+
+}
+
+
+function saveData(data) {
+
+    localStorage.setItem(
+        "leuchtfeuerData",
+        JSON.stringify(data)
+    );
+
+    renderAll();
+
+}
+
+
+/* =========================================================
+   ESCAPE
+   ========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+function renderEvents() {
+
+    const data = getData();
+
+    const container =
+        document.getElementById(
+            "eventsAdmin"
+        );
+
+
+    if (!data.events.length) {
+
+        container.innerHTML =
+            "<p>Keine Veranstaltungen vorhanden.</p>";
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+
+        data.events.map((event,index) => `
+
+            <div class="event-row">
+
+                <div>
+
+                    <div class="event-status">
+
+                        ${
+                            event.published
+                            ? "VERÖFFENTLICHT"
+                            : "ENTWURF"
+                        }
+
+                    </div>
+
+
+                    <h3>
+                        ${escapeHTML(event.title)}
+                    </h3>
+
+
+                    <strong>
+
+                        ${escapeHTML(event.date)}
+
+                        ${event.startTime
+                            ? " · " + escapeHTML(event.startTime)
+                            : ""
+                        }
+
+                        ${
+                            event.endDate
+                            ? " → " +
+                              escapeHTML(event.endDate)
+                            : ""
+                        }
+
+                        ${
+                            event.endTime
+                            ? " · " +
+                              escapeHTML(event.endTime)
+                            : ""
+                        }
+
+                    </strong>
+
+
+                    <p>
+                        ${escapeHTML(event.description)}
+                    </p>
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        class="button blue"
+                        onclick="toggleEvent(${index})"
+                    >
+
+                        ${
+                            event.published
+                            ? "Deaktivieren"
+                            : "Veröffentlichen"
+                        }
+
+                    </button>
+
+
+                    <button
+                        class="button"
+                        onclick="editEvent(${index})"
+                    >
+                        Bearbeiten
+                    </button>
+
+
+                    <button
+                        class="button dark"
+                        onclick="deleteEvent(${index})"
+                    >
+                        Löschen
+                    </button>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+function addEvent() {
+
+    const data = getData();
+
+
+    const event = {
+
+        date:
+            document.getElementById(
+                "eventDate"
+            ).value,
+
+        startTime:
+            document.getElementById(
+                "eventStartTime"
+            ).value,
+
+        endDate:
+            document.getElementById(
+                "eventEndDate"
+            ).value,
+
+        endTime:
+            document.getElementById(
+                "eventEndTime"
+            ).value,
+
+        title:
+            document.getElementById(
+                "eventTitle"
+            ).value,
+
+        description:
+            document.getElementById(
+                "eventDescription"
+            ).value,
+
+        published:
+            document.getElementById(
+                "eventPublished"
+            ).checked
+
+    };
+
+
+    if (!event.date) {
+
+        alert(
+            "Bitte ein Startdatum auswählen."
+        );
+
+        return;
+
+    }
+
+
+    if (!event.title.trim()) {
+
+        alert(
+            "Bitte eine Überschrift eingeben."
+        );
+
+        return;
+
+    }
+
+
+    data.events.push(event);
+
+
+    saveData(data);
+
+
+    document.getElementById(
+        "eventTitle"
+    ).value = "";
+
+
+    document.getElementById(
+        "eventDescription"
+    ).value = "";
+
+}
+
+
+function toggleEvent(index) {
+
+    const data = getData();
+
+    data.events[index].published =
+        !data.events[index].published;
+
+    saveData(data);
+
+}
+
+
+function deleteEvent(index) {
+
+    if (
+        !confirm(
+            "Diese Veranstaltung wirklich löschen?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const data = getData();
+
+    data.events.splice(index,1);
+
+    saveData(data);
+
+}
+
+
+function editEvent(index) {
+
+    const data = getData();
+
+    const event =
+        data.events[index];
+
+
+    const title =
+        prompt(
+            "Überschrift:",
+            event.title
+        );
+
+    if (title === null) return;
+
+
+    const description =
+        prompt(
+            "Beschreibung:",
+            event.description
+        );
+
+    if (description === null) return;
+
+
+    const startTime =
+        prompt(
+            "Startzeit:",
+            event.startTime || ""
+        );
+
+    if (startTime === null) return;
+
+
+    const endTime =
+        prompt(
+            "Endzeit:",
+            event.endTime || ""
+        );
+
+    if (endTime === null) return;
+
+
+    event.title =
+        title;
+
+    event.description =
+        description;
+
+    event.startTime =
+        startTime;
+
+    event.endTime =
+        endTime;
+
+
+    saveData(data);
+
+}
+
+
+/* =========================================================
+   OFFER
+   ========================================================= */
+
+function renderOffer() {
+
+    const data = getData();
+
+
+    document.getElementById(
+        "offerActive"
+    ).checked =
+        data.offer.active;
+
+
+    document.getElementById(
+        "offerTitle"
+    ).value =
+        data.offer.title;
+
+
+    document.getElementById(
+        "offerDescription"
+    ).value =
+        data.offer.text;
+
+}
+
+
+function saveOffer() {
+
+    const data = getData();
+
+
+    data.offer = {
+
+        active:
+            document.getElementById(
+                "offerActive"
+            ).checked,
+
+        title:
+            document.getElementById(
+                "offerTitle"
+            ).value,
+
+        text:
+            document.getElementById(
+                "offerDescription"
+            ).value
+
+    };
+
+
+    saveData(data);
+
+
+    alert(
+        "Sonderangebot gespeichert."
+    );
+
+}
+
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+function renderMenu() {
+
+    const data = getData();
+
+    const container =
+        document.getElementById(
+            "menuAdmin"
+        );
+
+
+    container.innerHTML =
+
+        data.menu.map(
+            (category, categoryIndex) => `
+
+                <div class="category">
+
+                    <h3>
+                        Kategorie ${categoryIndex + 1}
+                    </h3>
+
+
+                    <label>
+                        Kategoriename
+                    </label>
+
+                    <input
+                        value="${escapeHTML(category.category)}"
+                        onchange="
+                            updateCategory(
+                                ${categoryIndex},
+                                this.value
+                            )
+                        "
+                    >
+
+
+                    ${
+                        category.items.map(
+                            (item,itemIndex) => `
+
+                                <div class="menu-row">
+
+                                    <input
+                                        value="${escapeHTML(item[0])}"
+                                        onchange="
+                                            updateMenuItem(
+                                                ${categoryIndex},
+                                                ${itemIndex},
+                                                0,
+                                                this.value
+                                            )
+                                        "
+                                    >
+
+
+                                    <input
+                                        value="${escapeHTML(item[1])}"
+                                        onchange="
+                                            updateMenuItem(
+                                                ${categoryIndex},
+                                                ${itemIndex},
+                                                1,
+                                                this.value
+                                            )
+                                        "
+                                    >
+
+
+                                    <button
+                                        class="button dark"
+                                        onclick="
+                                            deleteMenuItem(
+                                                ${categoryIndex},
+                                                ${itemIndex}
+                                            )
+                                        "
+                                    >
+                                        ×
+                                    </button>
+
+                                </div>
+
+                            `
+                        ).join("")
+                    }
+
+
+                    <br>
+
+
+                    <button
+                        class="button blue"
+                        onclick="
+                            addMenuItem(
+                                ${categoryIndex}
+                            )
+                        "
+                    >
+                        + Artikel hinzufügen
+                    </button>
+
+
+                    <button
+                        class="button dark"
+                        onclick="
+                            deleteCategory(
+                                ${categoryIndex}
+                            )
+                        "
+                    >
+                        Kategorie löschen
+                    </button>
+
+                </div>
+
+            `
+        ).join("");
+
+}
+
+
+function updateCategory(index,value) {
+
+    const data = getData();
+
+    data.menu[index].category =
+        value;
+
+    saveData(data);
+
+}
+
+
+function updateMenuItem(
+    categoryIndex,
+    itemIndex,
+    field,
+    value
+) {
+
+    const data = getData();
+
+    data.menu[
+        categoryIndex
+    ].items[
+        itemIndex
+    ][field] = value;
+
+
+    localStorage.setItem(
+        "leuchtfeuerData",
+        JSON.stringify(data)
+    );
+
+}
+
+
+function addMenuItem(categoryIndex) {
+
+    const data = getData();
+
+
+    data.menu[
+        categoryIndex
+    ].items.push(
+        [
+            "Neuer Artikel",
+            "0,00 €"
+        ]
+    );
+
+
+    saveData(data);
+
+}
+
+
+function deleteMenuItem(
+    categoryIndex,
+    itemIndex
+) {
+
+    const data = getData();
+
+
+    data.menu[
+        categoryIndex
+    ].items.splice(
+        itemIndex,
+        1
+    );
+
+
+    saveData(data);
+
+}
+
+
+function addCategory() {
+
+    const data = getData();
+
+
+    data.menu.push({
+
+        category:
+            "Neue Kategorie",
+
+        items: [
+
+            [
+                "Neuer Artikel",
+                "0,00 €"
+            ]
+
+        ]
+
+    });
+
+
+    saveData(data);
+
+}
+
+
+function deleteCategory(index) {
+
+    if (
+        !confirm(
+            "Kategorie wirklich löschen?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    const data = getData();
+
+    data.menu.splice(index,1);
+
+    saveData(data);
+
+}
+
+
+function saveMenu() {
+
+    const data = getData();
+
+    saveData(data);
+
+    alert(
+        "Karte gespeichert."
+    );
+
+}
+
+
+/* =========================================================
+   DATA DOWNLOAD
+   ========================================================= */
+
+function downloadData() {
+
+    const data = getData();
+
+
+    const blob = new Blob(
+        [
+            JSON.stringify(
+                data,
+                null,
+                2
+            )
+        ],
+        {
+            type:
+                "application/json"
+        }
+    );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+    link.download =
+        "leuchtfeuer-data.json";
+
+
+    link.click();
+
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+function resetData() {
+
+    if (
+        !confirm(
+            "Alle lokalen Änderungen durch die Beispieldaten ersetzen?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "leuchtfeuerData"
+    );
+
+
+    renderAll();
+
+}
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+
+function renderAll() {
+
+    renderEvents();
+
+    renderOffer();
+
+    renderMenu();
+
+}
+
+</script>
+
+</body>
+</html>
