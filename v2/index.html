@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leuchtfeuer – Seemannskneipe Elsfleth</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar"><div class="container nav">
+<a class="brand" href="index.html"><img src="pic/logo.png" alt="Leuchtfeuer Elsfleth"></a>
+<nav class="navlinks"><a class="active" href="index.html">Startseite</a><a href="ueber-uns.html">Über uns</a><a href="speisekarte.html">Speisekarte</a><a href="veranstaltungen.html">Veranstaltungen</a><a href="kontakt.html">Kontakt</a></nav>
+<a class="nav-cta" href="speisekarte.html">Karte ansehen</a><button class="mobile-menu" onclick="alert('Bitte das Menü über die Seitenlinks öffnen.')">☰</button>
+</div></header>
+
+<main>
+<section class="hero"><div class="container hero-grid">
+<div><div class="eyebrow">⚓ Seemannskneipe · Elsfleth</div><h1>Leucht<span>feuer</span></h1><p>Gute Leute. Gute Drinks. Gute Abende. Deine Seemannskneipe in Elsfleth – direkt bei der Jade Hochschule.</p><div class="hero-actions"><a class="btn" href="speisekarte.html">Zur Speisekarte →</a><a class="btn ghost" href="#anfahrt">So findest du uns</a></div></div>
+<div class="hours-card"><div class="eyebrow">Heute & immer aktuell</div><h2>Öffnungszeiten</h2><div id="today-status" class="today"></div><div id="hours-list"></div></div>
+</div></section>
+
+<section class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Warum Leuchtfeuer?</div><h2>Immer die richtige Richtung.</h2></div><p>Ein unkomplizierter Treffpunkt für Studierende, Seefahrer, Nachbarn und alle, die einen guten Abend suchen.</p></div>
+<div class="features"><div class="feature"><div class="icon">🍺</div><h3>Gute Drinks</h3><p>Bier, Longdrinks und Klassiker – kalt, unkompliziert und ehrlich.</p></div><div class="feature"><div class="icon">⚓</div><h3>Maritime Atmosphäre</h3><p>Norddeutsch, gemütlich und mit echtem Seemannskneipen-Gefühl.</p></div><div class="feature"><div class="icon">🎓</div><h3>Direkt bei der Hochschule</h3><p>Nach der Vorlesung ist der Weg kurz. Sehr kurz.</p></div><div class="feature"><div class="icon">♪</div><h3>Events & Abende</h3><p>Besondere Abende und spontane Aktionen findest du hier.</p></div></div></div></section>
+
+<section class="section alt"><div class="container"><div class="section-head"><div><div class="eyebrow">Aktuell</div><h2>Was ist los?</h2></div><a class="btn ghost" href="veranstaltungen.html">Alle Veranstaltungen</a></div><div id="events" class="cards"></div></div></section>
+
+<section class="section"><div class="container"><div class="section-head"><div><div class="eyebrow">Angebote</div><h2>Heute lohnt sich's.</h2></div></div><div id="offers" class="cards"></div></div></section>
+
+<section class="section alt"><div class="container"><div class="section-head"><div><div class="eyebrow">Ein kleiner Vorgeschmack</div><h2>Aus unserer Karte.</h2></div><a class="btn ghost" href="speisekarte.html">Komplette Karte</a></div><div id="menu-preview" class="menu-grid"></div></div></section>
+
+<section class="section" id="anfahrt"><div class="container"><div class="section-head"><div><div class="eyebrow">So findest du uns</div><h2>An der richtigen Stelle.</h2></div><p>Leuchtfeuer · Mühlenstraße 75 · 26931 Elsfleth. Die Karte ist interaktiv – du kannst zoomen, verschieben und direkt die Route öffnen.</p></div>
+<div class="map-wrap"><div class="map-info"><div class="icon" style="font-size:2.6rem;color:var(--gold)">📍</div><h3>Leuchtfeuer Elsfleth</h3><p><span data-site="address">Mühlenstraße 75</span><br><span data-site="zipcity">26931 Elsfleth</span></p><p class="muted">Direkt in der Nähe der Jade Hochschule.</p><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Leuchtfeuer%20Elsfleth%2C%20Mühlenstraße%2075%2C%2026931%20Elsfleth">Route in Google Maps →</a></div>
+<div class="map-box"><iframe title="Google Maps – Leuchtfeuer Elsfleth" loading="lazy" src="https://www.google.com/maps?q=Leuchtfeuer%20Elsfleth%2C%20Mühlenstra%C3%9Fe%2075%2C%2026931%20Elsfleth&output=embed"></iframe></div></div></div></section>
+
+<section class="section alt"><div class="container"><div class="section-head"><div><div class="eyebrow">Social</div><h2>Was gibt's Neues?</h2></div><p>Folge dem Leuchtfeuer auf Instagram und Facebook. Die letzten Beiträge können im Admin-Panel verknüpft werden.</p></div>
+<div class="social-grid"><article class="social-card"><div><div class="social-icon">◎</div><h3>Instagram</h3><p class="muted">Fotos, Stories und aktuelle Abende.</p></div><a id="ig-latest" class="btn ghost" target="_blank" rel="noopener">Instagram öffnen →</a></article>
+<article class="social-card"><div><div class="social-icon">f</div><h3>Facebook</h3><p class="muted">Veranstaltungen und Neuigkeiten.</p></div><a id="fb-latest" class="btn ghost" target="_blank" rel="noopener">Facebook öffnen →</a></article></div></div></section>
+</main>
+
+<footer><div class="container"><div class="footer-grid"><div><img src="pic/logo.png" alt="Leuchtfeuer" style="width:180px"><p class="muted">Seemannskneipe in Elsfleth.</p></div><div><strong>Leuchtfeuer</strong><p class="muted"><span data-site="address">Mühlenstraße 75</span><br><span data-site="zipcity">26931 Elsfleth</span></p></div><div><strong>Folge uns</strong><div class="footer-links"><a id="ig-link" target="_blank" rel="noopener">Instagram</a><a id="fb-link" target="_blank" rel="noopener">Facebook</a></div></div></div>
+<div class="footer-links" style="margin-top:30px"><a href="impressum.html" target="_blank" rel="noopener">Impressum</a><a href="datenschutz.html" target="_blank" rel="noopener">Datenschutz</a><a href="kontakt.html">Kontakt</a><a href="admin/">Admin</a></div>
+<div class="maker">Mit <a href="https://www.instagram.com/thesimonfischer/" target="_blank" rel="noopener">❤️</a> gemacht – aus Elsfleth!</div>
+</div></footer>
+<div id="toast" class="toast"></div>
+<script src="js/default-data.js"></script><script src="js/main.js"></script>
+</body></html>
